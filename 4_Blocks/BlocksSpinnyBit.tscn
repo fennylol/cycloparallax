@@ -1,0 +1,196 @@
+[gd_scene format=3 uid="uid://b354f8buyhj8t"]
+
+[ext_resource type="PackedScene" uid="uid://w4ikt4jefrxc" path="res://4_Blocks/StoneBlock.tscn" id="1_amm5f"]
+
+[node name="BlocksSpinnyBit" type="Node3D" unique_id=318428192]
+
+[node name="0" type="Node3D" parent="." unique_id=818980359]
+
+[node name="StoneBlock" parent="0" unique_id=1873968233 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="1" type="Node3D" parent="." unique_id=852917068]
+transform = Transform3D(0.98078525, 0, 0.19509032, 0, 1, 0, -0.19509032, 0, 0.98078525, 0, 0, 0)
+
+[node name="StoneBlock" parent="1" unique_id=151401665 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="2" type="Node3D" parent="." unique_id=1367078181]
+transform = Transform3D(0.9238795, 0, 0.38268346, 0, 1, 0, -0.38268346, 0, 0.9238795, 0, 0, 0)
+
+[node name="StoneBlock" parent="2" unique_id=442631766 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="3" type="Node3D" parent="." unique_id=531267390]
+transform = Transform3D(0.8314696, 0, 0.55557024, 0, 1, 0, -0.55557024, 0, 0.8314696, 0, 0, 0)
+
+[node name="StoneBlock" parent="3" unique_id=1160587041 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="4" type="Node3D" parent="." unique_id=2016181235]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+
+[node name="StoneBlock" parent="4" unique_id=516753363 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="5" type="Node3D" parent="." unique_id=708523170]
+transform = Transform3D(0.55557024, 0, 0.8314696, 0, 1, 0, -0.8314696, 0, 0.55557024, 0, 0, 0)
+
+[node name="StoneBlock" parent="5" unique_id=936171358 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="6" type="Node3D" parent="." unique_id=372217976]
+transform = Transform3D(0.38268343, 0, 0.9238795, 0, 1, 0, -0.9238795, 0, 0.38268343, 0, 0, 0)
+
+[node name="StoneBlock" parent="6" unique_id=1109973359 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="7" type="Node3D" parent="." unique_id=963812367]
+transform = Transform3D(0.19509035, 0, 0.98078525, 0, 1, 0, -0.98078525, 0, 0.19509035, 0, 0, 0)
+
+[node name="StoneBlock" parent="7" unique_id=1280466359 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="8" type="Node3D" parent="." unique_id=969487249]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="StoneBlock" parent="8" unique_id=1376810508 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="9" type="Node3D" parent="." unique_id=1376260058]
+transform = Transform3D(-0.19509032, 0, 0.98078525, 0, 1, 0, -0.98078525, 0, -0.19509032, 0, 0, 0)
+
+[node name="StoneBlock" parent="9" unique_id=862496215 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="10" type="Node3D" parent="." unique_id=287429370]
+transform = Transform3D(-0.3826834, 0, 0.92387956, 0, 1, 0, -0.92387956, 0, -0.3826834, 0, 0, 0)
+
+[node name="StoneBlock" parent="10" unique_id=2116746947 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="11" type="Node3D" parent="." unique_id=1422793126]
+transform = Transform3D(-0.5555702, 0, 0.83146966, 0, 1, 0, -0.83146966, 0, -0.5555702, 0, 0, 0)
+
+[node name="StoneBlock" parent="11" unique_id=1767743850 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="12" type="Node3D" parent="." unique_id=891699664]
+transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 0, 0, 0)
+
+[node name="StoneBlock" parent="12" unique_id=28602328 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="13" type="Node3D" parent="." unique_id=251560269]
+transform = Transform3D(-0.83146966, 0, 0.5555702, 0, 1, 0, -0.5555702, 0, -0.83146966, 0, 0, 0)
+
+[node name="StoneBlock" parent="13" unique_id=510122696 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="14" type="Node3D" parent="." unique_id=441582934]
+transform = Transform3D(-0.9238795, 0, 0.3826835, 0, 1, 0, -0.3826835, 0, -0.9238795, 0, 0, 0)
+
+[node name="StoneBlock" parent="14" unique_id=1120977846 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="15" type="Node3D" parent="." unique_id=1961872624]
+transform = Transform3D(-0.9807853, 0, 0.19509031, 0, 1, 0, -0.19509031, 0, -0.9807853, 0, 0, 0)
+
+[node name="StoneBlock" parent="15" unique_id=624080285 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="16" type="Node3D" parent="." unique_id=484857492]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="StoneBlock" parent="16" unique_id=2034224828 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="17" type="Node3D" parent="." unique_id=90880359]
+transform = Transform3D(-0.9807853, 0, -0.19509025, 0, 1, 0, 0.19509025, 0, -0.9807853, 0, 0, 0)
+
+[node name="StoneBlock" parent="17" unique_id=1070976020 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="18" type="Node3D" parent="." unique_id=1918044476]
+transform = Transform3D(-0.9238795, 0, -0.38268343, 0, 1, 0, 0.38268343, 0, -0.9238795, 0, 0, 0)
+
+[node name="StoneBlock" parent="18" unique_id=325025932 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="19" type="Node3D" parent="." unique_id=1348958828]
+transform = Transform3D(-0.83146954, 0, -0.5555703, 0, 1, 0, 0.5555703, 0, -0.83146954, 0, 0, 0)
+
+[node name="StoneBlock" parent="19" unique_id=872509218 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="20" type="Node3D" parent="." unique_id=1692849293]
+transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, 0, 0, 0)
+
+[node name="StoneBlock" parent="20" unique_id=1449970335 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="21" type="Node3D" parent="." unique_id=90560206]
+transform = Transform3D(-0.5555704, 0, -0.8314695, 0, 1, 0, 0.8314695, 0, -0.5555704, 0, 0, 0)
+
+[node name="StoneBlock" parent="21" unique_id=617333327 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="22" type="Node3D" parent="." unique_id=1867159319]
+transform = Transform3D(-0.38268358, 0, -0.9238795, 0, 1, 0, 0.9238795, 0, -0.38268358, 0, 0, 0)
+
+[node name="StoneBlock" parent="22" unique_id=1919797269 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="23" type="Node3D" parent="." unique_id=1909563410]
+transform = Transform3D(-0.19509038, 0, -0.98078525, 0, 1, 0, 0.98078525, 0, -0.19509038, 0, 0, 0)
+
+[node name="StoneBlock" parent="23" unique_id=1665975227 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="24" type="Node3D" parent="." unique_id=171538719]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
+
+[node name="StoneBlock" parent="24" unique_id=1580532437 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="25" type="Node3D" parent="." unique_id=1663909951]
+transform = Transform3D(0.19509041, 0, -0.98078525, 0, 1, 0, 0.98078525, 0, 0.19509041, 0, 0, 0)
+
+[node name="StoneBlock" parent="25" unique_id=678434739 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="26" type="Node3D" parent="." unique_id=420146250]
+transform = Transform3D(0.3826836, 0, -0.92387944, 0, 1, 0, 0.92387944, 0, 0.3826836, 0, 0, 0)
+
+[node name="StoneBlock" parent="26" unique_id=684540671 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="27" type="Node3D" parent="." unique_id=1445101465]
+transform = Transform3D(0.55557007, 0, -0.8314697, 0, 1, 0, 0.8314697, 0, 0.55557007, 0, 0, 0)
+
+[node name="StoneBlock" parent="27" unique_id=1402783353 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="28" type="Node3D" parent="." unique_id=696388644]
+transform = Transform3D(0.70710665, 0, -0.7071069, 0, 1, 0, 0.7071069, 0, 0.70710665, 0, 0, 0)
+
+[node name="StoneBlock" parent="28" unique_id=1449121771 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="29" type="Node3D" parent="." unique_id=448739909]
+transform = Transform3D(0.8314696, 0, -0.5555703, 0, 1, 0, 0.5555703, 0, 0.8314696, 0, 0, 0)
+
+[node name="StoneBlock" parent="29" unique_id=2067597011 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="30" type="Node3D" parent="." unique_id=133498656]
+transform = Transform3D(0.92387956, 0, -0.38268343, 0, 1, 0, 0.38268343, 0, 0.92387956, 0, 0, 0)
+
+[node name="StoneBlock" parent="30" unique_id=1356926707 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="31" type="Node3D" parent="." unique_id=857496928]
+transform = Transform3D(0.9807853, 0, -0.19509023, 0, 1, 0, 0.19509023, 0, 0.9807853, 0, 0, 0)
+
+[node name="StoneBlock" parent="31" unique_id=1778631217 instance=ExtResource("1_amm5f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)

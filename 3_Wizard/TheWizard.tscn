@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bisxls5xjn50e"]
+
+[ext_resource type="Script" uid="uid://cfi0jwegt2n5e" path="res://3_Wizard/the_wizard.gd" id="1_0mqiu"]
+[ext_resource type="Texture2D" uid="uid://ktwf2i13knao" path="res://3_Wizard/Perilacks.png" id="1_4ob3o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_0mqiu"]
+radius = 0.2
+height = 0.5
+
+[node name="TinyWizard" type="CharacterBody3D" unique_id=1995506518]
+axis_lock_linear_x = true
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+script = ExtResource("1_0mqiu")
+
+[node name="Sprite" type="Sprite3D" parent="." unique_id=2042441099]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+pixel_size = 0.002
+texture = ExtResource("1_4ob3o")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="." unique_id=1650091519]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.23071289, 0)
+shape = SubResource("CapsuleShape3D_0mqiu")
+
+[node name="LeftArm" type="RayCast3D" parent="." unique_id=1261000005]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+target_position = Vector3(-0.275, 0, 0)
+
+[node name="LeftLeg" type="RayCast3D" parent="." unique_id=1720322956]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+target_position = Vector3(-0.275, 0, 0)
+
+[node name="LeftFoot" type="RayCast3D" parent="." unique_id=358745910]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.25, 0)
+target_position = Vector3(0, -0.275, 0)
+
+[node name="RightArm" type="RayCast3D" parent="." unique_id=1135685590]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
+target_position = Vector3(0.275, 0, 0)
+
+[node name="RightLeg" type="RayCast3D" parent="." unique_id=84808041]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+target_position = Vector3(0.275, 0, 0)
+
+[node name="RightFoot" type="RayCast3D" parent="." unique_id=1522878683]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.25, 0)
+target_position = Vector3(0, -0.275, 0)
