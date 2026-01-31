@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://byo0358e47ha4"]
+
+[ext_resource type="Script" uid="uid://blfnbyonu82mb" path="res://5_DollyCam/dolly_camera.gd" id="1_qvkce"]
+
+[node name="DollyCamera" type="Camera3D" unique_id=623577091]
+script = ExtResource("1_qvkce")

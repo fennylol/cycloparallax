@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://6cf1leyggfhb" path="res://1_Tower/the_tower.gd" id="1_vwlj8"]
 [ext_resource type="PackedScene" uid="uid://bisxls5xjn50e" path="res://3_Wizard/TheWizard.tscn" id="2_7a4fr"]
+[ext_resource type="PackedScene" uid="uid://byo0358e47ha4" path="res://5_DollyCam/DollyCamera.tscn" id="3_401sn"]
 [ext_resource type="PackedScene" uid="uid://w4ikt4jefrxc" path="res://4_Blocks/StoneBlock.tscn" id="3_uxme6"]
+[ext_resource type="PackedScene" uid="uid://b354f8buyhj8t" path="res://4_Blocks/BlocksSpinnyBit.tscn" id="4_7a4fr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vwlj8"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -13,6 +15,7 @@ sky_material = SubResource("ProceduralSkyMaterial_vwlj8")
 
 [sub_resource type="Environment" id="Environment_uxme6"]
 background_mode = 2
+background_color = Color(0.791016, 0.8760681, 0.8826946, 1)
 sky = SubResource("Sky_7a4fr")
 tonemap_mode = 2
 glow_enabled = true
@@ -30,11 +33,11 @@ shadow_enabled = true
 [node name="WizardsSpinnyBit" type="Node3D" parent="." unique_id=1641620110]
 
 [node name="TinyWizard" parent="WizardsSpinnyBit" unique_id=1068362546 instance=ExtResource("2_7a4fr")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 5)
 
-[node name="Camera3D" type="Camera3D" parent="WizardsSpinnyBit" unique_id=2065302529]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 14)
-fov = 30.0
+[node name="DollyCamera" parent="WizardsSpinnyBit" unique_id=623577091 instance=ExtResource("3_401sn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 12)
+fov = 45.0
 
 [node name="BlocksSpinnyBit" type="Node3D" parent="." unique_id=1539064780]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
@@ -191,11 +194,17 @@ transform = Transform3D(-0.38268358, 0, -0.9238795, 0, 1, 0, 0.9238795, 0, -0.38
 [node name="StoneBlock" parent="BlocksSpinnyBit/22" unique_id=653983105 instance=ExtResource("3_uxme6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
 
+[node name="StoneBlock2" parent="BlocksSpinnyBit/22" unique_id=1602861315 instance=ExtResource("3_uxme6")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 1, 4.75)
+
 [node name="23" type="Node3D" parent="BlocksSpinnyBit" unique_id=1860653604]
 transform = Transform3D(-0.19509038, 0, -0.98078525, 0, 1, 0, 0.98078525, 0, -0.19509038, 0, 0, 0)
 
 [node name="StoneBlock" parent="BlocksSpinnyBit/23" unique_id=1159601411 instance=ExtResource("3_uxme6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="StoneBlock2" parent="BlocksSpinnyBit/23" unique_id=1289626541 instance=ExtResource("3_uxme6")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 1, 4.75)
 
 [node name="24" type="Node3D" parent="BlocksSpinnyBit" unique_id=1152367075]
 transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
@@ -203,17 +212,26 @@ transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0
 [node name="StoneBlock" parent="BlocksSpinnyBit/24" unique_id=1233355101 instance=ExtResource("3_uxme6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
 
+[node name="StoneBlock2" parent="BlocksSpinnyBit/24" unique_id=1874451167 instance=ExtResource("3_uxme6")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 1, 4.75)
+
 [node name="25" type="Node3D" parent="BlocksSpinnyBit" unique_id=102828998]
 transform = Transform3D(0.19509041, 0, -0.98078525, 0, 1, 0, 0.98078525, 0, 0.19509041, 0, 0, 0)
 
 [node name="StoneBlock" parent="BlocksSpinnyBit/25" unique_id=1397015486 instance=ExtResource("3_uxme6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
 
+[node name="StoneBlock" parent="BlocksSpinnyBit/25/StoneBlock" unique_id=1744981510 instance=ExtResource("3_uxme6")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 1, 0)
+
 [node name="26" type="Node3D" parent="BlocksSpinnyBit" unique_id=1054458894]
 transform = Transform3D(0.3826836, 0, -0.92387944, 0, 1, 0, 0.92387944, 0, 0.3826836, 0, 0, 0)
 
 [node name="StoneBlock" parent="BlocksSpinnyBit/26" unique_id=540480785 instance=ExtResource("3_uxme6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="StoneBlock2" parent="BlocksSpinnyBit/26" unique_id=664096114 instance=ExtResource("3_uxme6")]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 1, 4.75)
 
 [node name="27" type="Node3D" parent="BlocksSpinnyBit" unique_id=474180868]
 transform = Transform3D(0.55557007, 0, -0.8314697, 0, 1, 0, 0.8314697, 0, 0.55557007, 0, 0, 0)
@@ -233,14 +251,32 @@ transform = Transform3D(0.8314696, 0, -0.5555703, 0, 1, 0, 0.5555703, 0, 0.83146
 [node name="StoneBlock" parent="BlocksSpinnyBit/29" unique_id=153012774 instance=ExtResource("3_uxme6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
 
+[node name="StoneBlock" parent="BlocksSpinnyBit/29/StoneBlock" unique_id=942458170 instance=ExtResource("3_uxme6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
 [node name="30" type="Node3D" parent="BlocksSpinnyBit" unique_id=68432823]
 transform = Transform3D(0.92387956, 0, -0.38268343, 0, 1, 0, 0.38268343, 0, 0.92387956, 0, 0, 0)
 
 [node name="StoneBlock" parent="BlocksSpinnyBit/30" unique_id=1850297101 instance=ExtResource("3_uxme6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
 
+[node name="StoneBlock2" parent="BlocksSpinnyBit/30" unique_id=1594490738 instance=ExtResource("3_uxme6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.75)
+
 [node name="31" type="Node3D" parent="BlocksSpinnyBit" unique_id=1812989868]
 transform = Transform3D(0.9807853, 0, -0.19509023, 0, 1, 0, 0.19509023, 0, 0.9807853, 0, 0, 0)
 
 [node name="StoneBlock" parent="BlocksSpinnyBit/31" unique_id=1818709515 instance=ExtResource("3_uxme6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="StoneBlock2" parent="BlocksSpinnyBit/31" unique_id=447121010 instance=ExtResource("3_uxme6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.75)
+
+[node name="TowerRing" parent="BlocksSpinnyBit" unique_id=318428192 instance=ExtResource("4_7a4fr")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -1, 0)
+
+[node name="TowerRing" parent="BlocksSpinnyBit/TowerRing" unique_id=1190023736 instance=ExtResource("4_7a4fr")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -1, 0)
+
+[node name="TowerRing" parent="BlocksSpinnyBit/TowerRing/TowerRing" unique_id=2106717333 instance=ExtResource("4_7a4fr")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -1, 0)

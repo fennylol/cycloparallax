@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ktwf2i13knao"
-path.s3tc="res://.godot/imported/Perilacks.png-3a797d9d756e11ae1647dd02a3d45084.s3tc.ctex"
+uid="uid://dhuvlk7ud3qf2"
+path="res://.godot/imported/Perilacks_ccw.png-8f93b487a06336b7172405921201a01c.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://3_Wizard/Perilacks.png"
-dest_files=["res://.godot/imported/Perilacks.png-3a797d9d756e11ae1647dd02a3d45084.s3tc.ctex"]
+source_file="res://3_Wizard/sprites/Perilacks_ccw.png"
+dest_files=["res://.godot/imported/Perilacks_ccw.png-8f93b487a06336b7172405921201a01c.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -24,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -38,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
