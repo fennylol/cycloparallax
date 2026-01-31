@@ -13,3 +13,5 @@ func _process(delta: float) -> void:
 	
 	var fov_ratio = tan(deg_to_rad(StartFov/2.0)) / tan(deg_to_rad(fov/2.0))
 	position.z = StartZ*fov_ratio
+	
+	near = position.z - (StartZ - 0.05)

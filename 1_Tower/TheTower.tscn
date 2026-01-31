@@ -95,7 +95,7 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0
 [node name="StoneBlock" parent="BlocksSpinnyBit/8" unique_id=1854891671 instance=ExtResource("3_uxme6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
 
-[node name="StoneBlock2" parent="BlocksSpinnyBit/8" unique_id=1873968233 instance=ExtResource("3_uxme6")]
+[node name="StoneBlock2" parent="BlocksSpinnyBit/8" unique_id=1372797759 instance=ExtResource("3_uxme6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.75)
 
 [node name="9" type="Node3D" parent="BlocksSpinnyBit" unique_id=534148188]
@@ -280,3 +280,6 @@ transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.99522
 
 [node name="TowerRing" parent="BlocksSpinnyBit/TowerRing/TowerRing" unique_id=2106717333 instance=ExtResource("4_7a4fr")]
 transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -1, 0)
+
+[node name="StoneBlock" parent="BlocksSpinnyBit" unique_id=1873968233 instance=ExtResource("3_uxme6")]
+transform = Transform3D(4.27, 0, 0, 0, 4.27, 0, 0, 0, 4.27, 1.698191, 3.2751627, 24.701921)

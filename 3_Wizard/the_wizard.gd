@@ -3,13 +3,13 @@ class_name TinyWizardNode
 # ========= #
 # constants #
 # ========= #
-var WALK_TIME  : float = 0.25
-var WALK_ACCEL : float = 10.0
-var WALK_SPEED : float = 0.60
-var COYOTE_TIME: float = 0.15
-var JUMP_SPEED : float = 3.0
-var JUMP_TIME  : float = 0.225
-var GRAVITY    : float = 20.0
+const WALK_TIME  : float = 0.25
+const WALK_ACCEL : float = 10.0
+const WALK_SPEED : float = 0.60
+const COYOTE_TIME: float = 0.15
+const JUMP_SPEED : float = 3.0
+const JUMP_TIME  : float = 0.225
+const GRAVITY    : float = 20.0
 const Sprites: Array[Texture] = [
 	preload("res://3_Wizard/sprites/Perilacks.png"),
 	preload("res://3_Wizard/sprites/Perilacks_cw.png"),
