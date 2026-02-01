@@ -44,9 +44,7 @@ var LastSpriteCW     : bool      = true
 @onready var RLegRay : RayCast3D = $RightLeg
 @onready var RFootRay: RayCast3D = $RightFoot
 @onready var Sprite  : Sprite3D  = $Sprite
-@onready var Mouth   : AudioStreamPlayer3D = $Mouth
-
-@export var TheTower : Node3D
+@onready var Mouth   : AudioStreamPlayer = $Mouth
 
 func _process(delta: float)  -> void:
 	if TheLawsOfTheLand.Paused: return

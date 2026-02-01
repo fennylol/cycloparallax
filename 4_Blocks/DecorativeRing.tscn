@@ -1,0 +1,263 @@
+[gd_scene format=3 uid="uid://c7fwywts260g4"]
+
+[ext_resource type="ArrayMesh" uid="uid://dhg0bddgo0j8d" path="res://4_Blocks/platform_mesh.tres" id="1_pwjsm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d5nom"]
+albedo_color = Color(0.32915837, 0.3291584, 0.3291584, 1)
+
+[node name="DecorativeRing" type="Node3D" unique_id=318428192]
+
+[node name="0" type="Node3D" parent="." unique_id=818980359]
+
+[node name="Mesh" type="MeshInstance3D" parent="0" unique_id=447087127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="1" type="Node3D" parent="." unique_id=852917068]
+transform = Transform3D(0.98078525, 0, 0.19509032, 0, 1, 0, -0.19509032, 0, 0.98078525, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="1" unique_id=1763786813]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="2" type="Node3D" parent="." unique_id=1367078181]
+transform = Transform3D(0.9238795, 0, 0.38268346, 0, 1, 0, -0.38268346, 0, 0.9238795, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="2" unique_id=1282769250]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="3" type="Node3D" parent="." unique_id=531267390]
+transform = Transform3D(0.8314696, 0, 0.55557024, 0, 1, 0, -0.55557024, 0, 0.8314696, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="3" unique_id=1553725405]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="4" type="Node3D" parent="." unique_id=2016181235]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="4" unique_id=1162769491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="5" type="Node3D" parent="." unique_id=708523170]
+transform = Transform3D(0.55557024, 0, 0.8314696, 0, 1, 0, -0.8314696, 0, 0.55557024, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="5" unique_id=49913125]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="6" type="Node3D" parent="." unique_id=372217976]
+transform = Transform3D(0.38268343, 0, 0.9238795, 0, 1, 0, -0.9238795, 0, 0.38268343, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="6" unique_id=1429350553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="7" type="Node3D" parent="." unique_id=963812367]
+transform = Transform3D(0.19509035, 0, 0.98078525, 0, 1, 0, -0.98078525, 0, 0.19509035, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="7" unique_id=2098246127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="8" type="Node3D" parent="." unique_id=969487249]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="8" unique_id=1360009599]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="9" type="Node3D" parent="." unique_id=1376260058]
+transform = Transform3D(-0.19509032, 0, 0.98078525, 0, 1, 0, -0.98078525, 0, -0.19509032, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="9" unique_id=1479886500]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="10" type="Node3D" parent="." unique_id=287429370]
+transform = Transform3D(-0.3826834, 0, 0.92387956, 0, 1, 0, -0.92387956, 0, -0.3826834, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="10" unique_id=1099145937]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="11" type="Node3D" parent="." unique_id=1422793126]
+transform = Transform3D(-0.5555702, 0, 0.83146966, 0, 1, 0, -0.83146966, 0, -0.5555702, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="11" unique_id=1196106165]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="12" type="Node3D" parent="." unique_id=891699664]
+transform = Transform3D(-0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, -0.70710677, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="12" unique_id=381393569]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="13" type="Node3D" parent="." unique_id=251560269]
+transform = Transform3D(-0.83146966, 0, 0.5555702, 0, 1, 0, -0.5555702, 0, -0.83146966, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="13" unique_id=611984019]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="14" type="Node3D" parent="." unique_id=441582934]
+transform = Transform3D(-0.9238795, 0, 0.3826835, 0, 1, 0, -0.3826835, 0, -0.9238795, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="14" unique_id=552231350]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="15" type="Node3D" parent="." unique_id=1961872624]
+transform = Transform3D(-0.9807853, 0, 0.19509031, 0, 1, 0, -0.19509031, 0, -0.9807853, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="15" unique_id=1331066466]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="16" type="Node3D" parent="." unique_id=484857492]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="16" unique_id=539187666]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="17" type="Node3D" parent="." unique_id=90880359]
+transform = Transform3D(-0.9807853, 0, -0.19509025, 0, 1, 0, 0.19509025, 0, -0.9807853, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="17" unique_id=423617469]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="18" type="Node3D" parent="." unique_id=1918044476]
+transform = Transform3D(-0.9238795, 0, -0.38268343, 0, 1, 0, 0.38268343, 0, -0.9238795, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="18" unique_id=194766792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="19" type="Node3D" parent="." unique_id=1348958828]
+transform = Transform3D(-0.83146954, 0, -0.5555703, 0, 1, 0, 0.5555703, 0, -0.83146954, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="19" unique_id=139737912]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="20" type="Node3D" parent="." unique_id=1692849293]
+transform = Transform3D(-0.7071068, 0, -0.7071067, 0, 1, 0, 0.7071067, 0, -0.7071068, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="20" unique_id=1103436583]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="21" type="Node3D" parent="." unique_id=90560206]
+transform = Transform3D(-0.5555704, 0, -0.8314695, 0, 1, 0, 0.8314695, 0, -0.5555704, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="21" unique_id=1988951692]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="22" type="Node3D" parent="." unique_id=1867159319]
+transform = Transform3D(-0.38268358, 0, -0.9238795, 0, 1, 0, 0.9238795, 0, -0.38268358, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="22" unique_id=228100776]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="23" type="Node3D" parent="." unique_id=1909563410]
+transform = Transform3D(-0.19509038, 0, -0.98078525, 0, 1, 0, 0.98078525, 0, -0.19509038, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="23" unique_id=998905086]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="24" type="Node3D" parent="." unique_id=171538719]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="24" unique_id=387789245]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="25" type="Node3D" parent="." unique_id=1663909951]
+transform = Transform3D(0.19509041, 0, -0.98078525, 0, 1, 0, 0.98078525, 0, 0.19509041, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="25" unique_id=623200579]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="26" type="Node3D" parent="." unique_id=420146250]
+transform = Transform3D(0.3826836, 0, -0.92387944, 0, 1, 0, 0.92387944, 0, 0.3826836, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="26" unique_id=1714008211]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="27" type="Node3D" parent="." unique_id=1445101465]
+transform = Transform3D(0.55557007, 0, -0.8314697, 0, 1, 0, 0.8314697, 0, 0.55557007, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="27" unique_id=223783575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="28" type="Node3D" parent="." unique_id=696388644]
+transform = Transform3D(0.70710665, 0, -0.7071069, 0, 1, 0, 0.7071069, 0, 0.70710665, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="28" unique_id=1960065768]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="29" type="Node3D" parent="." unique_id=448739909]
+transform = Transform3D(0.8314696, 0, -0.5555703, 0, 1, 0, 0.5555703, 0, 0.8314696, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="29" unique_id=580469141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="30" type="Node3D" parent="." unique_id=133498656]
+transform = Transform3D(0.92387956, 0, -0.38268343, 0, 1, 0, 0.38268343, 0, 0.92387956, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="30" unique_id=392847322]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
+
+[node name="31" type="Node3D" parent="." unique_id=857496928]
+transform = Transform3D(0.9807853, 0, -0.19509023, 0, 1, 0, 0.19509023, 0, 0.9807853, 0, 0, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="31" unique_id=1253179787]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 4.75)
+mesh = ExtResource("1_pwjsm")
+surface_material_override/0 = SubResource("StandardMaterial3D_d5nom")
