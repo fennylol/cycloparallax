@@ -3,6 +3,7 @@
 [ext_resource type="ArrayMesh" uid="uid://ctbgqhdfxw37q" path="res://4_Blocks/block_mesh.tres" id="1_5nxeg"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vemd"]
+transparency = 1
 albedo_color = Color(0.32915837, 0.3291584, 0.3291584, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5nxeg"]
