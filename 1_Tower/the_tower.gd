@@ -18,6 +18,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if TheLawsOfTheLand.Paused: return
 	BlocksCenter.rotate(Vector3.UP, TinyWizard.WalkingSpeed*delta)
+	DollyCamera.TargetHeight = TinyWizard.position.y
 
 func _on_tiny_wizard_placing_block() -> void:
 	LevelBlocks._place_held_block()

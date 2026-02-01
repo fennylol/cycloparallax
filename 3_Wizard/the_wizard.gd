@@ -93,7 +93,6 @@ func _process(delta: float)  -> void:
 		WalkingTimer += delta
 		if not is_location_unsafe():
 			save_safe_spot.emit()
-		else: print("unsafe_"+str(Time.get_ticks_usec()))
 	if WalkingTimer > WALK_TIME:
 		WalkingTimer = fmod(WalkingTimer, WALK_TIME)
 		walk_cycle()
