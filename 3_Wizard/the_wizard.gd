@@ -10,6 +10,8 @@ const COYOTE_TIME: float = 0.15
 const JUMP_SPEED : float = 3.0
 const JUMP_TIME  : float = 0.225
 const GRAVITY    : float = 20.0
+const PLACEMENT_FORGIVENESS : float = 0.1
+const CANCEL_FORGIVENESS    : float = 1.0
 const SPRITES    : Array[Texture] = [
 	preload("res://3_Wizard/sprites/Perilacks.png"),
 	preload("res://3_Wizard/sprites/Perilacks_cw.png"),
@@ -31,11 +33,16 @@ const STEP_SOUNDS: Array[Resource] = [
 # variables #
 # ========= #
 enum PlacementDirections {UP, RIGHT, DOWN, LEFT}
-signal placing_block(dir: PlacementDirections)
+signal holding_block(dir: PlacementDirections)
+signal placing_block()
+signal cancel_placement()
 var WalkingTimer     : float     = 0.0
 var WalkingSpeed     : float     = 0.0
 var CoyoteTimeLeft   : float     = COYOTE_TIME
 var JumpTimeLeft     : float     = 0.0
+var placement_timer  : float     = 0.0
+var cancel_timer     : float     = 0.0
+var yet_to_place     : bool      = false
 var LastSpriteCW     : bool      = true
 @onready var LArmRay : RayCast3D = $LeftArm
 @onready var LLegRay : RayCast3D = $LeftLeg
@@ -89,14 +96,34 @@ func _process(delta: float)  -> void:
 		walk_cycle()
 	
 	move_and_slide()
+	
 	## -------------
 	##   SET BLOCK
 	## -------------
-	if Input.is_action_just_released("place_up"): placing_block.emit(PlacementDirections.UP)
-	if Input.is_action_just_released("place_left"): placing_block.emit(PlacementDirections.LEFT)
-	if Input.is_action_just_released("place_down"): placing_block.emit(PlacementDirections.DOWN)
-	if Input.is_action_just_released("place_right"): placing_block.emit(PlacementDirections.RIGHT)
 	
+	cancel_timer += delta
+	if cancel_timer <= CANCEL_FORGIVENESS: return
+	
+	if Input.is_action_pressed("place_up"): holding_block.emit(PlacementDirections.UP)
+	if Input.is_action_pressed("place_left"): holding_block.emit(PlacementDirections.LEFT)
+	if Input.is_action_pressed("place_down"): holding_block.emit(PlacementDirections.DOWN)
+	if Input.is_action_pressed("place_right"): holding_block.emit(PlacementDirections.RIGHT)
+	
+	## ALLOW A SLIGHT DELAY TO SWITCH PLACEMENT DIRECTIONS
+	if Input.is_action_pressed("place_up") or Input.is_action_pressed("place_left") or Input.is_action_pressed("place_down") or Input.is_action_pressed("place_right"):
+		placement_timer = 0.0
+		yet_to_place = true
+	else:
+		placement_timer += delta
+	
+	if Input.is_action_just_pressed("cancel_placement") and yet_to_place:
+		cancel_placement.emit()
+		yet_to_place = false
+		cancel_timer = 0.0
+	
+	if placement_timer >= PLACEMENT_FORGIVENESS and yet_to_place:
+		placing_block.emit()
+		yet_to_place = false
 
 func is_underside_blocked()  -> bool: return (LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Ground")) or \
 											 (RFootRay.is_colliding() and RFootRay.get_collider().is_in_group("Ground"))
