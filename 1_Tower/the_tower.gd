@@ -38,4 +38,4 @@ func _on_tiny_wizard_holding_block(dir: TinyWizardNode.PlacementDirections):
 								Vector2i(-1,0)) + wiz_loc_id
 	block_placement_loc.x = block_placement_loc.x%32
 	
-	LevelBlocks._hold_block(block_placement_loc, LevelBlocks.BlockTypes.STONE)
+	LevelBlocks._hold_block(block_placement_loc, LevelRingNode.PLT_STN)
