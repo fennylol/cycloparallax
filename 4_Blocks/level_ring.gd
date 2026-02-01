@@ -2,6 +2,7 @@ extends Node3D
 class_name LevelRingNode
 
 enum BlockTypes {AIR, STONE, PARALLAX}
+var HoldingBlock: Node3D
 
 const Blocks: Array[PackedScene] = [
 	null,
@@ -14,6 +15,41 @@ const LEVELS: Array[Array] = [
 	LEVEL_0
 ]
 
+func _place_held_block() -> void:
+	### SET MATERIAL TO OPAQUE
+	var mesh_instance : StandardMaterial3D = HoldingBlock.get_child(0).get_surface_override_material(0).duplicate(true)
+	mesh_instance.albedo_color.a = 0
+	mesh_instance.transparency = BaseMaterial3D.TRANSPARENCY_DISABLED
+	HoldingBlock.get_child(0).set_surface_override_material(0, mesh_instance)
+	
+	HoldingBlock.get_child(1).disabled = false
+	HoldingBlock = null
+
+func _cancel_held_block() -> void:
+	HoldingBlock.get_parent().remove_child(HoldingBlock)
+	HoldingBlock.queue_free()
+	HoldingBlock = null
+
+func _hold_block(pos: Vector2i, type: BlockTypes) -> void:
+	## PLACE BLOCK IN WORLD
+	if HoldingBlock != null: 
+		HoldingBlock.get_parent().remove_child(HoldingBlock)
+		HoldingBlock.queue_free()
+	
+	HoldingBlock = _place_block(pos, type)
+	var mesh_instance : StandardMaterial3D = HoldingBlock.get_child(0).get_surface_override_material(0).duplicate(true)
+	mesh_instance.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+	mesh_instance.albedo_color.a = 0.5
+	HoldingBlock.get_child(0).set_surface_override_material(0, mesh_instance)
+	HoldingBlock.get_child(1).disabled = true
+
+func _place_block(pos: Vector2i, type: BlockTypes) -> Node3D:
+	var new_block = Blocks[type].instantiate()
+	new_block.set_name(BlockTypes.find_key(type).to_pascal_case()+"Platform"+str(pos.y))
+	var block_node_parent = get_child(pos.x)
+	block_node_parent.add_child(new_block)
+	new_block.position.y = pos.y * 0.5
+	return new_block
 
 func _load_level(level_idx: int) -> void:
 	if level_idx >= LEVELS.size(): printerr("level idx ", level_idx , " doesn't exist."); return
@@ -31,13 +67,6 @@ func _load_level(level_idx: int) -> void:
 			var type: BlockTypes = x_slice[y]
 			if type == BlockTypes.AIR: continue
 			_place_block(Vector2i(x,y), type)
-
-func _place_block(pos: Vector2i, type: BlockTypes) -> void:
-	var new_block = Blocks[type].instantiate()
-	new_block.set_name(BlockTypes.find_key(type).to_pascal_case()+"Platform"+str(pos.y))
-	var block_node_parent = get_child(pos.x)
-	block_node_parent.add_child(new_block)
-	new_block.position.y = pos.y * 0.5
 
 const LEVEL_BASE: Array[Array] = [
 	[BlockTypes.STONE], #  0 <-> 16 
