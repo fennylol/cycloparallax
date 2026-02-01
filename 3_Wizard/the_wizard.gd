@@ -30,6 +30,8 @@ const STEP_SOUNDS: Array[Resource] = [
 # ========= #
 # variables #
 # ========= #
+enum PlacementDirections {UP, RIGHT, DOWN, LEFT}
+signal placing_block(dir: PlacementDirections)
 var WalkingTimer     : float     = 0.0
 var WalkingSpeed     : float     = 0.0
 var CoyoteTimeLeft   : float     = COYOTE_TIME
@@ -45,15 +47,12 @@ var LastSpriteCW     : bool      = true
 @onready var Mouth   : AudioStreamPlayer3D = $Mouth
 
 @export var TheTower : Node3D
-@onready var StoneBlock : PackedScene = preload("res://4_Blocks/stone/StonePlatform.tscn")
 
 func _process(delta: float)  -> void:
 	if TheLawsOfTheLand.Paused: return
-	
 	## ------------
 	##   MOVEMENT
 	## ------------
-	
 	if Input.is_action_just_pressed("jump"):
 		if CoyoteTimeLeft > 0.0:
 			JumpTimeLeft = JUMP_TIME
@@ -90,39 +89,14 @@ func _process(delta: float)  -> void:
 		walk_cycle()
 	
 	move_and_slide()
-	
 	## -------------
 	##   SET BLOCK
 	## -------------
+	if Input.is_action_just_released("place_up"): placing_block.emit(PlacementDirections.UP)
+	if Input.is_action_just_released("place_left"): placing_block.emit(PlacementDirections.LEFT)
+	if Input.is_action_just_released("place_down"): placing_block.emit(PlacementDirections.DOWN)
+	if Input.is_action_just_released("place_right"): placing_block.emit(PlacementDirections.RIGHT)
 	
-	## GET WIZARD LOCATION
-	var wiz_loc_id : Vector2i
-	var tower_rotation = int(round(rad_to_deg(TheTower.basis.get_euler().y)/11.25))
-	wiz_loc_id.x = abs(tower_rotation) if tower_rotation <= 0 else 32-tower_rotation
-	wiz_loc_id.y = int(round(position.y*20)/10)
-	
-	## GET BLOCK LOCATION BASED ON INPUT
-	var block_placement_loc = Vector2i(-1,-1)
-	if Input.is_action_just_released("place_up"): block_placement_loc = wiz_loc_id + Vector2i(0,1)
-	if Input.is_action_just_released("place_down"): block_placement_loc = wiz_loc_id + Vector2i(0,-1)
-	if Input.is_action_just_released("place_left"): 
-		block_placement_loc = wiz_loc_id + Vector2i(-1,0)
-		if block_placement_loc.x == -1: block_placement_loc.x = 31
-	if Input.is_action_just_released("place_right"): 
-		block_placement_loc = wiz_loc_id + Vector2i(+1,0)
-		if block_placement_loc.x == 32: block_placement_loc.x = 0
-	if block_placement_loc == Vector2i(-1,-1): return
-	
-	## PLACE BLOCK
-	var new_block = StoneBlock.instantiate()
-	var block_node_parent = TheTower.find_child(str(block_placement_loc.x))
-	block_node_parent.add_child(new_block)
-	new_block.position = Vector3( 0 , ( block_placement_loc.y * 0.5 ) + 2 , 4.75 )
-	print("")
-	print("wizard_pos_var: ",wiz_loc_id)
-	print("block_loc var:  ",block_placement_loc)
-	print("block parent:   ",block_node_parent)
-	print("block pos act:  ",new_block.position)
 
 func is_underside_blocked()  -> bool: return (LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Ground")) or \
 											 (RFootRay.is_colliding() and RFootRay.get_collider().is_in_group("Ground"))

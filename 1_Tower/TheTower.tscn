@@ -43,7 +43,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 12)
 fov = 45.0
 
 [node name="BlocksSpinnyBit" type="Node3D" parent="." unique_id=1539064780]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="BlocksSpinnyBit" unique_id=484850842]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0.5, 0)
@@ -52,15 +51,6 @@ shadow_enabled = true
 [node name="InnerWalls" type="MeshInstance3D" parent="BlocksSpinnyBit" unique_id=1526088745]
 mesh = ExtResource("4_gdh3d")
 surface_material_override/0 = SubResource("StandardMaterial3D_gdh3d")
-
-[node name="TowerRing" parent="BlocksSpinnyBit" unique_id=318428192 instance=ExtResource("4_7a4fr")]
-transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -1, 0)
-
-[node name="TowerRing" parent="BlocksSpinnyBit/TowerRing" unique_id=1190023736 instance=ExtResource("4_7a4fr")]
-transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -1, 0)
-
-[node name="TowerRing" parent="BlocksSpinnyBit/TowerRing/TowerRing" unique_id=2106717333 instance=ExtResource("4_7a4fr")]
-transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -1, 0)
 
 [node name="0" type="Node3D" parent="BlocksSpinnyBit" unique_id=287152616]
 
@@ -247,3 +237,14 @@ transform = Transform3D(0.9807853, 0, -0.19509023, 0, 1, 0, 0.19509023, 0, 0.980
 
 [node name="StoneBlock2" parent="BlocksSpinnyBit/31" unique_id=447121010 instance=ExtResource("3_uxme6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 4.75)
+
+[node name="TowerRing" parent="BlocksSpinnyBit" unique_id=318428192 instance=ExtResource("4_7a4fr")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -1, 0)
+
+[node name="TowerRing" parent="BlocksSpinnyBit/TowerRing" unique_id=1190023736 instance=ExtResource("4_7a4fr")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -1, 0)
+
+[node name="TowerRing" parent="BlocksSpinnyBit/TowerRing/TowerRing" unique_id=2106717333 instance=ExtResource("4_7a4fr")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -1, 0)
+
+[connection signal="placing_block" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_placing_block"]
