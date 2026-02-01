@@ -70,8 +70,26 @@ transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.99522
 [node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing" unique_id=439077020 instance=ExtResource("6_401sn")]
 transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -0.5, 0)
 
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1001226891]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=645578244]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 56.0
+offset_bottom = 56.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=1446550429]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "0"
+
+[connection signal="force_cancel" from="." to="WizardsSpinnyBit/TinyWizard" method="_on_the_tower_force_cancel"]
 [connection signal="cancel_placement" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_cancel_placement"]
 [connection signal="holding_block" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_holding_block"]
+[connection signal="pickup_block" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_pickup_block"]
 [connection signal="placing_block" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_placing_block"]
 [connection signal="request_safe_spot" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_request_safe_spot"]
 [connection signal="save_safe_spot" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_save_safe_spot"]

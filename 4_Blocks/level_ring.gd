@@ -23,10 +23,10 @@ enum {
 const Blocks: Array[PackedScene] = [
 	null,
 	null, null, null,
-	preload("res://4_Blocks/stone/StonePlatform.tscn"),       null,
+	preload("res://4_Blocks/stone/StonePlatform.tscn"),       preload("res://2_Objects/pickup_stone/pickup_stone.tscn"),
 	preload("res://4_Blocks/parallax/ParallaxPlatform.tscn"), null,
 	preload("res://4_Blocks/gateway/GatewayPlatform.tscn"),   null,
-	preload("res://4_Blocks/fire/FirePlatform.tscn"), null
+	preload("res://4_Blocks/fire/FirePlatform.tscn"),         null
 ]
 
 const LEVELS: Array[Array] = [
@@ -124,11 +124,11 @@ const LEVEL_BASE: Array[Array] = [
 
 const LEVEL_0: Array[Array] = [
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], #  0 <-> 16 
-	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], #  1 <-> 17 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, ITM_STN], #  1 <-> 17 
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], #  2 <-> 18 
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], #  3 <-> 19 
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], #  4 <-> 20 
-	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN], #  5 <-> 21 
+	[PLT_STN, ITM_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN], #  5 <-> 21 
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], #  6 <-> 22 
 	[PLT_STN, PLT_STN, PLT_STN], #  7 <-> 23 
 	[PLT_STN, PLT_AIR, PLT_STN], #  8 <-> 24 

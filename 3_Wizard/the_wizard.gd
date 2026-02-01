@@ -33,6 +33,7 @@ const STEP_SOUNDS: Array[Resource] = [
 # variables #
 # ========= #
 enum PlacementDirections {UP, RIGHT, DOWN, LEFT}
+signal pickup_block(type: LevelRingNode.BlockTypes)
 signal holding_block(dir: PlacementDirections, type: LevelRingNode.BlockTypes)
 signal placing_block
 signal cancel_placement
@@ -46,6 +47,7 @@ var placement_timer  : float     = 0.0
 var cancel_timer     : float     = 0.0
 var yet_to_place     : bool      = false
 var LastSpriteCW     : bool      = true
+@onready var TheBody : Area3D = $Area3D
 @onready var LArmRay : RayCast3D = $LeftArm
 @onready var LLegRay : RayCast3D = $LeftLeg
 @onready var LFootRay: RayCast3D = $LeftFoot
@@ -99,6 +101,17 @@ func _process(delta: float)  -> void:
 	
 	move_and_slide()
 	
+	## -----------------
+	##   PICKUP BLOCKS
+	## -----------------
+	
+	var pickup_list = TheBody.get_overlapping_areas()
+	if pickup_list != []:
+		var type = pickup_list[0].get_parent().identify_yourself()
+		pickup_block.emit(type)
+		pickup_list[0].get_parent().queue_free()
+		print(type)
+	
 	## -------------
 	##   SET BLOCK
 	## -------------
@@ -106,10 +119,10 @@ func _process(delta: float)  -> void:
 	cancel_timer += delta
 	if cancel_timer <= CANCEL_FORGIVENESS: return
 	
-	if Input.is_action_pressed("place_up")   : holding_block.emit(PlacementDirections.UP,    LevelRingNode.BlockTypes.PLT_STN)
-	if Input.is_action_pressed("place_right"): holding_block.emit(PlacementDirections.RIGHT, LevelRingNode.BlockTypes.PLT_STN)
-	if Input.is_action_pressed("place_left") : holding_block.emit(PlacementDirections.LEFT,  LevelRingNode.BlockTypes.PLT_STN)
-	if Input.is_action_pressed("place_down") : holding_block.emit(PlacementDirections.DOWN,  LevelRingNode.BlockTypes.PLT_STN)
+	if Input.is_action_pressed("place_up")   : holding_block.emit(PlacementDirections.UP)
+	if Input.is_action_pressed("place_right"): holding_block.emit(PlacementDirections.RIGHT)
+	if Input.is_action_pressed("place_left") : holding_block.emit(PlacementDirections.LEFT)
+	if Input.is_action_pressed("place_down") : holding_block.emit(PlacementDirections.DOWN)
 	
 	## ALLOW A SLIGHT DELAY TO SWITCH PLACEMENT DIRECTIONS
 	if Input.is_action_pressed("place_up") or Input.is_action_pressed("place_left") or Input.is_action_pressed("place_down") or Input.is_action_pressed("place_right"):
@@ -126,6 +139,11 @@ func _process(delta: float)  -> void:
 	if placement_timer >= PLACEMENT_FORGIVENESS and yet_to_place:
 		placing_block.emit()
 		yet_to_place = false
+
+## CALLED IF A BLOCK IS ATTEMPTING TO BE HELD/PLACED WHILE NO BLOCKS IN INVENTORY
+func _on_the_tower_force_cancel():
+	yet_to_place = false
+	cancel_timer = 0.0
 
 func is_location_unsafe()   -> bool:  return ((LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Unsafe")) or  \
 											  (RFootRay.is_colliding() and RFootRay.get_collider().is_in_group("Unsafe")) or  \
