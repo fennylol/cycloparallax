@@ -2,24 +2,28 @@ extends Node3D
 class_name LevelRingNode
 
 var HoldingBlock: Node3D
+const HOLD_ALPHA: float = 0.5
 
 enum BlockTypes {
 	PLT_AIR, 
 	OBJ_BGN, OBJ_END, OBJ_MSC, 
 	PLT_STN, ITM_STN, 
-	PLT_PLX, ITM_PLX
+	PLT_PLX, ITM_PLX,
+	PLT_GTW, ITM_GTW
 	}
 enum {
 	PLT_AIR, 
 	OBJ_BGN, OBJ_END, OBJ_MSC, 
 	PLT_STN, ITM_STN, 
-	PLT_PLX, ITM_PLX
+	PLT_PLX, ITM_PLX,
+	PLT_GTW, ITM_GTW
 	}
 const Blocks: Array[PackedScene] = [
 	null,
 	null, null, null,
-	preload("res://4_Blocks/stone/StonePlatform.tscn"), null,
-	preload("res://4_Blocks/parallax/ParallaxPlatform.tscn"), null
+	preload("res://4_Blocks/stone/StonePlatform.tscn"),       null,
+	preload("res://4_Blocks/parallax/ParallaxPlatform.tscn"), null,
+	preload("res://4_Blocks/gateway/GatewayPlatform.tscn"),   null
 ]
 
 const LEVELS: Array[Array] = [
@@ -51,7 +55,7 @@ func _hold_block(pos: Vector2i, type: BlockTypes) -> void:
 	HoldingBlock = _place_block(pos, type)
 	var mat : StandardMaterial3D = HoldingBlock.get_child(0).get_surface_override_material(0).duplicate(true)
 	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	mat.albedo_color.a = 0.5
+	mat.albedo_color.a = HOLD_ALPHA
 	HoldingBlock.get_child(0).set_surface_override_material(0, mat)
 	HoldingBlock.get_child(1).disabled = true
 
@@ -127,7 +131,7 @@ const LEVEL_0: Array[Array] = [
 	[PLT_STN], #  8 <-> 24 
 	[PLT_STN], #  9 <-> 25 
 	[PLT_STN], # 10 <-> 26 
-	[PLT_STN], # 11 <-> 27 
+	[PLT_STN, PLT_GTW], # 11 <-> 27 
 	[PLT_STN], # 12 <-> 28 
 	[PLT_STN], # 13 <-> 29 
 	[PLT_STN], # 14 <-> 30 

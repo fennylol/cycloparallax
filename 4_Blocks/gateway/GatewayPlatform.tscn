@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://crditdsq2cupc"]
+
+[ext_resource type="Script" uid="uid://bpxdtsen4c3vs" path="res://4_Blocks/gateway/gateway.gd" id="1_npnpk"]
+[ext_resource type="ArrayMesh" uid="uid://dhg0bddgo0j8d" path="res://4_Blocks/platform_mesh.tres" id="2_y5y4h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vemd"]
+albedo_color = Color(0.6039216, 0.44313726, 0.57254905, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5nxeg"]
+size = Vector3(1, 0.5, 1)
+
+[node name="GatewayPlatform" type="StaticBody3D" unique_id=1873968233 groups=["Ground"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+script = ExtResource("1_npnpk")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=734079890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = ExtResource("2_y5y4h")
+surface_material_override/0 = SubResource("StandardMaterial3D_7vemd")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="." unique_id=1754133998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_5nxeg")
+
+[node name="OrthogonalArea" type="Area3D" parent="." unique_id=1057481341]
+
+[node name="OrthogonalCollisionShape" type="CollisionShape3D" parent="OrthogonalArea" unique_id=84111106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -9.5)
+shape = SubResource("BoxShape3D_5nxeg")
+disabled = true
+
+[connection signal="body_entered" from="OrthogonalArea" to="." method="_on_orthogonal_area_body_entered"]
