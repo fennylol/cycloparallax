@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dhg0bddgo0j8d" path="res://4_Blocks/platform_mesh.tres" id="2_y5y4h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vemd"]
-albedo_color = Color(0.6039216, 0.44313726, 0.57254905, 1)
+albedo_color = Color(0.14901961, 0.5529412, 0.67058825, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5nxeg"]
 size = Vector3(1, 0.5, 1)

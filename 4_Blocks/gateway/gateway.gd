@@ -3,8 +3,8 @@ extends StaticBody3D
 @onready var MainCollider      : CollisionShape3D = $CollisionShape
 @onready var OrthogonalCollider: CollisionShape3D = $OrthogonalArea/OrthogonalCollisionShape
 @onready var GatewayMesh       : MeshInstance3D   = $Mesh
-const INACTIVE_COLOR: Color = Color("9a7192") # oklch(0.6 0.07 150)
-const ACTIVE_COLOR  : Color = Color("daadd1") # oklch(0.8 0.17 150)
+const INACTIVE_COLOR: Color = Color("268dab") # oklch(0.6 0.07 150)
+const ACTIVE_COLOR  : Color = Color("6eccec") # oklch(0.8 0.17 150)
 const OPEN_ALPHA    : float = 0.25
 
 func _ready() -> void: TheLawsOfTheLand.perspective_changed.connect(_on_perspective_changed)

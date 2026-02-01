@@ -16,7 +16,7 @@ var BlockArray : Array = [LevelRingNode.BlockTypes.PLT_PLX, LevelRingNode.BlockT
 # internal utility #
 # ================ #
 func _ready() -> void:
-	LevelBlocks._load_level(0)
+	LevelBlocks._load_level(2)
 
 func _process(delta: float) -> void:
 	if TheLawsOfTheLand.Paused: return
