@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bj8p75uhbg72u"]
+
+[ext_resource type="Script" uid="uid://bkt824yodongv" path="res://2_Objects/pickup_parallax/pickup_parallax.gd" id="1_i36yu"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_o6d38"]
+size = Vector3(0.3, 0.3, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vemd"]
+albedo_color = Color(0.38431373, 0.54901963, 0.41568628, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ond61"]
+radius = 0.3
+
+[node name="PickupParallax" type="StaticBody3D" unique_id=1873968233 groups=["Ground"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+script = ExtResource("1_i36yu")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=519219745]
+transform = Transform3D(1, 0, 0, 0, 0.9396926, -0.34202012, 0, 0.34202012, 0.9396926, 0, -0.25, 0)
+
+[node name="Mesh" type="MeshInstance3D" parent="Node3D" unique_id=734079890]
+transform = Transform3D(0.70710677, 0, 0.70710677, 0, 1, 0, -0.70710677, 0, 0.70710677, 0, 0, 0)
+mesh = SubResource("BoxMesh_o6d38")
+surface_material_override/0 = SubResource("StandardMaterial3D_7vemd")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1631882570]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Area3D" unique_id=1754133998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("SphereShape3D_ond61")

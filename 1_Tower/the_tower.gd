@@ -11,7 +11,7 @@ class_name  TheTowerNode
 @onready var NextBlockUI : Label           = $CanvasLayer/Control/Label
 signal force_cancel
 var LastSafeSpace := Vector2.ZERO
-var BlockArray : Array = [LevelRingNode.BlockTypes.PLT_PLX, LevelRingNode.BlockTypes.PLT_STN]
+var BlockArray : Array = []
 # ================ # 
 # internal utility #
 # ================ #

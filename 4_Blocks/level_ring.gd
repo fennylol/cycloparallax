@@ -24,9 +24,9 @@ const Blocks: Array[PackedScene] = [
 	null,
 	null, null, null,
 	preload("res://4_Blocks/stone/StonePlatform.tscn"),       preload("res://2_Objects/pickup_stone/pickup_stone.tscn"),
-	preload("res://4_Blocks/parallax/ParallaxPlatform.tscn"), null,
-	preload("res://4_Blocks/gateway/GatewayPlatform.tscn"),   null,
-	preload("res://4_Blocks/fire/FirePlatform.tscn"),         null
+	preload("res://4_Blocks/parallax/ParallaxPlatform.tscn"), preload("res://2_Objects/pickup_parallax/pickup_parallax.tscn"),
+	preload("res://4_Blocks/gateway/GatewayPlatform.tscn"),   preload("res://2_Objects/pickup_gateway/pickup_gateway.tscn"),
+	preload("res://4_Blocks/fire/FirePlatform.tscn"),         preload("res://2_Objects/pickup_fire/pickup_fire.tscn")
 ]
 
 const LEVELS: Array[Array] = [
@@ -197,7 +197,7 @@ const LEVEL_1: Array[Array] = [
 const LEVEL_2: Array[Array] = [
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], #  0 <-> 16 
 	[PLT_STN], #  1 <-> 17 
-	[PLT_STN], #  2 <-> 18 
+	[PLT_STN, ITM_PLX], #  2 <-> 18 
 	[PLT_STN], #  3 <-> 19 
 	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN], #  4 <-> 20 
 	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN], #  5 <-> 21 
@@ -210,7 +210,7 @@ const LEVEL_2: Array[Array] = [
 	[PLT_STN, PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN], # 12 <-> 28 
 	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], # 13 <-> 29 
 	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 14 <-> 30 
-	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 15 <-> 31 
+	[PLT_STN, PLT_STN, ITM_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 15 <-> 31 
 	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 16 <->  0
 	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 17 <->  1
 	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 18 <->  2
