@@ -16,7 +16,5 @@ class_name  TheTowerNode
 		#block.rotation.y = deg_to_rad(11.25 * i)
 		#i+=1
 func _process(delta: float) -> void:
+	if TheLawsOfTheLand.Paused: return
 	BlocksCenter.rotate(Vector3.UP, TinyWizard.WalkingSpeed*delta)
-	
-	if Input.is_action_just_pressed("perspective_spell"):
-		DollyCamera.Zooming = not DollyCamera.Zooming

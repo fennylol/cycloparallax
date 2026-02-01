@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bpmun88c6ra7m"]
+
+[ext_resource type="Script" uid="uid://c3nr3tkmuxga6" path="res://4_Blocks/parallax/parallax.gd" id="1_w0q6s"]
+[ext_resource type="ArrayMesh" uid="uid://dhg0bddgo0j8d" path="res://4_Blocks/platform_mesh.tres" id="2_kmfks"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vemd"]
+albedo_color = Color(0.38431373, 0.54901963, 0.41568628, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5nxeg"]
+size = Vector3(1, 0.5, 1)
+
+[node name="ParallaxPlatform" type="StaticBody3D" unique_id=1873968233 groups=["Ground"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+script = ExtResource("1_w0q6s")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=734079890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = ExtResource("2_kmfks")
+surface_material_override/0 = SubResource("StandardMaterial3D_7vemd")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="." unique_id=1754133998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_5nxeg")
+
+[node name="OrthogonalCollisionShape" type="CollisionShape3D" parent="." unique_id=84111106]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -9.5)
+shape = SubResource("BoxShape3D_5nxeg")
+disabled = true

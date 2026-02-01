@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://vq2lhfv1o7nj"]
+
+[ext_resource type="ArrayMesh" uid="uid://dhg0bddgo0j8d" path="res://4_Blocks/platform_mesh.tres" id="1_7p3hg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vemd"]
+albedo_color = Color(0.32915837, 0.3291584, 0.3291584, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5nxeg"]
+size = Vector3(1, 0.5, 1)
+
+[node name="StonePlatform" type="StaticBody3D" unique_id=1873968233 groups=["Ground"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=734079890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+mesh = ExtResource("1_7p3hg")
+surface_material_override/0 = SubResource("StandardMaterial3D_7vemd")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="." unique_id=1754133998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_5nxeg")
