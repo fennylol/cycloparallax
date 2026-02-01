@@ -21,6 +21,4 @@ func _process(delta: float) -> void:
 	near = position.z - (StartZ - 0.05)
 
 	var vert_diff: float = TargetHeight-(position.y-STARTING_HEIGHT)
-	#if vert_diff > MAX_VERT_DELTA or vert_diff < MIN_VERT_DELTA:
-		#print("too far: ", vert_diff)
 	position.y = lerpf(position.y, TargetHeight+STARTING_HEIGHT, abs(vert_diff)*LERP_SPEED*delta)
