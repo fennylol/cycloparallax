@@ -35,7 +35,7 @@ func _on_tiny_wizard_request_safe_spot() -> void:
 func _on_tiny_wizard_holding_block(dir: TinyWizardNode.PlacementDirections, type: LevelRingNode.BlockTypes) -> void:
 	## GET WIZARD LOCATION
 	var wiz_loc_id : Vector2i
-	var tower_rotation = int(round(rad_to_deg(BlocksCenter.rotation_degrees.y)/11.25))
+	var tower_rotation = int(round(rad_to_deg(BlocksCenter.basis.get_euler().y)/11.25))
 	wiz_loc_id.x = abs(tower_rotation) if tower_rotation <= 0 else 32-tower_rotation
 	wiz_loc_id.y = int((TinyWizard.position.y*20)/10)+1
 	
