@@ -77,14 +77,16 @@ layout_mode = 3
 anchors_preset = 0
 offset_left = 16.0
 offset_top = 16.0
-offset_right = 56.0
-offset_bottom = 56.0
+offset_right = 80.0
+offset_bottom = 144.0
 
-[node name="Label" type="Label" parent="CanvasLayer/Control" unique_id=1446550429]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "0"
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=344589006]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="force_cancel" from="." to="WizardsSpinnyBit/TinyWizard" method="_on_the_tower_force_cancel"]
 [connection signal="cancel_placement" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_cancel_placement"]

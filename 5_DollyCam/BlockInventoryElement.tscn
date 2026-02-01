@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://1a71rj1tm0si"]
+
+[node name="BlockInventoryElement" type="HBoxContainer" unique_id=1976972199]
+offset_right = 65.0
+offset_bottom = 23.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1370914608]
+custom_minimum_size = Vector2(23, 23)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="." unique_id=1620541212]
+layout_mode = 2
+text = "BlockType"
+horizontal_alignment = 2
+vertical_alignment = 1
