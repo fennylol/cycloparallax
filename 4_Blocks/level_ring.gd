@@ -30,8 +30,8 @@ const Blocks: Array[PackedScene] = [
 ]
 
 const LEVELS: Array[Array] = [
-	LEVEL_BASE,
-	LEVEL_0
+	LEVEL_0,
+	LEVEL_BASE
 ]
 
 func _place_held_block() -> void:
@@ -124,35 +124,35 @@ const LEVEL_BASE: Array[Array] = [
 
 const LEVEL_0: Array[Array] = [
 	[PLT_STN], #  0 <-> 16 
-	[PLT_STN, PLT_STN], #  1 <-> 17 
-	[PLT_STN, PLT_STN, PLT_STN], #  2 <-> 18 
+	[PLT_STN], #  1 <-> 17 
+	[PLT_STN], #  2 <-> 18 
 	[PLT_STN], #  3 <-> 19 
-	[PLT_STN], #  4 <-> 20 
-	[PLT_STN, PLT_STN, PLT_STN, PLT_AIR, PLT_PLX], #  5 <-> 21 
-	[PLT_STN, PLT_STN], #  6 <-> 22 
-	[PLT_STN], #  7 <-> 23 
-	[PLT_STN], #  8 <-> 24 
-	[PLT_STN], #  9 <-> 25 
-	[PLT_STN], # 10 <-> 26 
-	[PLT_STN, PLT_GTW], # 11 <-> 27 
-	[PLT_STN], # 12 <-> 28 
-	[PLT_STN], # 13 <-> 29 
-	[PLT_STN], # 14 <-> 30 
-	[PLT_STN], # 15 <-> 31 
-	[PLT_STN], # 16 <->  0
-	[PLT_STN], # 17 <->  1
-	[PLT_STN], # 18 <->  2
-	[PLT_STN, PLT_AIR, PLT_PLX], # 19 <->  3
-	[PLT_STN, PLT_AIR, PLT_PLX], # 20 <->  4
-	[PLT_STN], # 21 <->  5
-	[PLT_STN], # 22 <->  6
-	[PLT_STN], # 23 <->  7
-	[PLT_STN], # 24 <->  8
-	[PLT_STN], # 25 <->  9
-	[PLT_STN], # 26 <-> 10
-	[PLT_STN], # 27 <-> 11
-	[PLT_STN], # 28 <-> 12
-	[PLT_STN], # 29 <-> 13
-	[PLT_STN], # 30 <-> 14
-	[PLT_STN, PLT_FIR]  # 31 <-> 15
+	[PLT_STN, PLT_STN], #  4 <-> 20 
+	[PLT_STN, PLT_STN], #  5 <-> 21 
+	[PLT_STN, PLT_STN, PLT_STN], #  6 <-> 22 
+	[PLT_STN, PLT_STN, PLT_STN], #  7 <-> 23 
+	[PLT_STN, PLT_FIR], #  8 <-> 24 
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 10 <-> 26 
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN], #  9 <-> 25 
+	[PLT_STN, PLT_FIR], # 11 <-> 27 
+	[PLT_STN, PLT_FIR], # 12 <-> 28 
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 13 <-> 29 
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 14 <-> 30 
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 15 <-> 31 
+	[PLT_STN, PLT_FIR], # 16 <->  0
+	[PLT_STN, PLT_FIR], # 17 <->  1
+	[PLT_STN, PLT_FIR], # 18 <->  2
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 19 <->  3
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 20 <->  4
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 21 <->  5
+	[PLT_STN, PLT_FIR], # 22 <->  6
+	[PLT_STN, PLT_FIR], # 23 <->  7
+	[PLT_STN, PLT_FIR], # 24 <->  8
+	[PLT_STN, PLT_FIR], # 25 <->  9
+	[PLT_STN, PLT_FIR], # 26 <-> 10
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 27 <-> 11
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 28 <-> 12
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_AIR, PLT_PLX], # 29 <-> 13
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 30 <-> 14
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN]  # 31 <-> 15
 ]

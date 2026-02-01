@@ -128,14 +128,16 @@ func _process(delta: float)  -> void:
 		placing_block.emit()
 		yet_to_place = false
 
-func is_location_unsafe()   -> bool:  return (LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Unsafe")) or \
-											 (RFootRay.is_colliding() and RFootRay.get_collider().is_in_group("Unsafe")) or \
-											 (LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Unsafe")) or \
-											 (RFootRay.is_colliding() and RFootRay.get_collider().is_in_group("Unsafe")) or \
-											 (LArmRay.is_colliding()  and LArmRay.get_collider().is_in_group("Unsafe"))  or \
-											 (LLegRay.is_colliding()  and LLegRay.get_collider().is_in_group("Unsafe"))  or \
-											 (RArmRay.is_colliding()  and RArmRay.get_collider().is_in_group("Unsafe"))  or \
-											 (RLegRay.is_colliding()  and RLegRay.get_collider().is_in_group("Unsafe"))
+func is_location_unsafe()   -> bool:  return ((LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Unsafe")) or  \
+											  (RFootRay.is_colliding() and RFootRay.get_collider().is_in_group("Unsafe")) or  \
+											  (LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Unsafe")) or  \
+											  (RFootRay.is_colliding() and RFootRay.get_collider().is_in_group("Unsafe")) or  \
+											  (LArmRay.is_colliding()  and LArmRay.get_collider().is_in_group("Unsafe"))  or  \
+											  (LLegRay.is_colliding()  and LLegRay.get_collider().is_in_group("Unsafe"))  or  \
+											  (RArmRay.is_colliding()  and RArmRay.get_collider().is_in_group("Unsafe"))  or  \
+											  (RLegRay.is_colliding()  and RLegRay.get_collider().is_in_group("Unsafe"))) or not \
+											  (LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Ground")) or not \
+											  (RFootRay.is_colliding() and RFootRay.get_collider().is_in_group("Ground"))
 func is_underside_blocked()  -> bool: return (LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Ground")) or \
 											 (RFootRay.is_colliding() and RFootRay.get_collider().is_in_group("Ground"))
 func is_left_side_blocked()  -> bool: return (LArmRay.is_colliding()  and LArmRay.get_collider().is_in_group("Ground"))  or \

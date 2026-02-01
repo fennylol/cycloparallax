@@ -13,7 +13,7 @@ var LastSafeSpace := Vector2.ZERO
 # internal utility #
 # ================ #
 func _ready() -> void:
-	LevelBlocks._load_level(1)
+	LevelBlocks._load_level(0)
 
 func _process(delta: float) -> void:
 	if TheLawsOfTheLand.Paused: return
