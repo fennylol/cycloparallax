@@ -33,7 +33,7 @@ const STEP_SOUNDS: Array[Resource] = [
 # variables #
 # ========= #
 enum PlacementDirections {UP, RIGHT, DOWN, LEFT}
-signal holding_block(dir: PlacementDirections)
+signal holding_block(dir: PlacementDirections, type: LevelRingNode.BlockTypes)
 signal placing_block()
 signal cancel_placement()
 var WalkingTimer     : float     = 0.0
@@ -102,10 +102,10 @@ func _process(delta: float)  -> void:
 	cancel_timer += delta
 	if cancel_timer <= CANCEL_FORGIVENESS: return
 	
-	if Input.is_action_pressed("place_up"): holding_block.emit(PlacementDirections.UP)
-	if Input.is_action_pressed("place_left"): holding_block.emit(PlacementDirections.LEFT)
-	if Input.is_action_pressed("place_down"): holding_block.emit(PlacementDirections.DOWN)
-	if Input.is_action_pressed("place_right"): holding_block.emit(PlacementDirections.RIGHT)
+	if Input.is_action_pressed("place_up")   : holding_block.emit(PlacementDirections.UP,    LevelRingNode.BlockTypes.PLT_STN)
+	if Input.is_action_pressed("place_right"): holding_block.emit(PlacementDirections.RIGHT, LevelRingNode.BlockTypes.PLT_STN)
+	if Input.is_action_pressed("place_left") : holding_block.emit(PlacementDirections.LEFT,  LevelRingNode.BlockTypes.PLT_STN)
+	if Input.is_action_pressed("place_down") : holding_block.emit(PlacementDirections.DOWN,  LevelRingNode.BlockTypes.PLT_STN)
 	
 	## ALLOW A SLIGHT DELAY TO SWITCH PLACEMENT DIRECTIONS
 	if Input.is_action_pressed("place_up") or Input.is_action_pressed("place_left") or Input.is_action_pressed("place_down") or Input.is_action_pressed("place_right"):

@@ -3,6 +3,12 @@ class_name LevelRingNode
 
 var HoldingBlock: Node3D
 
+enum BlockTypes {
+	PLT_AIR, 
+	OBJ_BGN, OBJ_END, OBJ_MSC, 
+	PLT_STN, ITM_STN, 
+	PLT_PLX, ITM_PLX
+	}
 enum {
 	PLT_AIR, 
 	OBJ_BGN, OBJ_END, OBJ_MSC, 
@@ -36,7 +42,7 @@ func _cancel_held_block() -> void:
 	HoldingBlock.queue_free()
 	HoldingBlock = null
 
-func _hold_block(pos: Vector2i, type: ) -> void:
+func _hold_block(pos: Vector2i, type: BlockTypes) -> void:
 	## PLACE BLOCK IN WORLD
 	if HoldingBlock != null: 
 		HoldingBlock.get_parent().remove_child(HoldingBlock)
@@ -49,9 +55,9 @@ func _hold_block(pos: Vector2i, type: ) -> void:
 	HoldingBlock.get_child(0).set_surface_override_material(0, mat)
 	HoldingBlock.get_child(1).disabled = true
 
-func _place_block(pos: Vector2i, type: ) -> Node3D:
+func _place_block(pos: Vector2i, type: BlockTypes) -> Node3D:
 	var new_block = Blocks[type].instantiate()
-	new_block.set_name(str(pos.y))
+	new_block.set_name(BlockTypes.find_key(type).to_pascal_case()+"_"+str(pos.y))
 	var block_node_parent = get_child(pos.x)
 	block_node_parent.add_child(new_block)
 	new_block.position.y = pos.y * 0.5
