@@ -34,8 +34,10 @@ const STEP_SOUNDS: Array[Resource] = [
 # ========= #
 enum PlacementDirections {UP, RIGHT, DOWN, LEFT}
 signal holding_block(dir: PlacementDirections, type: LevelRingNode.BlockTypes)
-signal placing_block()
-signal cancel_placement()
+signal placing_block
+signal cancel_placement
+signal save_safe_spot
+signal request_safe_spot
 var WalkingTimer     : float     = 0.0
 var WalkingSpeed     : float     = 0.0
 var CoyoteTimeLeft   : float     = COYOTE_TIME
@@ -89,6 +91,9 @@ func _process(delta: float)  -> void:
 	
 	if WalkingSpeed != 0.0 and is_underside_blocked():
 		WalkingTimer += delta
+		if not is_location_unsafe():
+			save_safe_spot.emit()
+		else: print("unsafe_"+str(Time.get_ticks_usec()))
 	if WalkingTimer > WALK_TIME:
 		WalkingTimer = fmod(WalkingTimer, WALK_TIME)
 		walk_cycle()
@@ -123,6 +128,14 @@ func _process(delta: float)  -> void:
 		placing_block.emit()
 		yet_to_place = false
 
+func is_location_unsafe()   -> bool:  return (LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Unsafe")) or \
+											 (RFootRay.is_colliding() and RFootRay.get_collider().is_in_group("Unsafe")) or \
+											 (LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Unsafe")) or \
+											 (RFootRay.is_colliding() and RFootRay.get_collider().is_in_group("Unsafe")) or \
+											 (LArmRay.is_colliding()  and LArmRay.get_collider().is_in_group("Unsafe"))  or \
+											 (LLegRay.is_colliding()  and LLegRay.get_collider().is_in_group("Unsafe"))  or \
+											 (RArmRay.is_colliding()  and RArmRay.get_collider().is_in_group("Unsafe"))  or \
+											 (RLegRay.is_colliding()  and RLegRay.get_collider().is_in_group("Unsafe"))
 func is_underside_blocked()  -> bool: return (LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Ground")) or \
 											 (RFootRay.is_colliding() and RFootRay.get_collider().is_in_group("Ground"))
 func is_left_side_blocked()  -> bool: return (LArmRay.is_colliding()  and LArmRay.get_collider().is_in_group("Ground"))  or \

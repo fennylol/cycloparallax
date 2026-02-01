@@ -73,3 +73,5 @@ transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.99522
 [connection signal="cancel_placement" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_cancel_placement"]
 [connection signal="holding_block" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_holding_block"]
 [connection signal="placing_block" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_placing_block"]
+[connection signal="request_safe_spot" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_request_safe_spot"]
+[connection signal="save_safe_spot" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_save_safe_spot"]

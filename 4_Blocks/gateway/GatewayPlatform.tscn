@@ -9,7 +9,7 @@ albedo_color = Color(0.6039216, 0.44313726, 0.57254905, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_5nxeg"]
 size = Vector3(1, 0.5, 1)
 
-[node name="GatewayPlatform" type="StaticBody3D" unique_id=1873968233 groups=["Ground"]]
+[node name="GatewayPlatform" type="StaticBody3D" unique_id=1873968233 groups=["Ground", "Unsafe"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
 script = ExtResource("1_npnpk")
 

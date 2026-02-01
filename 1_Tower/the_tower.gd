@@ -8,6 +8,7 @@ class_name  TheTowerNode
 @onready var LevelBlocks : LevelRingNode   = $BlocksSpinnyBit/LevelRing
 @onready var TinyWizard  : TinyWizardNode  = $WizardsSpinnyBit/TinyWizard
 @onready var DollyCamera : DollyCameraNode = $WizardsSpinnyBit/DollyCamera
+var LastSafeSpace := Vector2.ZERO
 # ================ # 
 # internal utility #
 # ================ #
@@ -21,13 +22,20 @@ func _process(delta: float) -> void:
 func _on_tiny_wizard_placing_block() -> void:
 	LevelBlocks._place_held_block()
 
-func _on_tiny_wizard_cancel_placement():
+func _on_tiny_wizard_cancel_placement() -> void:
 	LevelBlocks._cancel_held_block()
 
-func _on_tiny_wizard_holding_block(dir: TinyWizardNode.PlacementDirections, type: LevelRingNode.BlockTypes):
+func _on_tiny_wizard_save_safe_spot() -> void:
+	LastSafeSpace = Vector2(BlocksCenter.rotation.y, TinyWizard.position.y)
+
+func _on_tiny_wizard_request_safe_spot() -> void:
+	TinyWizard.position.y   = LastSafeSpace.y
+	BlocksCenter.rotation.y = LastSafeSpace.x
+
+func _on_tiny_wizard_holding_block(dir: TinyWizardNode.PlacementDirections, type: LevelRingNode.BlockTypes) -> void:
 	## GET WIZARD LOCATION
 	var wiz_loc_id : Vector2i
-	var tower_rotation = int(round(rad_to_deg(BlocksCenter.basis.get_euler().y)/11.25))
+	var tower_rotation = int(round(rad_to_deg(BlocksCenter.rotation_degrees.y)/11.25))
 	wiz_loc_id.x = abs(tower_rotation) if tower_rotation <= 0 else 32-tower_rotation
 	wiz_loc_id.y = int((TinyWizard.position.y*20)/10)+1
 	

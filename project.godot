@@ -23,6 +23,7 @@ TheLawsOfTheLand="*uid://bjngs02xnontg"
 
 Ground="Floor that can be walked on"
 Player=""
+Unsafe=""
 
 [input]
 

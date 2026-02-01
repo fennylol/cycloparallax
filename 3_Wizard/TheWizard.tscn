@@ -29,23 +29,29 @@ shape = SubResource("BoxShape3D_0mqiu")
 [node name="LeftArm" type="RayCast3D" parent="." unique_id=1261000005]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 target_position = Vector3(-0.275, 0, 0)
+collide_with_areas = true
 
 [node name="LeftLeg" type="RayCast3D" parent="." unique_id=1720322956]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 target_position = Vector3(-0.275, 0, 0)
+collide_with_areas = true
 
 [node name="LeftFoot" type="RayCast3D" parent="." unique_id=358745910]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.25, 0)
 target_position = Vector3(0, -0.275, 0)
+collide_with_areas = true
 
 [node name="RightArm" type="RayCast3D" parent="." unique_id=1135685590]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45, 0)
 target_position = Vector3(0.275, 0, 0)
+collide_with_areas = true
 
 [node name="RightLeg" type="RayCast3D" parent="." unique_id=84808041]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 target_position = Vector3(0.275, 0, 0)
+collide_with_areas = true
 
 [node name="RightFoot" type="RayCast3D" parent="." unique_id=1522878683]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0.25, 0)
 target_position = Vector3(0, -0.275, 0)
+collide_with_areas = true

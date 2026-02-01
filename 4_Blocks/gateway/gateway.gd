@@ -1,7 +1,6 @@
 extends StaticBody3D
 
 @onready var MainCollider      : CollisionShape3D = $CollisionShape
-@onready var OrthogonalArea    : Area3D           = $OrthogonalArea
 @onready var OrthogonalCollider: CollisionShape3D = $OrthogonalArea/OrthogonalCollisionShape
 @onready var GatewayMesh       : MeshInstance3D   = $Mesh
 const INACTIVE_COLOR: Color = Color("9a7192") # oklch(0.6 0.07 150)

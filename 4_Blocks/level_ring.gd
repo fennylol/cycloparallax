@@ -9,21 +9,24 @@ enum BlockTypes {
 	OBJ_BGN, OBJ_END, OBJ_MSC, 
 	PLT_STN, ITM_STN, 
 	PLT_PLX, ITM_PLX,
-	PLT_GTW, ITM_GTW
+	PLT_GTW, ITM_GTW,
+	PLT_FIR, ITM_FIR
 	}
 enum {
 	PLT_AIR, 
 	OBJ_BGN, OBJ_END, OBJ_MSC, 
 	PLT_STN, ITM_STN, 
 	PLT_PLX, ITM_PLX,
-	PLT_GTW, ITM_GTW
+	PLT_GTW, ITM_GTW,
+	PLT_FIR, ITM_FIR
 	}
 const Blocks: Array[PackedScene] = [
 	null,
 	null, null, null,
 	preload("res://4_Blocks/stone/StonePlatform.tscn"),       null,
 	preload("res://4_Blocks/parallax/ParallaxPlatform.tscn"), null,
-	preload("res://4_Blocks/gateway/GatewayPlatform.tscn"),   null
+	preload("res://4_Blocks/gateway/GatewayPlatform.tscn"),   null,
+	preload("res://4_Blocks/fire/FirePlatform.tscn"), null
 ]
 
 const LEVELS: Array[Array] = [
@@ -151,5 +154,5 @@ const LEVEL_0: Array[Array] = [
 	[PLT_STN], # 28 <-> 12
 	[PLT_STN], # 29 <-> 13
 	[PLT_STN], # 30 <-> 14
-	[PLT_STN]  # 31 <-> 15
+	[PLT_STN, PLT_FIR]  # 31 <-> 15
 ]

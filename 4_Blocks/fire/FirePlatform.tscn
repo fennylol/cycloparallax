@@ -1,21 +1,21 @@
-[gd_scene format=3 uid="uid://bpmun88c6ra7m"]
+[gd_scene format=3 uid="uid://lyu6ouoyw6hn"]
 
-[ext_resource type="Script" uid="uid://c3nr3tkmuxga6" path="res://4_Blocks/parallax/parallax.gd" id="1_w0q6s"]
-[ext_resource type="ArrayMesh" uid="uid://dhg0bddgo0j8d" path="res://4_Blocks/platform_mesh.tres" id="2_kmfks"]
+[ext_resource type="Script" uid="uid://dbdt51ht6tsqx" path="res://4_Blocks/fire/fire.gd" id="1_lvso2"]
+[ext_resource type="ArrayMesh" uid="uid://dhg0bddgo0j8d" path="res://4_Blocks/platform_mesh.tres" id="2_5ven4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vemd"]
-albedo_color = Color(0.38431373, 0.54901963, 0.41568628, 1)
+albedo_color = Color(0.72156864, 0.26666668, 0.33333334, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5nxeg"]
 size = Vector3(1, 0.5, 1)
 
-[node name="ParallaxPlatform" type="StaticBody3D" unique_id=1873968233 groups=["Ground", "Unsafe"]]
+[node name="FirePlatform" type="Area3D" unique_id=1586542300 groups=["Ground", "Unsafe"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
-script = ExtResource("1_w0q6s")
+script = ExtResource("1_lvso2")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=734079890]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
-mesh = ExtResource("2_kmfks")
+mesh = ExtResource("2_5ven4")
 surface_material_override/0 = SubResource("StandardMaterial3D_7vemd")
 
 [node name="CollisionShape" type="CollisionShape3D" parent="." unique_id=1754133998]
@@ -26,3 +26,5 @@ shape = SubResource("BoxShape3D_5nxeg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, -9.5)
 shape = SubResource("BoxShape3D_5nxeg")
 disabled = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
