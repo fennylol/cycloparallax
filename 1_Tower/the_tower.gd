@@ -12,8 +12,8 @@ class_name  TheTowerNode
 @onready var BlockInventoryElement = preload("res://5_DollyCam/BlockInventoryElement.tscn")
 signal force_cancel
 var LastSafeSpace := Vector2.ZERO
-var BlockArray : Array = [LevelRingNode.BlockTypes.PLT_STN]
-var current_level = 2
+var BlockArray : Array = []
+
 # ========================== #
 # associated text and colors #
 # ========================== #
@@ -28,7 +28,7 @@ var item_dict = {
 # internal utility #
 # ================ #
 func _ready() -> void:
-	LevelBlocks._load_level(2)
+	LevelBlocks._load_level(LevelBlocks.current_level)
 	for i in BlockArray:
 		var new_element = BlockInventoryElement.instantiate()
 		NextBlockUI.add_child(new_element)
@@ -41,12 +41,6 @@ func _process(delta: float) -> void:
 	#NextBlockUI.text = str(BlockArray.size())
 	BlocksCenter.rotate(Vector3.UP, TinyWizard.WalkingSpeed*delta)
 	DollyCamera.TargetHeight = TinyWizard.position.y
-	
-	if Input.is_action_just_released("reset"): 
-		LevelBlocks._load_level(current_level)
-		BlocksCenter.rotation_degrees.y = 0
-		TinyWizard.position.y = 0.1
-	
 
 func _on_tiny_wizard_pickup_block(type):
 	BlockArray.append(type)
@@ -93,3 +87,9 @@ func _on_tiny_wizard_holding_block(dir: TinyWizardNode.PlacementDirections) -> v
 		block_placement_loc.x = block_placement_loc.x%32
 		
 		LevelBlocks._hold_block(block_placement_loc, type)
+
+## CALLED ON LEVEL RESET
+func _on_level_ring_reset_level(height : float):
+	BlockArray.clear()
+	for i in NextBlockUI.get_children():
+		i.queue_free()

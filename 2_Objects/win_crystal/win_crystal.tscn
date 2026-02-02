@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b820qvjffxue7"]
+
+[ext_resource type="Script" uid="uid://dbval8qkf3tqr" path="res://2_Objects/win_crystal/win_crystal.gd" id="1_4rh0h"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_p8bnk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b37jo"]
+metallic = 1.0
+roughness = 0.3
+emission_enabled = true
+emission = Color(0.88, 0.52, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ond61"]
+radius = 0.3
+
+[node name="Win Crystal" type="StaticBody3D" unique_id=1873968233 groups=["Ground"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
+script = ExtResource("1_4rh0h")
+
+[node name="Mesh" type="MeshInstance3D" parent="." unique_id=734079890]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -0.25, 0)
+mesh = SubResource("SphereMesh_p8bnk")
+surface_material_override/0 = SubResource("StandardMaterial3D_b37jo")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1631882570]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Area3D" unique_id=1754133998]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("SphereShape3D_ond61")

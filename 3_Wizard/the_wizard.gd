@@ -37,6 +37,7 @@ signal pickup_block(type: LevelRingNode.BlockTypes)
 signal holding_block(dir: PlacementDirections, type: LevelRingNode.BlockTypes)
 signal placing_block
 signal cancel_placement
+signal level_complete
 signal save_safe_spot
 signal request_safe_spot
 var WalkingTimer     : float     = 0.0
@@ -108,9 +109,20 @@ func _process(delta: float)  -> void:
 	var pickup_list = TheBody.get_overlapping_areas()
 	if pickup_list != []:
 		var type = pickup_list[0].get_parent().identify_yourself()
-		pickup_block.emit(type)
-		pickup_list[0].get_parent().queue_free()
-		print(type)
+		
+		## LEVEL COMPLETE
+		if type == LevelRingNode.BlockTypes.OBJ_END:
+			level_complete.emit()
+		
+		## COLLECT COIN
+		elif type == LevelRingNode.BlockTypes.OBJ_MSC: 
+			pass
+		
+		## COLLECT BLOCK
+		else:
+			pickup_block.emit(type)
+			pickup_list[0].get_parent().queue_free()
+			print(type)
 	
 	## -------------
 	##   SET BLOCK
@@ -144,6 +156,10 @@ func _process(delta: float)  -> void:
 func _on_the_tower_force_cancel():
 	yet_to_place = false
 	cancel_timer = 0.0
+
+## CALLED IF THE LEVEL IS RESET
+func _on_level_ring_reset_level(height : float):
+	position.y = height + 0.1
 
 func is_location_unsafe()   -> bool:  return ((LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Unsafe")) or  \
 											  (RFootRay.is_colliding() and RFootRay.get_collider().is_in_group("Unsafe")) or  \
