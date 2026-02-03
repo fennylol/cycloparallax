@@ -158,7 +158,7 @@ func _on_the_tower_force_cancel():
 	cancel_timer = 0.0
 
 ## CALLED IF THE LEVEL IS RESET
-func _on_level_ring_reset_level(height : float):
+func _on_level_ring_reset_level(lvl : int, height : float):
 	position.y = height + 0.1
 
 func is_location_unsafe()   -> bool:  return ((LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Unsafe")) or  \

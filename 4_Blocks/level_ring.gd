@@ -3,7 +3,7 @@ class_name LevelRingNode
 
 var HoldingBlock: Node3D
 const HOLD_ALPHA: float = 0.5
-signal reset_level(height : float)
+signal reset_level(lvl : int, height : float)
 
 enum BlockTypes {
 	PLT_AIR, 
@@ -102,7 +102,7 @@ func _load_level(level_idx: int, clear_blocks: bool = true) -> void:
 
 func _reset_level():
 	self.get_parent().rotation_degrees.y = 0
-	reset_level.emit(current_y_height)
+	reset_level.emit(current_level, current_y_height)
 
 func _on_tiny_wizard_level_complete():
 	## GET MAX HEIGHT OF CURRENT LEVEL

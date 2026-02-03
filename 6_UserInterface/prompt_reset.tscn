@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://b4a08acbo3a4"]
+
+[ext_resource type="Texture2D" uid="uid://bciubpcj42spd" path="res://6_UserInterface/UI_prompt_assets/R_Key_Dark.png" id="1_aov6t"]
+[ext_resource type="Texture2D" uid="uid://5qkabe3vaaft" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_LB.png" id="2_mgjo1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_6fpla"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[node name="PromptMovejump" type="Control" unique_id=1456241262]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1850775313]
+layout_mode = 0
+offset_left = -188.0
+offset_top = -28.0
+offset_right = 187.0
+offset_bottom = 27.0
+color = Color(1, 1, 1, 0.5019608)
+
+[node name="RESET" type="Label" parent="." unique_id=1981181546]
+layout_mode = 0
+offset_left = -172.0
+offset_top = -14.0
+offset_right = 173.0
+offset_bottom = 14.0
+text = "Press          or           to reset the level"
+label_settings = SubResource("LabelSettings_6fpla")
+vertical_alignment = 1
+
+[node name="key_R" type="TextureRect" parent="RESET" unique_id=1431688318]
+layout_mode = 0
+offset_left = 60.0
+offset_top = -4.0
+offset_right = 100.0
+offset_bottom = 36.0
+texture = ExtResource("1_aov6t")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="con_Lbutton" type="TextureRect" parent="RESET" unique_id=1781871056]
+layout_mode = 0
+offset_left = 134.0
+offset_top = -5.0
+offset_right = 174.0
+offset_bottom = 35.0
+texture = ExtResource("2_mgjo1")
+expand_mode = 5
+stretch_mode = 5

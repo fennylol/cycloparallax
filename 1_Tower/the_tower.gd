@@ -9,7 +9,7 @@ class_name  TheTowerNode
 @onready var TinyWizard  : TinyWizardNode  = $WizardsSpinnyBit/TinyWizard
 @onready var DollyCamera : DollyCameraNode = $WizardsSpinnyBit/DollyCamera
 @onready var NextBlockUI : VBoxContainer   = $CanvasLayer/Control/VBoxContainer
-@onready var BlockInventoryElement = preload("res://5_DollyCam/BlockInventoryElement.tscn")
+@onready var BlockInventoryElement = preload("res://6_UserInterface/BlockInventoryElement.tscn")
 signal force_cancel
 var LastSafeSpace := Vector2.ZERO
 var BlockArray : Array = []
@@ -89,7 +89,7 @@ func _on_tiny_wizard_holding_block(dir: TinyWizardNode.PlacementDirections) -> v
 		LevelBlocks._hold_block(block_placement_loc, type)
 
 ## CALLED ON LEVEL RESET
-func _on_level_ring_reset_level(height : float):
+func _on_level_ring_reset_level(lvl: int, height : float):
 	BlockArray.clear()
 	for i in NextBlockUI.get_children():
 		i.queue_free()
