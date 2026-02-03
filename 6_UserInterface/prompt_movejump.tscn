@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://b587ihfvm356i"]
+
+[ext_resource type="Texture2D" uid="uid://bd8w3cy5hiujh" path="res://6_UserInterface/UI_prompt_assets/A_Key_Dark.png" id="1_u68u6"]
+[ext_resource type="Texture2D" uid="uid://toklfu3vadvr" path="res://6_UserInterface/UI_prompt_assets/D_Key_Dark.png" id="2_362k2"]
+[ext_resource type="Texture2D" uid="uid://cyockpksqb4ks" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_Left_Stick.png" id="3_gjutm"]
+[ext_resource type="Texture2D" uid="uid://c5pn6t78u8gm4" path="res://6_UserInterface/UI_prompt_assets/Directional_Arrow_Horizontal.png" id="4_an7u7"]
+[ext_resource type="Texture2D" uid="uid://bujsbuvhgjfl4" path="res://6_UserInterface/UI_prompt_assets/Space_Key_Dark.png" id="5_2cqjc"]
+[ext_resource type="Texture2D" uid="uid://dh2nj8fykkdf0" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_RT.png" id="6_3e8x0"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_is5p5"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[node name="PromptMovejump" type="Control" unique_id=1456241262]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1850775313]
+layout_mode = 0
+offset_left = -183.0
+offset_top = -52.0
+offset_right = 198.0
+offset_bottom = 55.0
+color = Color(1, 1, 1, 0.5019608)
+
+[node name="MOVE" type="Label" parent="." unique_id=26267613]
+layout_mode = 0
+offset_left = -166.0
+offset_top = -36.0
+offset_right = 184.0
+offset_bottom = -8.0
+text = "Press                 or                     to move"
+label_settings = SubResource("LabelSettings_is5p5")
+vertical_alignment = 1
+
+[node name="key_A" type="TextureRect" parent="MOVE" unique_id=320620738]
+layout_mode = 0
+offset_left = 58.0
+offset_top = -4.0
+offset_right = 98.0
+offset_bottom = 36.0
+texture = ExtResource("1_u68u6")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="key_D" type="TextureRect" parent="MOVE" unique_id=1046468356]
+layout_mode = 0
+offset_left = 95.0
+offset_top = -4.0
+offset_right = 135.0
+offset_bottom = 36.0
+texture = ExtResource("2_362k2")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="con_Lstick" type="TextureRect" parent="MOVE" unique_id=101750378]
+layout_mode = 0
+offset_left = 195.0
+offset_top = -4.0
+offset_right = 235.0
+offset_bottom = 36.0
+texture = ExtResource("3_gjutm")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="arrows" type="TextureRect" parent="MOVE/con_Lstick" unique_id=500874858]
+layout_mode = 0
+offset_left = -25.0
+offset_right = 65.0
+offset_bottom = 40.0
+texture = ExtResource("4_an7u7")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="JUMP" type="Label" parent="." unique_id=844140660]
+layout_mode = 0
+offset_left = -147.0
+offset_top = 11.0
+offset_right = 148.0
+offset_bottom = 39.0
+text = "Press               or            to jump"
+label_settings = SubResource("LabelSettings_is5p5")
+vertical_alignment = 1
+
+[node name="key_Space" type="TextureRect" parent="JUMP" unique_id=1724106042]
+layout_mode = 0
+offset_left = 61.0
+offset_top = -14.0
+offset_right = 121.0
+offset_bottom = 46.0
+texture = ExtResource("5_2cqjc")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="con_Rtrigger" type="TextureRect" parent="JUMP" unique_id=868184744]
+layout_mode = 0
+offset_left = 161.0
+offset_top = -4.0
+offset_right = 201.0
+offset_bottom = 36.0
+texture = ExtResource("6_3e8x0")
+expand_mode = 5
+stretch_mode = 5

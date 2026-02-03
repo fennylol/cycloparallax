@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://crhukqujw0na3"]
+
+[ext_resource type="Texture2D" uid="uid://dsqe5wgd7ixqe" path="res://6_UserInterface/UI_prompt_assets/Arrow_Up_Key_Dark.png" id="1_i2gx0"]
+[ext_resource type="Texture2D" uid="uid://hl5wqmm4xc5q" path="res://6_UserInterface/UI_prompt_assets/Arrow_Down_Key_Dark.png" id="2_m5axe"]
+[ext_resource type="Texture2D" uid="uid://rqsfpo3wk384" path="res://6_UserInterface/UI_prompt_assets/Arrow_Left_Key_Dark.png" id="3_n81tg"]
+[ext_resource type="Texture2D" uid="uid://dmjprudaeoxgx" path="res://6_UserInterface/UI_prompt_assets/Arrow_Right_Key_Dark.png" id="4_g5ads"]
+[ext_resource type="Texture2D" uid="uid://cdsy1g82oq10t" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_Y.png" id="5_2qtue"]
+[ext_resource type="Texture2D" uid="uid://up3hnkmh6nok" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_X.png" id="6_dmul1"]
+[ext_resource type="Texture2D" uid="uid://pm4dnxdl6kti" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_A.png" id="7_jt6vx"]
+[ext_resource type="Texture2D" uid="uid://w8o8xu8hjmau" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_B.png" id="8_ocxms"]
+[ext_resource type="Texture2D" uid="uid://b3silf0tf3rd1" path="res://6_UserInterface/UI_prompt_assets/Ctrl_Key_Dark.png" id="9_dflra"]
+[ext_resource type="Texture2D" uid="uid://071re7fmpcyg" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_RB.png" id="10_e7wqs"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_grnj2"]
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[node name="PromptMovejump" type="Control" unique_id=1456241262]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1850775313]
+layout_mode = 0
+offset_left = -245.0
+offset_top = -89.0
+offset_right = 250.0
+offset_bottom = 90.0
+color = Color(1, 1, 1, 0.5019608)
+
+[node name="PLACE" type="Label" parent="." unique_id=169649956]
+layout_mode = 0
+offset_left = -202.0
+offset_top = -44.0
+offset_right = 214.0
+offset_bottom = -16.0
+text = "Press                    or                 to place a brick"
+label_settings = SubResource("LabelSettings_grnj2")
+vertical_alignment = 1
+
+[node name="key_up" type="TextureRect" parent="PLACE" unique_id=232158349]
+layout_mode = 0
+offset_left = 83.0
+offset_top = -27.0
+offset_right = 123.0
+offset_bottom = 13.0
+texture = ExtResource("1_i2gx0")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="key_down" type="TextureRect" parent="PLACE" unique_id=765170023]
+layout_mode = 0
+offset_left = 83.0
+offset_top = 3.0
+offset_right = 123.0
+offset_bottom = 43.0
+texture = ExtResource("2_m5axe")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="key_left" type="TextureRect" parent="PLACE" unique_id=1085765907]
+layout_mode = 0
+offset_left = 52.0
+offset_top = 3.0
+offset_right = 92.0
+offset_bottom = 43.0
+texture = ExtResource("3_n81tg")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="key_right" type="TextureRect" parent="PLACE" unique_id=1358415369]
+layout_mode = 0
+offset_left = 114.0
+offset_top = 3.0
+offset_right = 154.0
+offset_bottom = 43.0
+texture = ExtResource("4_g5ads")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="con_Y" type="TextureRect" parent="PLACE" unique_id=320154252]
+layout_mode = 0
+offset_left = 206.0
+offset_top = -27.0
+offset_right = 236.0
+offset_bottom = 3.0
+texture = ExtResource("5_2qtue")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="con_X" type="TextureRect" parent="PLACE" unique_id=1940717949]
+layout_mode = 0
+offset_left = 182.0
+offset_top = -3.0
+offset_right = 212.0
+offset_bottom = 27.0
+texture = ExtResource("6_dmul1")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="con_A" type="TextureRect" parent="PLACE" unique_id=2120800959]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 20.0
+offset_right = 236.0
+offset_bottom = 50.0
+texture = ExtResource("7_jt6vx")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="con_B" type="TextureRect" parent="PLACE" unique_id=32674557]
+layout_mode = 0
+offset_left = 230.0
+offset_top = -3.0
+offset_right = 260.0
+offset_bottom = 27.0
+texture = ExtResource("8_ocxms")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="CANCEL" type="Label" parent="." unique_id=1376543065]
+layout_mode = 0
+offset_left = -196.0
+offset_top = 27.0
+offset_right = 200.0
+offset_bottom = 55.0
+text = "Press             or           to cancel placement"
+label_settings = SubResource("LabelSettings_grnj2")
+vertical_alignment = 1
+
+[node name="key_Ctrl" type="TextureRect" parent="CANCEL" unique_id=632455169]
+layout_mode = 0
+offset_left = 61.0
+offset_top = -9.0
+offset_right = 111.0
+offset_bottom = 41.0
+texture = ExtResource("9_dflra")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="con_Rbutton" type="TextureRect" parent="CANCEL" unique_id=1015374558]
+layout_mode = 0
+offset_left = 150.0
+offset_top = -5.0
+offset_right = 190.0
+offset_bottom = 35.0
+texture = ExtResource("10_e7wqs")
+expand_mode = 5
+stretch_mode = 5
