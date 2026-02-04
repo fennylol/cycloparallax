@@ -15,25 +15,23 @@ var has_shown_prompt_reset = false
 const prompt_max_screentime = 5.0
 var prompt_onscreen_timer = 0.0
 
+var SCREENSIZE : Vector2
 var prompt_offscreen_position : Vector2
 var prompt_onscreen_position : Vector2
 
 func _ready():
-	## SCREENSIZE SETUP FOR PROMPT PLACEMENT
-	var screensize = get_viewport().size
-	prompt_offscreen_position =  Vector2((screensize.x/2), -(screensize.y/2))
-	prompt_onscreen_position = screensize/2 + (Vector2i.UP * screensize.y/3)
-	
 	## CONNECT PAUSED SIGNAL
 	TheLawsOfTheLand.paused_changed.connect(_on_pause_toggle)
 	
+	reset_prompt_positions()
 	if current_level == 0 and has_shown_prompt_movejump == false:
-		var new_place_prompt = prompt_movejump.instantiate()
-		add_child(new_place_prompt)
-		new_place_prompt.position = prompt_offscreen_position
+		var new_move_prompt = prompt_movejump.instantiate()
+		add_child(new_move_prompt)
+		new_move_prompt.position = prompt_offscreen_position
 		has_shown_prompt_movejump = true
 
 func _on_pause_toggle(paused: bool):
+	reset_prompt_positions()
 	if paused:
 		var pause_prompts = pause_menu_prompts.instantiate()
 		add_child(pause_prompts)
@@ -45,9 +43,8 @@ func _on_pause_toggle(paused: bool):
 
 func _process(delta):
 	if TheLawsOfTheLand.Paused: return
-	
-	var current_prompt = get_child(0)
-	if current_prompt != null:
+	if get_child_count() != 0:
+		var current_prompt = get_child(0)
 		prompt_onscreen_timer += delta
 		if prompt_onscreen_timer < prompt_max_screentime:
 			current_prompt.position = current_prompt.position.lerp( prompt_onscreen_position , prompt_onscreen_timer )
@@ -56,22 +53,27 @@ func _process(delta):
 			if current_prompt.position == prompt_offscreen_position:
 				get_child(0).queue_free()
 				prompt_onscreen_timer = 0.0
-	
+
+func reset_prompt_positions():
+	## SCREENSIZE SETUP FOR PROMPT PLACEMENT
+	SCREENSIZE = get_viewport().size
+	prompt_offscreen_position =  Vector2((SCREENSIZE.x/2), -(SCREENSIZE.y/2))
+	prompt_onscreen_position = SCREENSIZE/2 + (Vector2i.UP * SCREENSIZE.y/3)
 
 ## KEEPS TRACK OF WHICH LEVEL WE ARE ON
 func _on_level_ring_reset_level(lvl, height):
 	current_level = lvl
 	
 	if current_level == 2 and has_shown_prompt_shift == false:
-		var new_place_prompt = prompt_shift.instantiate()
-		add_child(new_place_prompt)
-		new_place_prompt.position = prompt_offscreen_position
+		var new_shift_prompt = prompt_shift.instantiate()
+		add_child(new_shift_prompt)
+		new_shift_prompt.position = prompt_offscreen_position
 		has_shown_prompt_shift = true
 	
 	if current_level == 3 and has_shown_prompt_reset == false:
-		var new_place_prompt = prompt_reset.instantiate()
-		add_child(new_place_prompt)
-		new_place_prompt.position = prompt_offscreen_position
+		var new_reset_prompt = prompt_reset.instantiate()
+		add_child(new_reset_prompt)
+		new_reset_prompt.position = prompt_offscreen_position
 		has_shown_prompt_reset = true
 
 ## REVEALS PICKUP PROMPT IF CURRENT LEVEL IS 1
