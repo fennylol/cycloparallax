@@ -25,6 +25,9 @@ texture = ExtResource("1_4ob3o")
 [node name="Mouth" type="AudioStreamPlayer" parent="." unique_id=265561415]
 volume_db = -20.0
 
+[node name="SecondMouth" type="AudioStreamPlayer" parent="." unique_id=859723876]
+volume_db = -15.0
+
 [node name="CollisionShape" type="CollisionShape3D" parent="." unique_id=1650091519]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.235, 0)
 shape = SubResource("BoxShape3D_0mqiu")

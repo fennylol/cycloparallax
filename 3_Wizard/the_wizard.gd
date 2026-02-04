@@ -29,6 +29,32 @@ const STEP_SOUNDS: Array[Resource] = [
 	preload("res://3_Wizard/sounds/step_8.mp3"),
 	preload("res://3_Wizard/sounds/step_9.mp3")
 ]
+const JUMP_SOUNDS : Array[Resource] = [
+	preload("res://3_Wizard/sounds/jump_01.mp3"),
+	preload("res://3_Wizard/sounds/jump_02.mp3"),
+	preload("res://3_Wizard/sounds/jump_03.mp3"),
+	preload("res://3_Wizard/sounds/jump_04.mp3"),
+	preload("res://3_Wizard/sounds/jump_05.mp3"),
+	preload("res://3_Wizard/sounds/jump_06.mp3"),
+	preload("res://3_Wizard/sounds/jump_07.mp3"),
+	preload("res://3_Wizard/sounds/jump_08.mp3")
+]
+const PICKUP_SOUNDS : Array[Resource] = [
+	preload("res://3_Wizard/sounds/pickup_01.mp3"),
+	preload("res://3_Wizard/sounds/pickup_02.mp3"),
+	preload("res://3_Wizard/sounds/pickup_03.mp3"),
+	preload("res://3_Wizard/sounds/pickup_04.mp3"),
+	preload("res://3_Wizard/sounds/pickup_05.mp3"),
+	preload("res://3_Wizard/sounds/pickup_06.mp3")
+]
+const PLACE_SOUNDS : Array[Resource] = [
+	preload("res://3_Wizard/sounds/place_01.mp3"),
+	preload("res://3_Wizard/sounds/place_02.mp3"),
+	preload("res://3_Wizard/sounds/place_03.mp3"),
+	preload("res://3_Wizard/sounds/place_04.mp3"),
+	preload("res://3_Wizard/sounds/place_05.mp3"),
+	preload("res://3_Wizard/sounds/place_06.mp3")
+]
 # ========= #
 # variables #
 # ========= #
@@ -57,6 +83,7 @@ var LastSpriteCW     : bool      = true
 @onready var RFootRay: RayCast3D = $RightFoot
 @onready var Sprite  : Sprite3D  = $Sprite
 @onready var Mouth   : AudioStreamPlayer = $Mouth
+@onready var Mouth2  : AudioStreamPlayer = $SecondMouth
 
 func _process(delta: float)  -> void:
 	if TheLawsOfTheLand.Paused: return
@@ -66,6 +93,8 @@ func _process(delta: float)  -> void:
 	if Input.is_action_just_pressed("jump"):
 		if CoyoteTimeLeft > 0.0:
 			JumpTimeLeft = JUMP_TIME
+			Mouth2.stream = JUMP_SOUNDS[floor(randf()*JUMP_SOUNDS.size())]
+			Mouth2.play(0.0)
 	if Input.is_action_just_released("jump"):
 		CoyoteTimeLeft = 0.0
 		JumpTimeLeft = 0.0
@@ -122,7 +151,8 @@ func _process(delta: float)  -> void:
 		else:
 			pickup_block.emit(type)
 			pickup_list[0].get_parent().queue_free()
-			print(type)
+			Mouth2.stream = PICKUP_SOUNDS[floor(randf()*PICKUP_SOUNDS.size())]
+			Mouth2.play(0.0)
 	
 	## -------------
 	##   SET BLOCK
@@ -151,6 +181,8 @@ func _process(delta: float)  -> void:
 	if placement_timer >= PLACEMENT_FORGIVENESS and yet_to_place:
 		placing_block.emit()
 		yet_to_place = false
+		Mouth2.stream = PLACE_SOUNDS[floor(randf()*PLACE_SOUNDS.size())]
+		Mouth2.play(0.0)
 
 ## CALLED IF A BLOCK IS ATTEMPTING TO BE HELD/PLACED WHILE NO BLOCKS IN INVENTORY
 func _on_the_tower_force_cancel():
