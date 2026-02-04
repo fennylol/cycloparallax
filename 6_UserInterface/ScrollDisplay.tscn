@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dlaimmt37u5ku"]
+
+[ext_resource type="Script" uid="uid://ul3211p6apkf" path="res://6_UserInterface/scroll_display.gd" id="1_an272"]
+[ext_resource type="Texture2D" uid="uid://bp8lj625f1k6o" path="res://0_Kingdom/UI/scroll.png" id="2_kb8bj"]
+
+[node name="ScrollDisplay" type="Node2D" unique_id=509602840]
+script = ExtResource("1_an272")
+
+[node name="Scroll" type="Sprite2D" parent="." unique_id=766752607]
+texture = ExtResource("2_kb8bj")

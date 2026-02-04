@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://hbu25veek1no" path="res://4_Blocks/LevelRing.tscn" id="5_401sn"]
 [ext_resource type="PackedScene" uid="uid://c7fwywts260g4" path="res://4_Blocks/DecorativeRing.tscn" id="6_401sn"]
 [ext_resource type="Script" uid="uid://dm31o3w7qoe8l" path="res://6_UserInterface/tutorial_container.gd" id="7_gft4o"]
+[ext_resource type="PackedScene" uid="uid://dlaimmt37u5ku" path="res://6_UserInterface/ScrollDisplay.tscn" id="8_gdh3d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vwlj8"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -74,6 +75,7 @@ transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.99522
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1001226891]
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=645578244]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 16.0
@@ -82,6 +84,7 @@ offset_right = 80.0
 offset_bottom = 144.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=344589006]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -90,6 +93,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="tutorial_container" type="Control" parent="CanvasLayer" unique_id=1206228677]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -98,15 +102,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("7_gft4o")
 
+[node name="ScrollDisplay" parent="CanvasLayer" unique_id=509602840 instance=ExtResource("8_gdh3d")]
+
 [connection signal="force_cancel" from="." to="WizardsSpinnyBit/TinyWizard" method="_on_the_tower_force_cancel"]
 [connection signal="cancel_placement" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_cancel_placement"]
 [connection signal="holding_block" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_holding_block"]
 [connection signal="level_complete" from="WizardsSpinnyBit/TinyWizard" to="BlocksSpinnyBit/LevelRing" method="_on_tiny_wizard_level_complete"]
 [connection signal="pickup_block" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_pickup_block"]
 [connection signal="pickup_block" from="WizardsSpinnyBit/TinyWizard" to="CanvasLayer/tutorial_container" method="_on_tiny_wizard_pickup_block"]
+[connection signal="pickup_block" from="WizardsSpinnyBit/TinyWizard" to="CanvasLayer/ScrollDisplay" method="_on_tiny_wizard_pickup_block"]
 [connection signal="placing_block" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_placing_block"]
 [connection signal="request_safe_spot" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_request_safe_spot"]
 [connection signal="save_safe_spot" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_save_safe_spot"]
 [connection signal="reset_level" from="BlocksSpinnyBit/LevelRing" to="." method="_on_level_ring_reset_level"]
 [connection signal="reset_level" from="BlocksSpinnyBit/LevelRing" to="WizardsSpinnyBit/TinyWizard" method="_on_level_ring_reset_level"]
 [connection signal="reset_level" from="BlocksSpinnyBit/LevelRing" to="CanvasLayer/tutorial_container" method="_on_level_ring_reset_level"]
+[connection signal="reset_level" from="BlocksSpinnyBit/LevelRing" to="CanvasLayer/ScrollDisplay" method="_on_level_ring_reset_level"]

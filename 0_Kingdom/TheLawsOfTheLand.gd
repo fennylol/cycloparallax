@@ -15,5 +15,6 @@ func _process(_delta: float) -> void:
 	# ======= #
 	# toggles #
 	# ======= #
-	if Input.is_action_just_pressed("perspective_spell"): Perspective = not Perspective
 	if Input.is_action_just_pressed("pause")            : Paused      = not Paused
+	if Paused: return
+	if Input.is_action_just_pressed("perspective_spell"): Perspective = not Perspective

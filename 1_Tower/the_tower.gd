@@ -9,6 +9,7 @@ class_name  TheTowerNode
 @onready var TinyWizard  : TinyWizardNode  = $WizardsSpinnyBit/TinyWizard
 @onready var DollyCamera : DollyCameraNode = $WizardsSpinnyBit/DollyCamera
 @onready var NextBlockUI : VBoxContainer   = $CanvasLayer/Control/VBoxContainer
+@onready var Tutorial    : ScrollDisplayNode = $CanvasLayer/ScrollDisplay
 @onready var BlockInventoryElement = preload("res://6_UserInterface/BlockInventoryElement.tscn")
 signal force_cancel
 var LastSafeSpace := Vector2.ZERO
