@@ -21,10 +21,10 @@ const MAX_SCROLL_ROT: float =  20.0
 const MIN_SCROLL_ROT: float = -20.0
 const SCROLL_LERP_SPEED: float = 3.0
 
-const MOVE_SCROLL : Texture = preload("res://0_Kingdom/UI/freedom_of_movement_scroll.png")
-const PLACE_SCROLL: Texture = preload("res://0_Kingdom/UI/support_conjouring_scroll.png")
-const SHIFT_SCROLL: Texture = preload("res://0_Kingdom/UI/planar_manipulation_scroll.png")
-#const SCROLL := preload()
+const MOVE_SCROLL   : Texture = preload("res://0_Kingdom/UI/freedom_of_movement_scroll.png")
+const PLACE_SCROLL  : Texture = preload("res://0_Kingdom/UI/support_conjouring_scroll.png")
+const SHIFT_SCROLL  : Texture = preload("res://0_Kingdom/UI/planar_manipulation_scroll.png")
+const RESTORE_SCROLL: Texture = preload("res://0_Kingdom/UI/restoration_scroll.png")
 
 func _ready():
 	## SCREENSIZE SETUP FOR PROMPT PLACEMENT
@@ -63,19 +63,6 @@ func _process(delta: float) -> void:
 			or Input.is_action_just_pressed("jump"):
 				ScrollState = ScrollStates.END
 				TheLawsOfTheLand.Paused = false
-			#match Scroll.texture:
-				#MOVE_SCROLL:
-					#if Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right") or Input.is_action_just_pressed("jump"):
-						#ScrollState = ScrollStates.END
-						#TheLawsOfTheLand.Paused = false
-				#PLACE_SCROLL:
-					#if Input.is_action_just_pressed("move_left") or Input.is_action_just_pressed("move_right") or Input.is_action_just_pressed("jump"):
-						#ScrollState = ScrollStates.END
-						#TheLawsOfTheLand.Paused = false
-				#SHIFT_SCROLL:
-					#if Input.is_action_just_pressed("perspective_spell"):
-						#ScrollState = ScrollStates.END
-						#TheLawsOfTheLand.Paused = false
 		ScrollStates.END:
 			Scroll.position.y = lerp(Scroll.position.y, scroll_end_pos.y, delta*SCROLL_LERP_SPEED)
 
@@ -93,7 +80,7 @@ func _on_level_ring_reset_level(lvl, height):
 		has_shown_prompt_shift = true
 	
 	if current_level == 3 and has_shown_prompt_reset == false:
-		change_scroll_texture(PLACE_SCROLL)
+		change_scroll_texture(RESTORE_SCROLL)
 		has_shown_prompt_reset = true
 
 ## REVEALS PICKUP PROMPT IF CURRENT LEVEL IS 1

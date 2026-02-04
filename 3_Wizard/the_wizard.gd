@@ -7,9 +7,10 @@ const WALK_TIME  : float = 0.25
 const WALK_ACCEL : float = 10.0
 const WALK_SPEED : float = 0.60
 const COYOTE_TIME: float = 0.15
-const JUMP_SPEED : float = 3.0
-const JUMP_TIME  : float = 0.225
+const JUMP_SPEED : float = 3.5
+const JUMP_TIME  : float = 0.25
 const GRAVITY    : float = 20.0
+var TERMINAL_VELOCITY: float = -7.5
 const PLACEMENT_FORGIVENESS : float = 0.1
 const CANCEL_FORGIVENESS    : float = 1.0
 const SPRITES    : Array[Texture] = [
@@ -122,6 +123,7 @@ func _process(delta: float)  -> void:
 			CoyoteTimeLeft  = COYOTE_TIME
 		else:
 			CoyoteTimeLeft -= delta
+	velocity.y = max(velocity.y, TERMINAL_VELOCITY)
 	
 	var direction: int = int(Input.is_action_pressed("move_left"))-int(Input.is_action_pressed("move_right"))
 	if direction : WalkingSpeed = lerpf(WalkingSpeed, direction*WALK_SPEED, delta*WALK_ACCEL)
