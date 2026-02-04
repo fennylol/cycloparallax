@@ -55,6 +55,13 @@ const PLACE_SOUNDS : Array[Resource] = [
 	preload("res://3_Wizard/sounds/place_05.mp3"),
 	preload("res://3_Wizard/sounds/place_06.mp3")
 ]
+const HURT_SOUNDS : Array[Resource] = [
+	preload("res://3_Wizard/sounds/hurt_0.mp3"),
+	preload("res://3_Wizard/sounds/hurt_1.mp3"),
+	preload("res://3_Wizard/sounds/hurt_2.mp3"),
+	preload("res://3_Wizard/sounds/hurt_3.mp3"),
+	preload("res://3_Wizard/sounds/hurt_4.mp3")
+]
 # ========= #
 # variables #
 # ========= #
@@ -84,6 +91,7 @@ var LastSpriteCW     : bool      = true
 @onready var Sprite  : Sprite3D  = $Sprite
 @onready var Mouth   : AudioStreamPlayer = $Mouth
 @onready var Mouth2  : AudioStreamPlayer = $SecondMouth
+@onready var Yeller  : AudioStreamPlayer = $MouthForYelling
 
 func _process(delta: float)  -> void:
 	if TheLawsOfTheLand.Paused: return
@@ -192,6 +200,11 @@ func _on_the_tower_force_cancel():
 ## CALLED IF THE LEVEL IS RESET
 func _on_level_ring_reset_level(lvl : int, height : float):
 	position.y = height + 0.1
+
+func _get_hurt() -> void:
+	Yeller.stream = HURT_SOUNDS[floor(randf()*HURT_SOUNDS.size())]
+	Yeller.play(0.0)
+	request_safe_spot.emit()
 
 func is_location_unsafe()   -> bool:  return ((LFootRay.is_colliding() and LFootRay.get_collider().is_in_group("Unsafe")) or  \
 											  (RFootRay.is_colliding() and RFootRay.get_collider().is_in_group("Unsafe")) or  \

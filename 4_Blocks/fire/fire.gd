@@ -13,4 +13,4 @@ func _on_perspective_changed(Orthogonal: bool) -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("Player"):
-		body.request_safe_spot.emit()
+		body._get_hurt()
