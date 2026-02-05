@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1rse7uthuutt"
-path="res://.godot/imported/planar_manipulation_scroll.png-6c6721990692978449348aa41d785c64.ctex"
+uid="uid://c6ufo2l85ap55"
+path="res://.godot/imported/support_conjouring_scroll.png-00b4c484bc82c0ce745dd0ce9f5f2672.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://0_Kingdom/UI/planar_manipulation_scroll.png"
-dest_files=["res://.godot/imported/planar_manipulation_scroll.png-6c6721990692978449348aa41d785c64.ctex"]
+source_file="res://6_UserInterface/scrolls/support_conjouring_scroll.png"
+dest_files=["res://.godot/imported/support_conjouring_scroll.png-00b4c484bc82c0ce745dd0ce9f5f2672.ctex"]
 
 [params]
 

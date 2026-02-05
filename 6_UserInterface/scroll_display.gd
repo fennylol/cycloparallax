@@ -21,12 +21,16 @@ const MAX_SCROLL_ROT: float =  20.0
 const MIN_SCROLL_ROT: float = -20.0
 const SCROLL_LERP_SPEED: float = 3.0
 
-const MOVE_SCROLL   : Texture = preload("res://0_Kingdom/UI/freedom_of_movement_scroll.png")
-const PLACE_SCROLL  : Texture = preload("res://0_Kingdom/UI/support_conjouring_scroll.png")
-const SHIFT_SCROLL  : Texture = preload("res://0_Kingdom/UI/planar_manipulation_scroll.png")
-const RESTORE_SCROLL: Texture = preload("res://0_Kingdom/UI/restoration_scroll.png")
+const PAUSE_SCROLL  : Texture = preload("res://6_UserInterface/scrolls/pause_scroll.png")
+const MOVE_SCROLL   : Texture = preload("res://6_UserInterface/scrolls/freedom_of_movement_scroll.png")
+const PLACE_SCROLL  : Texture = preload("res://6_UserInterface/scrolls/support_conjouring_scroll.png")
+const SHIFT_SCROLL  : Texture = preload("res://6_UserInterface/scrolls/planar_manipulation_scroll.png")
+const RESTORE_SCROLL: Texture = preload("res://6_UserInterface/scrolls/restoration_scroll.png")
 
 func _ready():
+	## CONNECT PAUSE SIGNAL
+	TheLawsOfTheLand.paused_changed.connect(_on_pause_toggle)
+	
 	## SCREENSIZE SETUP FOR PROMPT PLACEMENT
 	get_viewport().size_changed.connect(_on_screen_size_changed)
 	change_scroll_texture(MOVE_SCROLL)
@@ -49,6 +53,13 @@ func _on_screen_size_changed() -> void:
 	
 	Scroll.scale = Vector2(ratio, ratio)
 
+func _on_pause_toggle(paused: bool):
+	if paused:
+		change_scroll_texture(SHIFT_SCROLL)
+		Scroll.position.y = scroll_show_pos.y
+	else:
+		Scroll.position.y = scroll_end_pos.y
+
 func _process(delta: float) -> void:
 	match ScrollState:
 		ScrollStates.START:
@@ -58,9 +69,10 @@ func _process(delta: float) -> void:
 			if abs(Scroll.position.y-scroll_show_pos.y) < 30:
 				ScrollState = ScrollStates.SHOW
 		ScrollStates.SHOW:
-			if Input.is_action_just_pressed("move_left") \
-			or Input.is_action_just_pressed("move_right")\
-			or Input.is_action_just_pressed("jump"):
+			#if Input.is_action_just_pressed("move_left") \
+			#or Input.is_action_just_pressed("move_right")\
+			#or Input.is_action_just_pressed("jump"):
+			if Input.is_anything_pressed():
 				ScrollState = ScrollStates.END
 				TheLawsOfTheLand.Paused = false
 		ScrollStates.END:
