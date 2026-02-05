@@ -43,8 +43,9 @@ environment = SubResource("Environment_uxme6")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 5)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="WizardsSpinnyBit/TinyWizard" unique_id=1760019126]
-transform = Transform3D(1, 0, 0, 0, 0.9001592, 0.43556106, 0, -0.43556106, 0.9001592, 0, 1.5566795, 2.9522529)
-spot_range = 7.434639
+transform = Transform3D(1, 0, 0, 0, 0.90015924, 0.4355611, 0, -0.4355611, 0.90015924, 0, 1.5566795, 5.315649)
+light_energy = 2.0
+spot_range = 15.344421
 spot_angle = 45.972527
 
 [node name="DollyCamera" parent="WizardsSpinnyBit" unique_id=623577091 instance=ExtResource("3_401sn")]
