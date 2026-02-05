@@ -10,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://dlaimmt37u5ku" path="res://6_UserInterface/ScrollDisplay.tscn" id="8_gdh3d"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vwlj8"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+sky_curve = 0.038822412
 ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_curve = 0.19027326
 
 [sub_resource type="Sky" id="Sky_7a4fr"]
 sky_material = SubResource("ProceduralSkyMaterial_vwlj8")
@@ -19,7 +20,11 @@ sky_material = SubResource("ProceduralSkyMaterial_vwlj8")
 [sub_resource type="Environment" id="Environment_uxme6"]
 background_mode = 2
 background_color = Color(0.791016, 0.8760681, 0.8826946, 1)
+background_energy_multiplier = 0.05
 sky = SubResource("Sky_7a4fr")
+ambient_light_color = Color(0.93333334, 0.84705883, 0.8, 1)
+ambient_light_sky_contribution = 0.93
+ambient_light_energy = 0.0
 tonemap_mode = 2
 glow_enabled = true
 
@@ -37,6 +42,11 @@ environment = SubResource("Environment_uxme6")
 [node name="TinyWizard" parent="WizardsSpinnyBit" unique_id=1068362546 instance=ExtResource("2_7a4fr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 5)
 
+[node name="SpotLight3D" type="SpotLight3D" parent="WizardsSpinnyBit/TinyWizard" unique_id=1760019126]
+transform = Transform3D(1, 0, 0, 0, 0.9001592, 0.43556106, 0, -0.43556106, 0.9001592, 0, 1.5566795, 2.9522529)
+spot_range = 7.434639
+spot_angle = 45.972527
+
 [node name="DollyCamera" parent="WizardsSpinnyBit" unique_id=623577091 instance=ExtResource("3_401sn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 12)
 fov = 45.0
@@ -46,6 +56,8 @@ fov = 45.0
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="BlocksSpinnyBit" unique_id=484850842]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0.5, 0)
 shadow_enabled = true
+directional_shadow_split_1 = 0.05
+directional_shadow_max_distance = 1000.0
 
 [node name="InnerWalls" type="MeshInstance3D" parent="BlocksSpinnyBit" unique_id=1526088745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.75, 0)
