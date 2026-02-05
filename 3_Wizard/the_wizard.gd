@@ -12,7 +12,6 @@ const JUMP_TIME  : float = 0.25
 const GRAVITY    : float = 20.0
 var TERMINAL_VELOCITY: float = -7.5
 const PLACEMENT_FORGIVENESS : float = 0.1
-const CANCEL_FORGIVENESS    : float = 1.0
 const SPRITES    : Array[Texture] = [
 	preload("res://3_Wizard/sprites/Perilacks.png"),
 	preload("res://3_Wizard/sprites/Perilacks_cw.png"),
@@ -79,7 +78,7 @@ var WalkingSpeed     : float     = 0.0
 var CoyoteTimeLeft   : float     = COYOTE_TIME
 var JumpTimeLeft     : float     = 0.0
 var placement_timer  : float     = 0.0
-var cancel_timer     : float     = 0.0
+var clear_for_takeoff: bool      = true
 var yet_to_place     : bool      = false
 var LastSpriteCW     : bool      = true
 @onready var TheBody : Area3D = $Area3D
@@ -168,16 +167,13 @@ func _process(delta: float)  -> void:
 	##   SET BLOCK
 	## -------------
 	
-	cancel_timer += delta
-	if cancel_timer <= CANCEL_FORGIVENESS: return
-	
 	if Input.is_action_pressed("place_up")   : holding_block.emit(PlacementDirections.UP)
 	if Input.is_action_pressed("place_right"): holding_block.emit(PlacementDirections.RIGHT)
 	if Input.is_action_pressed("place_left") : holding_block.emit(PlacementDirections.LEFT)
 	if Input.is_action_pressed("place_down") : holding_block.emit(PlacementDirections.DOWN)
 	
 	## ALLOW A SLIGHT DELAY TO SWITCH PLACEMENT DIRECTIONS
-	if Input.is_action_pressed("place_up") or Input.is_action_pressed("place_left") or Input.is_action_pressed("place_down") or Input.is_action_pressed("place_right"):
+	if (Input.is_action_pressed("place_up") or Input.is_action_pressed("place_left") or Input.is_action_pressed("place_down") or Input.is_action_pressed("place_right")) and clear_for_takeoff:
 		placement_timer = 0.0
 		yet_to_place = true
 	else:
@@ -185,19 +181,23 @@ func _process(delta: float)  -> void:
 	
 	if Input.is_action_just_pressed("cancel_placement") and yet_to_place:
 		cancel_placement.emit()
+		clear_for_takeoff = false
 		yet_to_place = false
-		cancel_timer = 0.0
 	
-	if placement_timer >= PLACEMENT_FORGIVENESS and yet_to_place:
+	if placement_timer >= PLACEMENT_FORGIVENESS and yet_to_place and clear_for_takeoff:
 		placing_block.emit()
 		yet_to_place = false
 		Mouth2.stream = PLACE_SOUNDS[floor(randf()*PLACE_SOUNDS.size())]
 		Mouth2.play(0.0)
+	
+	## RESET CANCELLATIONS (AND BECOME "CLEAR FOR TAKEOFF") IF NO PLACEBLOCK BUTTONS ARE PRESSED
+	if not (Input.is_action_pressed("place_up") or Input.is_action_pressed("place_left") or Input.is_action_pressed("place_down") or Input.is_action_pressed("place_right")):
+		clear_for_takeoff = true
 
 ## CALLED IF A BLOCK IS ATTEMPTING TO BE HELD/PLACED WHILE NO BLOCKS IN INVENTORY
 func _on_the_tower_force_cancel():
 	yet_to_place = false
-	cancel_timer = 0.0
+	clear_for_takeoff = false
 
 ## CALLED IF THE LEVEL IS RESET
 func _on_level_ring_reset_level(lvl : int, height : float):
