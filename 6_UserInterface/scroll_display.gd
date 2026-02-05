@@ -54,11 +54,12 @@ func _on_screen_size_changed() -> void:
 	Scroll.scale = Vector2(ratio, ratio)
 
 func _on_pause_toggle(paused: bool):
-	if paused:
-		change_scroll_texture(SHIFT_SCROLL)
-		Scroll.position.y = scroll_show_pos.y
-	else:
-		Scroll.position.y = scroll_end_pos.y
+	if paused and Input.is_action_just_pressed("pause"):
+		print("PAUSING")
+		change_scroll_texture(PAUSE_SCROLL)
+		#Scroll.position.y = scroll_show_pos.y
+	#else:
+		#Scroll.position.y = scroll_end_pos.y
 
 func _process(delta: float) -> void:
 	match ScrollState:
@@ -69,10 +70,14 @@ func _process(delta: float) -> void:
 			if abs(Scroll.position.y-scroll_show_pos.y) < 30:
 				ScrollState = ScrollStates.SHOW
 		ScrollStates.SHOW:
-			#if Input.is_action_just_pressed("move_left") \
-			#or Input.is_action_just_pressed("move_right")\
-			#or Input.is_action_just_pressed("jump"):
-			if Input.is_anything_pressed():
+			if Input.is_action_just_pressed("pause") and Scroll.texture == PAUSE_SCROLL:
+				ScrollState = ScrollStates.END
+				TheLawsOfTheLand.Paused = false
+			elif (Input.is_action_just_pressed("move_left") \
+			   or Input.is_action_just_pressed("move_right")\
+			   or Input.is_action_just_pressed("jump")) and \
+				  Scroll.texture != PAUSE_SCROLL:
+			#if Input.is_anything_pressed():
 				ScrollState = ScrollStates.END
 				TheLawsOfTheLand.Paused = false
 		ScrollStates.END:
