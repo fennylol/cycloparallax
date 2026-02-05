@@ -35,7 +35,12 @@ var current_level = 0
 var current_y_height = 0
 const LEVELS: Array[Array] = [
 	JUMP_AND_FIRE,
-	BLOCK_PLACEMENT
+	BLOCK_PLACEMENT,
+	SHIFTING,
+	test_LEVEL_0,
+	test_LEVEL_2,
+	test_LEVEL_1,
+	test_LEVEL_3
 ]
 
 func _process(delta):
@@ -235,7 +240,40 @@ const BLOCK_PLACEMENT: Array[Array] = [
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_STN], # 31 <-> 15
 ]
 
-
+const SHIFTING: Array[Array] = [
+	[PLT_STN], #  0 <-> 16 
+	[PLT_STN], #  1 <-> 17 
+	[PLT_STN], #  2 <-> 18 
+	[PLT_STN, PLT_STN, PLT_STN], #  3 <-> 19 
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_PLX], #  4 <-> 20 
+	[PLT_STN, PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_PLX], #  5 <-> 21 
+	[PLT_STN, PLT_FIR, PLT_AIR, PLT_STN], #  6 <-> 22 
+	[PLT_STN, PLT_FIR, PLT_AIR, PLT_STN], #  7 <-> 23 
+	[PLT_STN, PLT_FIR], #  8 <-> 24 
+	[PLT_STN, PLT_FIR], #  9 <-> 25 
+	[PLT_STN, PLT_FIR], # 10 <-> 26 
+	[PLT_STN, PLT_FIR], # 11 <-> 27 
+	[PLT_STN, PLT_FIR], # 12 <-> 28 
+	[PLT_STN, PLT_FIR, PLT_AIR, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_FIR], # 13 <-> 29 
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_FIR], # 14 <-> 30 
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], # 15 <-> 31 
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 16 <->  0
+	[PLT_STN, PLT_STN, PLT_STN], # 17 <->  1
+	[PLT_STN, PLT_FIR], # 18 <->  2
+	[PLT_STN, PLT_FIR, PLT_FIR], # 19 <->  3
+	[PLT_STN, PLT_STN, PLT_FIR, PLT_FIR, PLT_FIR], # 20 <->  4
+	[PLT_STN, PLT_STN, PLT_FIR, PLT_FIR, PLT_FIR], # 21 <->  5
+	[PLT_STN, PLT_FIR, PLT_FIR], # 22 <->  6
+	[PLT_STN, PLT_FIR], # 23 <->  7
+	[PLT_STN, PLT_STN, PLT_STN, PLT_PLX, PLT_STN], # 24 <->  8
+	[PLT_STN, PLT_AIR, PLT_STN, PLT_PLX, PLT_AIR, PLT_STN], # 25 <->  9
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_PLX, PLT_AIR, PLT_STN, PLT_STN], # 26 <-> 10
+	[PLT_STN, ITM_PLX, PLT_STN, PLT_PLX, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 27 <-> 11
+	[PLT_STN, PLT_AIR, PLT_STN, PLT_PLX, PLT_STN, PLT_STN, PLT_GTW, PLT_STN, PLT_STN], # 28 <-> 12
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 29 <-> 13
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, OBJ_END], # 30 <-> 14
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_PLX, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN]  # 31 <-> 15
+]
 
 
 
@@ -353,13 +391,6 @@ const test_LEVEL_2: Array[Array] = [
 	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_AIR, PLT_STN]  # 31 <-> 15
 ]
 
-	#PLT_AIR, 
-	#OBJ_BGN, OBJ_END, OBJ_MSC, 
-	#PLT_STN, ITM_STN, 
-	#PLT_PLX, ITM_PLX,
-	#PLT_GTW, ITM_GTW,
-	#PLT_FIR, ITM_FIR
-
 const test_LEVEL_3: Array[Array] = [
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], #  0 <-> 16 
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_AIR, PLT_AIR, PLT_STN], #  1 <-> 17 
@@ -393,45 +424,4 @@ const test_LEVEL_3: Array[Array] = [
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_AIR, PLT_STN], # 29 <-> 13
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_GTW, PLT_GTW, PLT_AIR, PLT_STN], # 30 <-> 14
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN]  # 31 <-> 15
-]
-
-
-
-
-
-
-
-const demo_1: Array[Array] = [
-	[PLT_STN], #  0 <-> 16 
-	[PLT_STN], #  1 <-> 17 
-	[PLT_STN], #  2 <-> 18 
-	[PLT_STN], #  3 <-> 19 
-	[PLT_STN, OBJ_END], #  4 <-> 20 
-	[PLT_STN], #  5 <-> 21 
-	[PLT_STN], #  6 <-> 22 
-	[PLT_STN], #  7 <-> 23 
-	[PLT_STN], #  8 <-> 24 
-	[PLT_STN], #  9 <-> 25 
-	[PLT_STN], # 10 <-> 26 
-	[PLT_STN], # 11 <-> 27 
-	[PLT_STN], # 12 <-> 28 
-	[PLT_STN], # 13 <-> 29 
-	[PLT_STN], # 14 <-> 30 
-	[PLT_STN], # 15 <-> 31 
-	[PLT_STN], # 16 <->  0
-	[PLT_STN], # 17 <->  1
-	[PLT_STN], # 18 <->  2
-	[PLT_STN], # 19 <->  3
-	[PLT_STN], # 20 <->  4
-	[PLT_STN], # 21 <->  5
-	[PLT_STN], # 22 <->  6
-	[PLT_STN], # 23 <->  7
-	[PLT_STN], # 24 <->  8
-	[PLT_STN], # 25 <->  9
-	[PLT_STN], # 26 <-> 10
-	[PLT_STN], # 27 <-> 11
-	[PLT_STN], # 28 <-> 12
-	[PLT_STN], # 29 <-> 13
-	[PLT_STN], # 30 <-> 14
-	[PLT_STN]  # 31 <-> 15
 ]
