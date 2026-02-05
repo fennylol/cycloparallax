@@ -21,11 +21,14 @@ const MAX_SCROLL_ROT: float =  20.0
 const MIN_SCROLL_ROT: float = -20.0
 const SCROLL_LERP_SPEED: float = 3.0
 
-const PAUSE_SCROLL  : Texture = preload("res://6_UserInterface/scrolls/pause_scroll.png")
 const MOVE_SCROLL   : Texture = preload("res://6_UserInterface/scrolls/freedom_of_movement_scroll.png")
 const PLACE_SCROLL  : Texture = preload("res://6_UserInterface/scrolls/support_conjouring_scroll.png")
 const SHIFT_SCROLL  : Texture = preload("res://6_UserInterface/scrolls/planar_manipulation_scroll.png")
 const RESTORE_SCROLL: Texture = preload("res://6_UserInterface/scrolls/restoration_scroll.png")
+const PAUSE_SCROLL_MOVE : Texture = preload("res://6_UserInterface/scrolls/pause_scroll_move.png")
+const PAUSE_SCROLL_PLACE: Texture = preload("res://6_UserInterface/scrolls/pause_scroll_place.png")
+const PAUSE_SCROLL_RESET: Texture = preload("res://6_UserInterface/scrolls/pause_scroll_reset.png")
+const PAUSE_SCROLL_SHIFT: Texture = preload("res://6_UserInterface/scrolls/pause_scroll_shift.png")
 
 func _ready():
 	## CONNECT PAUSE SIGNAL
@@ -55,11 +58,13 @@ func _on_screen_size_changed() -> void:
 
 func _on_pause_toggle(paused: bool):
 	if paused and Input.is_action_just_pressed("pause"):
-		print("PAUSING")
-		change_scroll_texture(PAUSE_SCROLL)
-		#Scroll.position.y = scroll_show_pos.y
-	#else:
-		#Scroll.position.y = scroll_end_pos.y
+		change_scroll_texture(
+			PAUSE_SCROLL_RESET if has_shown_prompt_reset else 
+			PAUSE_SCROLL_SHIFT if has_shown_prompt_shift else
+			PAUSE_SCROLL_PLACE if has_shown_prompt_placeblock else 
+			PAUSE_SCROLL_MOVE)
+	elif not paused:
+		ScrollState = ScrollStates.END
 
 func _process(delta: float) -> void:
 	match ScrollState:
@@ -70,14 +75,20 @@ func _process(delta: float) -> void:
 			if abs(Scroll.position.y-scroll_show_pos.y) < 30:
 				ScrollState = ScrollStates.SHOW
 		ScrollStates.SHOW:
-			if Input.is_action_just_pressed("pause") and Scroll.texture == PAUSE_SCROLL:
+			if Input.is_action_just_pressed("pause") and \
+				(Scroll.texture == PAUSE_SCROLL_MOVE or  \
+				Scroll.texture == PAUSE_SCROLL_PLACE or  \
+				Scroll.texture == PAUSE_SCROLL_RESET or  \
+				Scroll.texture == PAUSE_SCROLL_SHIFT):
 				ScrollState = ScrollStates.END
 				TheLawsOfTheLand.Paused = false
 			elif (Input.is_action_just_pressed("move_left") \
-			   or Input.is_action_just_pressed("move_right")\
-			   or Input.is_action_just_pressed("jump")) and \
-				  Scroll.texture != PAUSE_SCROLL:
-			#if Input.is_anything_pressed():
+				or Input.is_action_just_pressed("move_right")\
+				or Input.is_action_just_pressed("jump")) and \
+				not (Scroll.texture == PAUSE_SCROLL_MOVE or  \
+					Scroll.texture == PAUSE_SCROLL_PLACE or  \
+					Scroll.texture == PAUSE_SCROLL_RESET or  \
+					Scroll.texture == PAUSE_SCROLL_SHIFT):
 				ScrollState = ScrollStates.END
 				TheLawsOfTheLand.Paused = false
 		ScrollStates.END:
@@ -93,6 +104,7 @@ func _on_level_ring_reset_level(lvl, height):
 	current_level = lvl
 	
 	if current_level == 2 and has_shown_prompt_shift == false:
+		await get_tree().create_timer(0.1).timeout
 		change_scroll_texture(SHIFT_SCROLL)
 		has_shown_prompt_shift = true
 	
