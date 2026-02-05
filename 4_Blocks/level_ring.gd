@@ -2,6 +2,7 @@ extends Node3D
 class_name LevelRingNode
 
 var HoldingBlock: Node3D
+var invalid_placement_tile : bool = false
 const HOLD_ALPHA: float = 0.5
 signal reset_level(lvl : int, height : float)
 
@@ -51,24 +52,40 @@ func _place_held_block() -> void:
 	
 	HoldingBlock.get_child(1).disabled = false
 	HoldingBlock = null
+	invalid_placement_tile = false
 
 func _cancel_held_block() -> void:
-	HoldingBlock.get_parent().remove_child(HoldingBlock)
-	HoldingBlock.queue_free()
-	HoldingBlock = null
+	if HoldingBlock != null:
+		HoldingBlock.get_parent().remove_child(HoldingBlock)
+		HoldingBlock.queue_free()
+		HoldingBlock = null
+	invalid_placement_tile = false
 
 func _hold_block(pos: Vector2i, type: BlockTypes) -> void:
-	## PLACE BLOCK IN WORLD
+	## REMOVE VESTIGIAL BLOCK
 	if HoldingBlock != null: 
 		HoldingBlock.get_parent().remove_child(HoldingBlock)
 		HoldingBlock.queue_free()
 	
-	HoldingBlock = _place_block(pos, type)
-	var mat : StandardMaterial3D = HoldingBlock.get_child(0).get_surface_override_material(0).duplicate(true)
-	mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
-	mat.albedo_color.a = HOLD_ALPHA
-	HoldingBlock.get_child(0).set_surface_override_material(0, mat)
-	HoldingBlock.get_child(1).disabled = true
+	## CHECK THE WHOLE DAGGUM MAP TO MAKE SURE THE BLOCK DOESN'T EXIST AT THAT SPOT ALREADY
+	var the_tile_is_empty = true
+	var level_map: Array[Array] = LEVELS[current_level]
+	for x in range(level_map.size()):
+		var x_slice: Array = level_map[x]
+		for y in range(x_slice.size()):
+			if x_slice[y] == PLT_AIR or x_slice[y] == OBJ_BGN or x_slice[y] == ITM_STN or x_slice[y] == ITM_PLX or x_slice[y] == ITM_GTW or x_slice[y] == ITM_FIR: continue
+			if pos == Vector2i(x,y): 
+				the_tile_is_empty = false
+				invalid_placement_tile = true
+	
+	## SHOW TRANSPARENT BLOCK IN WORLD
+	if the_tile_is_empty:
+		HoldingBlock = _place_block(pos, type)
+		var mat : StandardMaterial3D = HoldingBlock.get_child(0).get_surface_override_material(0).duplicate(true)
+		mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+		mat.albedo_color.a = HOLD_ALPHA
+		HoldingBlock.get_child(0).set_surface_override_material(0, mat)
+		HoldingBlock.get_child(1).disabled = true
 
 func _place_block(pos: Vector2i, type: BlockTypes) -> Node3D:
 	var new_block = Blocks[type].instantiate()

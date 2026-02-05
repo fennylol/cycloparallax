@@ -52,9 +52,13 @@ func _on_tiny_wizard_pickup_block(type):
 	new_element.get_child(1).text = item_dict.get(type)[1]
 
 func _on_tiny_wizard_placing_block() -> void:
-	if BlockArray.pop_back() != null: 
-		LevelBlocks._place_held_block()
-		NextBlockUI.get_child(0).queue_free()
+	if LevelBlocks.invalid_placement_tile == false:
+		if BlockArray.pop_back() != null: 
+			LevelBlocks._place_held_block()
+			NextBlockUI.get_child(0).queue_free()
+	else:
+		LevelBlocks._cancel_held_block()
+		force_cancel.emit()
 
 func _on_tiny_wizard_cancel_placement() -> void:
 	LevelBlocks._cancel_held_block()

@@ -75,7 +75,6 @@ transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.99522
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1001226891]
 
 [node name="Control" type="Control" parent="CanvasLayer" unique_id=645578244]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 16.0
@@ -84,7 +83,6 @@ offset_right = 80.0
 offset_bottom = 144.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control" unique_id=344589006]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
