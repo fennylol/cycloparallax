@@ -1,1 +1,3 @@
 Button Prompt images by "Nicolae (Xelu) Berbece" | nick@thoseawesomeguys.com or @xelubest
+Arizonia font by Robert Leuschke | https://fonts.google.com/specimen/Arizonia
+Sky Shader by Gotibo | https://godotshaders.com/shader/stylized-sky/

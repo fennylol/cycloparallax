@@ -8,48 +8,69 @@ class_name  TheTowerNode
 @onready var LevelBlocks : LevelRingNode   = $BlocksSpinnyBit/LevelRing
 @onready var TinyWizard  : TinyWizardNode  = $WizardsSpinnyBit/TinyWizard
 @onready var DollyCamera : DollyCameraNode = $WizardsSpinnyBit/DollyCamera
-@onready var NextBlockUI : VBoxContainer   = $CanvasLayer/Control/VBoxContainer
+@onready var NextBlockUI : VBoxContainer   = $CanvasLayer/Control/HBoxContainer/VBoxContainer
+@onready var Enviro      : WorldEnvironment= $WorldEnvironment
 @onready var Tutorial    : ScrollDisplayNode = $CanvasLayer/ScrollDisplay
 @onready var BlockInventoryElement = preload("res://6_UserInterface/BlockInventoryElement.tscn")
 signal force_cancel
 var LastSafeSpace := Vector2.ZERO
-var BlockArray : Array = []
+var BlockArray : Array[LevelRingNode.BlockTypes] = [LevelRingNode.BlockTypes.PLT_STN]
 
 # ========================== #
 # associated text and colors #
 # ========================== #
 var item_dict = {
-	LevelRingNode.BlockTypes.PLT_STN:[Color("545454"), "Stone"], 
-	LevelRingNode.BlockTypes.PLT_PLX:[Color("5edb81"), "Parallax"],
-	LevelRingNode.BlockTypes.PLT_GTW:[Color("6eccec"), "Gateway"],
-	LevelRingNode.BlockTypes.PLT_FIR:[Color("ec7380"), "Fire"],
+	LevelRingNode.BlockTypes.PLT_STN:[Color("545454"), "", "Stone"], 
+	LevelRingNode.BlockTypes.PLT_PLX:[Color("5edb81"), "", "Parallax"],
+	LevelRingNode.BlockTypes.PLT_GTW:[Color("6eccec"), "", "Gateway"],
+	LevelRingNode.BlockTypes.PLT_FIR:[Color("ec7380"), "", "Fire"],
 }
 
 # ================ # 
 # internal utility #
 # ================ #
 func _ready() -> void:
+	get_viewport().size_changed.connect(
+		func() -> void: 
+			for child in NextBlockUI.get_children():
+				child._set_img_scale(int(min(get_viewport().size.x, get_viewport().size.y)/10.0))
+	)
+	TheLawsOfTheLand.perspective_changed.connect(
+		func(ortho: bool) -> void:
+			if Enviro.environment and Enviro.environment.sky:
+				var sky_material = Enviro.environment.sky.sky_material
+				if sky_material:
+					sky_material.set_shader_parameter("stars_intensity", 0.0 if ortho else 5.0)
+	)
+	
 	LevelBlocks._load_level(LevelBlocks.current_level)
 	for i in BlockArray:
 		var new_element = BlockInventoryElement.instantiate()
 		NextBlockUI.add_child(new_element)
 		NextBlockUI.move_child(new_element,0)
-		new_element.get_child(0).color = item_dict.get(i)[0]
-		new_element.get_child(1).text = item_dict.get(i)[1]
+		new_element._set_color(item_dict.get(i)[0])
+		new_element._set_label(item_dict.get(i)[1])
+		new_element._set_img_scale(int(min(get_viewport().size.x, get_viewport().size.y)/10.0))
 
 func _process(delta: float) -> void:
 	if TheLawsOfTheLand.Paused: return
 	#NextBlockUI.text = str(BlockArray.size())
 	BlocksCenter.rotate(Vector3.UP, TinyWizard.WalkingSpeed*delta)
+	if Enviro.environment and Enviro.environment.sky:
+		var sky_material = Enviro.environment.sky.sky_material
+		if sky_material:
+			sky_material.set_shader_parameter("sky_rotation_degrees", BlocksCenter.rotation_degrees.y)
 	DollyCamera.TargetHeight = TinyWizard.position.y
+	
 
 func _on_tiny_wizard_pickup_block(type):
 	BlockArray.append(type)
 	var new_element = BlockInventoryElement.instantiate()
 	NextBlockUI.add_child(new_element)
 	NextBlockUI.move_child(new_element,0)
-	new_element.get_child(0).color = item_dict.get(type)[0]
-	new_element.get_child(1).text = item_dict.get(type)[1]
+	new_element._set_color(item_dict.get(type)[0])
+	new_element._set_label(item_dict.get(type)[1])
+	new_element._set_img_scale(int(min(get_viewport().size.x, get_viewport().size.y)/10.0))
 
 func _on_tiny_wizard_placing_block() -> void:
 	if LevelBlocks.invalid_placement_tile == false:

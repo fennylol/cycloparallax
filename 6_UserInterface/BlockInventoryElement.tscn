@@ -1,10 +1,22 @@
 [gd_scene format=3 uid="uid://1a71rj1tm0si"]
 
+[ext_resource type="Script" uid="uid://ddbyrh41378vf" path="res://6_UserInterface/block_inventory_element.gd" id="1_i62u4"]
+[ext_resource type="Texture2D" uid="uid://b1s5ltro65exq" path="res://6_UserInterface/block.png" id="2_0dyfl"]
+
 [node name="BlockInventoryElement" type="HBoxContainer" unique_id=1976972199]
 offset_right = 65.0
 offset_bottom = 23.0
+script = ExtResource("1_i62u4")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2107592586]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture = ExtResource("2_0dyfl")
+expand_mode = 3
+stretch_mode = 5
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1370914608]
+visible = false
 custom_minimum_size = Vector2(23, 23)
 layout_mode = 2
 
