@@ -14,7 +14,7 @@ class_name  TheTowerNode
 @onready var BlockInventoryElement = preload("res://6_UserInterface/BlockInventoryElement.tscn")
 signal force_cancel
 var LastSafeSpace := Vector2.ZERO
-var BlockArray : Array[LevelRingNode.BlockTypes] = [LevelRingNode.BlockTypes.PLT_STN]
+var BlockArray : Array[LevelRingNode.BlockTypes] = []
 
 # ========================== #
 # associated text and colors #
