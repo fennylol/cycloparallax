@@ -91,7 +91,8 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 128.0
-text = "Level 1"
+text = "Level 1
+Jump"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -145,7 +146,8 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Level 2"
+text = "Level 2
+Blocks"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -199,7 +201,8 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Level 3"
+text = "Level 3
+Shifting"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -253,7 +256,8 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Level 4"
+text = "Level 4
+Gateway"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -307,7 +311,8 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Level 5"
+text = "Level 5
+____"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -364,7 +369,8 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Level 6"
+text = "Level 6
+Volcano"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -418,7 +424,8 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Level 7"
+text = "Level 7
+___"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -472,7 +479,8 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Level 8"
+text = "Level 8
+Lavafall"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -526,7 +534,8 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Level 9"
+text = "Level 9
+Airlock"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -580,7 +589,8 @@ custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
-text = "Level 10"
+text = "Level 10
+Ascent"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
