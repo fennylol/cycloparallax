@@ -40,7 +40,7 @@ func _ready() -> void:
 			if Enviro.environment and Enviro.environment.sky:
 				var sky_material = Enviro.environment.sky.sky_material
 				if sky_material:
-					sky_material.set_shader_parameter("stars_intensity", 0.0 if ortho else 5.0)
+					sky_material.set_shader_parameter("stars_density", 750.0 if ortho else 50.0)
 	)
 	
 	LevelBlocks._load_level(LevelBlocks.current_level)

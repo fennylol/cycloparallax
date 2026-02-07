@@ -38,7 +38,7 @@ uniform float astro_intensity : hint_range(1.0, 3.0, 0.1) = 1.0;
 group_uniforms stars;
 
 uniform float stars_intensity : hint_range(0.0, 5.0, 0.1) = 0.0;
-uniform float stars_density : hint_range(0.0, 5.0, 0.1) = 0.0;
+uniform float stars_density : hint_range(0.0, 5.0, 0.1) = 50.0;
 
 group_uniforms shooting_stars;
 
@@ -206,7 +206,7 @@ void sky() {
 	// Stars
 	
 	if(stars_intensity > 0.0){
-		vec2 stars = voronoi(rotated_eyedir * 25.0).xz;
+		vec2 stars = voronoi(rotated_eyedir * stars_density).xz;
 		sky_color += smoothstep(0.025 + ((1.0 + sin(TIME + stars.y)) / 2.0) * 0.05, 0.0, stars.x) * stars_intensity;
 	}
 	
