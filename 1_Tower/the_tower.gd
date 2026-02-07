@@ -40,7 +40,7 @@ func _ready() -> void:
 			if Enviro.environment and Enviro.environment.sky:
 				var sky_material = Enviro.environment.sky.sky_material
 				if sky_material:
-					sky_material.set_shader_parameter("stars_intensity", 0.0 if ortho else 5.0)
+					sky_material.set_shader_parameter("stars_density", 750.0 if ortho else 50.0)
 	)
 	
 	LevelBlocks._load_level(LevelBlocks.current_level)
@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 	if Enviro.environment and Enviro.environment.sky:
 		var sky_material = Enviro.environment.sky.sky_material
 		if sky_material:
-			sky_material.set_shader_parameter("sky_rotation_degrees", BlocksCenter.rotation_degrees.y)
+			sky_material.set_shader_parameter("sky_rotation_degrees", BlocksCenter.rotation_degrees.y/30 if TheLawsOfTheLand.Perspective else BlocksCenter.rotation_degrees.y)
 	DollyCamera.TargetHeight = TinyWizard.position.y
 	
 
