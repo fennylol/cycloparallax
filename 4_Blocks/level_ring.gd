@@ -43,16 +43,8 @@ const LEVELS: Array[Array] = [
 	AIRLOCK
 ]
 
-
 func _process(delta):
-	if Input.is_action_just_released("reset"): 
-		current_y_height = 0
-		var clear_blocks = true
-		for i in range(current_level + 1):
-			current_y_height = get_y_height_for_level(i)
-			_load_level(i, clear_blocks)
-			clear_blocks = false ## clears blocks on the first loop and then never again
-		_reset_level()
+	if Input.is_action_just_released("reset"): reload_the_whole_daggum_map()
 
 func _place_held_block() -> void:
 	### SET MATERIAL TO OPAQUE
@@ -106,7 +98,7 @@ func _place_block(pos: Vector2i, type: BlockTypes) -> Node3D:
 	new_block.position.y = pos.y * 0.5
 	return new_block
 
-func _load_level(level_idx: int, clear_blocks: bool = true) -> void:
+func _load_level(level_idx: int, clear_blocks: bool = true, ignore_goal: bool = false) -> void:
 	if level_idx >= LEVELS.size(): printerr("level idx ", level_idx , " doesn't exist."); return
 	var level_map: Array[Array] = LEVELS[level_idx]
 	
@@ -122,11 +114,8 @@ func _load_level(level_idx: int, clear_blocks: bool = true) -> void:
 		for y in range(x_slice.size()):
 			var type = x_slice[y]
 			if type == PLT_AIR: continue
+			if type == OBJ_END and ignore_goal: continue
 			_place_block(Vector2i(x,y+current_y_height), type)
-
-func _reset_level():
-	self.get_parent().rotation_degrees.y = 0
-	reset_level.emit(current_level, current_y_height)
 
 ## ADD HEIGHTS OF PREVIOUS LEVELS
 func get_y_height_for_level(level : int) -> int:
@@ -140,11 +129,28 @@ func get_y_height_for_level(level : int) -> int:
 		y_offset += max_height_of_level_i
 	return y_offset
 
+func reload_the_whole_daggum_map():
+	current_y_height = 0
+	var clear_blocks = true
+	for i in range(current_level + 1):
+		var ignore_goal = false if i == current_level else true
+		var y_offset : int = 0
+		for j in range(i):
+			var max_height_of_level_j = 0
+			var level_map: Array[Array] = LEVELS[j]
+			for x in range(level_map.size()):
+				var x_slice: Array = level_map[x]
+				if x_slice.size() > max_height_of_level_j: max_height_of_level_j = x_slice.size()
+			y_offset += max_height_of_level_j
+		current_y_height = y_offset
+		_load_level(i, clear_blocks, ignore_goal)
+		clear_blocks = false ## clears blocks on the first loop and then never again
+	self.get_parent().rotation_degrees.y = 0
+	reset_level.emit(current_level, current_y_height)
+
 func _on_tiny_wizard_level_complete():
 	current_level += 1
-	current_y_height = get_y_height_for_level(current_level)
-	_load_level(current_level, false)
-	_reset_level()
+	reload_the_whole_daggum_map()
 
 const LEVEL_BASE: Array[Array] = [
 	[PLT_STN], #  0 <-> 16 
