@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://g165vedp7rb3"]
 
-[ext_resource type="PackedScene" uid="uid://dcklekg52ok2p" path="res://1_Tower/TheTower.tscn" id="1_6l81e"]
+[ext_resource type="Script" uid="uid://bcf5ehp83rqoj" path="res://0_Kingdom/the_kingdom.gd" id="1_iy18a"]
 
 [node name="TheKingdom" type="Node3D" unique_id=1744412151]
-
-[node name="TheTower" parent="." unique_id=2103291013 instance=ExtResource("1_6l81e")]
+script = ExtResource("1_iy18a")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1633928749]

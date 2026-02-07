@@ -1,0 +1,354 @@
+[gd_scene format=3 uid="uid://nom7p35ew57u"]
+
+[ext_resource type="Texture2D" uid="uid://ctef7dca8ty2n" path="res://6_UserInterface/scrolls/scroll_button.png" id="1_i58rr"]
+[ext_resource type="Script" uid="uid://c0h0sifugdth0" path="res://0_Kingdom/level_select.gd" id="1_s17ig"]
+[ext_resource type="BitMap" uid="uid://dwur5k3rvejjg" path="res://6_UserInterface/scrolls/scroll_button.bmp" id="2_s17ig"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_unx5o"]
+resource_name = "scroll_button"
+atlas = ExtResource("1_i58rr")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i58rr"]
+atlas = ExtResource("1_i58rr")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s17ig"]
+atlas = ExtResource("1_i58rr")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xa2y"]
+atlas = ExtResource("1_i58rr")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4s8ip"]
+atlas = ExtResource("1_i58rr")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="LabelSettings" id="LabelSettings_i58rr"]
+font_color = Color(0, 0, 0, 1)
+
+[node name="LevelSelect" type="Control" unique_id=1385854771]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s17ig")
+
+[node name="buttons" type="Control" parent="." unique_id=1136804219]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="buttons" unique_id=1048548077]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="level_rows" type="VBoxContainer" parent="buttons/CenterContainer" unique_id=153067743]
+layout_mode = 2
+
+[node name="level_columns" type="HBoxContainer" parent="buttons/CenterContainer/level_rows" unique_id=468392400]
+layout_mode = 2
+
+[node name="level_01" type="Control" parent="buttons/CenterContainer/level_rows/level_columns" unique_id=170949139]
+custom_minimum_size = Vector2(128, 150)
+layout_mode = 2
+
+[node name="button" type="TextureButton" parent="buttons/CenterContainer/level_rows/level_columns/level_01" unique_id=2126457526]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_unx5o")
+texture_pressed = SubResource("AtlasTexture_i58rr")
+texture_hover = SubResource("AtlasTexture_s17ig")
+texture_disabled = SubResource("AtlasTexture_1xa2y")
+texture_focused = SubResource("AtlasTexture_4s8ip")
+texture_click_mask = ExtResource("2_s17ig")
+stretch_mode = 5
+
+[node name="label" type="Label" parent="buttons/CenterContainer/level_rows/level_columns/level_01" unique_id=1589135109]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level 1"
+label_settings = SubResource("LabelSettings_i58rr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level_02" type="Control" parent="buttons/CenterContainer/level_rows/level_columns" unique_id=1811685820]
+custom_minimum_size = Vector2(128, 150)
+layout_mode = 2
+
+[node name="button" type="TextureButton" parent="buttons/CenterContainer/level_rows/level_columns/level_02" unique_id=1634222295]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_unx5o")
+texture_pressed = SubResource("AtlasTexture_i58rr")
+texture_hover = SubResource("AtlasTexture_s17ig")
+texture_disabled = SubResource("AtlasTexture_1xa2y")
+texture_focused = SubResource("AtlasTexture_4s8ip")
+texture_click_mask = ExtResource("2_s17ig")
+stretch_mode = 5
+
+[node name="label" type="Label" parent="buttons/CenterContainer/level_rows/level_columns/level_02" unique_id=1975020006]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level 2"
+label_settings = SubResource("LabelSettings_i58rr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level_03" type="Control" parent="buttons/CenterContainer/level_rows/level_columns" unique_id=1274087447]
+custom_minimum_size = Vector2(128, 150)
+layout_mode = 2
+
+[node name="button" type="TextureButton" parent="buttons/CenterContainer/level_rows/level_columns/level_03" unique_id=765321315]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_unx5o")
+texture_pressed = SubResource("AtlasTexture_i58rr")
+texture_hover = SubResource("AtlasTexture_s17ig")
+texture_disabled = SubResource("AtlasTexture_1xa2y")
+texture_focused = SubResource("AtlasTexture_4s8ip")
+texture_click_mask = ExtResource("2_s17ig")
+stretch_mode = 5
+
+[node name="label" type="Label" parent="buttons/CenterContainer/level_rows/level_columns/level_03" unique_id=820946911]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level 3"
+label_settings = SubResource("LabelSettings_i58rr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level_04" type="Control" parent="buttons/CenterContainer/level_rows/level_columns" unique_id=1764977064]
+custom_minimum_size = Vector2(128, 150)
+layout_mode = 2
+
+[node name="button" type="TextureButton" parent="buttons/CenterContainer/level_rows/level_columns/level_04" unique_id=336462923]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_unx5o")
+texture_pressed = SubResource("AtlasTexture_i58rr")
+texture_hover = SubResource("AtlasTexture_s17ig")
+texture_disabled = SubResource("AtlasTexture_1xa2y")
+texture_focused = SubResource("AtlasTexture_4s8ip")
+texture_click_mask = ExtResource("2_s17ig")
+stretch_mode = 5
+
+[node name="label" type="Label" parent="buttons/CenterContainer/level_rows/level_columns/level_04" unique_id=190281857]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level 4"
+label_settings = SubResource("LabelSettings_i58rr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level_05" type="Control" parent="buttons/CenterContainer/level_rows/level_columns" unique_id=615598834]
+custom_minimum_size = Vector2(128, 150)
+layout_mode = 2
+
+[node name="button" type="TextureButton" parent="buttons/CenterContainer/level_rows/level_columns/level_05" unique_id=1979434297]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_unx5o")
+texture_pressed = SubResource("AtlasTexture_i58rr")
+texture_hover = SubResource("AtlasTexture_s17ig")
+texture_disabled = SubResource("AtlasTexture_1xa2y")
+texture_focused = SubResource("AtlasTexture_4s8ip")
+texture_click_mask = ExtResource("2_s17ig")
+stretch_mode = 5
+
+[node name="label" type="Label" parent="buttons/CenterContainer/level_rows/level_columns/level_05" unique_id=817752386]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level 5"
+label_settings = SubResource("LabelSettings_i58rr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level_columns2" type="HBoxContainer" parent="buttons/CenterContainer/level_rows" unique_id=475907128]
+layout_mode = 2
+
+[node name="level_06" type="Control" parent="buttons/CenterContainer/level_rows/level_columns2" unique_id=1516822003]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="button" type="TextureButton" parent="buttons/CenterContainer/level_rows/level_columns2/level_06" unique_id=1552504421]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_unx5o")
+texture_pressed = SubResource("AtlasTexture_i58rr")
+texture_hover = SubResource("AtlasTexture_s17ig")
+texture_disabled = SubResource("AtlasTexture_1xa2y")
+texture_focused = SubResource("AtlasTexture_4s8ip")
+texture_click_mask = ExtResource("2_s17ig")
+stretch_mode = 5
+
+[node name="label" type="Label" parent="buttons/CenterContainer/level_rows/level_columns2/level_06" unique_id=466201498]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level 6"
+label_settings = SubResource("LabelSettings_i58rr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level_07" type="Control" parent="buttons/CenterContainer/level_rows/level_columns2" unique_id=1385530145]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="button" type="TextureButton" parent="buttons/CenterContainer/level_rows/level_columns2/level_07" unique_id=1762758788]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_unx5o")
+texture_pressed = SubResource("AtlasTexture_i58rr")
+texture_hover = SubResource("AtlasTexture_s17ig")
+texture_disabled = SubResource("AtlasTexture_1xa2y")
+texture_focused = SubResource("AtlasTexture_4s8ip")
+texture_click_mask = ExtResource("2_s17ig")
+stretch_mode = 5
+
+[node name="label" type="Label" parent="buttons/CenterContainer/level_rows/level_columns2/level_07" unique_id=913386567]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level 7"
+label_settings = SubResource("LabelSettings_i58rr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level_08" type="Control" parent="buttons/CenterContainer/level_rows/level_columns2" unique_id=1053144406]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="button" type="TextureButton" parent="buttons/CenterContainer/level_rows/level_columns2/level_08" unique_id=993986584]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_unx5o")
+texture_pressed = SubResource("AtlasTexture_i58rr")
+texture_hover = SubResource("AtlasTexture_s17ig")
+texture_disabled = SubResource("AtlasTexture_1xa2y")
+texture_focused = SubResource("AtlasTexture_4s8ip")
+texture_click_mask = ExtResource("2_s17ig")
+stretch_mode = 5
+
+[node name="label" type="Label" parent="buttons/CenterContainer/level_rows/level_columns2/level_08" unique_id=348551867]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level 8"
+label_settings = SubResource("LabelSettings_i58rr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level_09" type="Control" parent="buttons/CenterContainer/level_rows/level_columns2" unique_id=1571664773]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="button" type="TextureButton" parent="buttons/CenterContainer/level_rows/level_columns2/level_09" unique_id=1382525651]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_unx5o")
+texture_pressed = SubResource("AtlasTexture_i58rr")
+texture_hover = SubResource("AtlasTexture_s17ig")
+texture_disabled = SubResource("AtlasTexture_1xa2y")
+texture_focused = SubResource("AtlasTexture_4s8ip")
+texture_click_mask = ExtResource("2_s17ig")
+stretch_mode = 5
+
+[node name="label" type="Label" parent="buttons/CenterContainer/level_rows/level_columns2/level_09" unique_id=1588569435]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level 9"
+label_settings = SubResource("LabelSettings_i58rr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="level_10" type="Control" parent="buttons/CenterContainer/level_rows/level_columns2" unique_id=516872319]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+
+[node name="button" type="TextureButton" parent="buttons/CenterContainer/level_rows/level_columns2/level_10" unique_id=1675851083]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+mouse_default_cursor_shape = 2
+texture_normal = SubResource("AtlasTexture_unx5o")
+texture_pressed = SubResource("AtlasTexture_i58rr")
+texture_hover = SubResource("AtlasTexture_s17ig")
+texture_disabled = SubResource("AtlasTexture_1xa2y")
+texture_focused = SubResource("AtlasTexture_4s8ip")
+texture_click_mask = ExtResource("2_s17ig")
+stretch_mode = 5
+
+[node name="label" type="Label" parent="buttons/CenterContainer/level_rows/level_columns2/level_10" unique_id=2044179798]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Level 10"
+label_settings = SubResource("LabelSettings_i58rr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="buttons/CenterContainer/level_rows/level_columns/level_01/button" to="." method="_on_L1_button_pressed"]
+[connection signal="pressed" from="buttons/CenterContainer/level_rows/level_columns/level_02/button" to="." method="_on_L2_button_pressed"]
+[connection signal="pressed" from="buttons/CenterContainer/level_rows/level_columns/level_03/button" to="." method="_on_L3_button_pressed"]
+[connection signal="pressed" from="buttons/CenterContainer/level_rows/level_columns/level_04/button" to="." method="_on_L4_button_pressed"]
+[connection signal="pressed" from="buttons/CenterContainer/level_rows/level_columns/level_05/button" to="." method="_on_L5_button_pressed"]
+[connection signal="pressed" from="buttons/CenterContainer/level_rows/level_columns2/level_06/button" to="." method="_on_L6_button_pressed"]
+[connection signal="pressed" from="buttons/CenterContainer/level_rows/level_columns2/level_07/button" to="." method="_on_L7_button_pressed"]
+[connection signal="pressed" from="buttons/CenterContainer/level_rows/level_columns2/level_08/button" to="." method="_on_L8_button_pressed"]
+[connection signal="pressed" from="buttons/CenterContainer/level_rows/level_columns2/level_09/button" to="." method="_on_L9_button_pressed"]
+[connection signal="pressed" from="buttons/CenterContainer/level_rows/level_columns2/level_10/button" to="." method="_on_L10_button_pressed"]
