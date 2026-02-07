@@ -36,9 +36,9 @@ func _ready():
 	
 	## SCREENSIZE SETUP FOR PROMPT PLACEMENT
 	get_viewport().size_changed.connect(_on_screen_size_changed)
-	change_scroll_texture(MOVE_SCROLL)
 
 func _on_screen_size_changed() -> void:
+	if not Scroll.texture: return
 	var screensize: Vector2 = get_viewport().size
 	
 	scroll_start_pos = Vector2(screensize.x/2,  5*(screensize.y/2))
@@ -67,6 +67,8 @@ func _on_pause_toggle(paused: bool):
 		ScrollState = ScrollStates.END
 
 func _process(delta: float) -> void:
+	if not Scroll.texture: return
+	
 	match ScrollState:
 		ScrollStates.START:
 			TheLawsOfTheLand.Paused = true
@@ -103,12 +105,17 @@ func change_scroll_texture(new_tex: Texture) -> void:
 func _on_level_ring_reset_level(lvl, height):
 	current_level = lvl
 	
+	if current_level == 0 and has_shown_prompt_movejump == false:
+		change_scroll_texture(MOVE_SCROLL)
+		has_shown_prompt_movejump = true
+	
 	if current_level == 2 and has_shown_prompt_shift == false:
-		await get_tree().create_timer(0.1).timeout
+		await get_tree().create_timer(0.5).timeout
 		change_scroll_texture(SHIFT_SCROLL)
 		has_shown_prompt_shift = true
 	
 	if current_level == 3 and has_shown_prompt_reset == false:
+		await get_tree().create_timer(0.5).timeout
 		change_scroll_texture(RESTORE_SCROLL)
 		has_shown_prompt_reset = true
 

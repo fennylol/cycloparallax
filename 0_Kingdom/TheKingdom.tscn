@@ -1,8 +1,110 @@
 [gd_scene format=3 uid="uid://g165vedp7rb3"]
 
 [ext_resource type="Script" uid="uid://bcf5ehp83rqoj" path="res://0_Kingdom/the_kingdom.gd" id="1_iy18a"]
+[ext_resource type="PackedScene" uid="uid://dcklekg52ok2p" path="res://1_Tower/TheTower.tscn" id="2_iy18a"]
+[ext_resource type="Texture2D" uid="uid://usc2gecnaecw" path="res://0_Kingdom/splash.png" id="3_k0tmn"]
 
 [node name="TheKingdom" type="Node3D" unique_id=1744412151]
 script = ExtResource("1_iy18a")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1633928749]
+
+[node name="TheTower" parent="." unique_id=2103291013 instance=ExtResource("2_iy18a")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=917063449]
+transform = Transform3D(0.9659258, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659258, -0.5, 2.5, 21)
+current = true
+fov = 45.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=969215079]
+
+[node name="Control" type="Control" parent="CanvasLayer" unique_id=1113693903]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control" unique_id=805817234]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/HBoxContainer" unique_id=630915742]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer" unique_id=654527717]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.7
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer" unique_id=1508068460]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer" unique_id=1906762282]
+layout_mode = 2
+texture = ExtResource("3_k0tmn")
+expand_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer" unique_id=1315842532]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=533636582]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.05
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=748427774]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.45
+
+[node name="Control" type="Control" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1168159263]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=170916433]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+text = "PLAY"
+
+[node name="Control2" type="Control" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=182073789]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="LevelSelectButton" type="Button" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=395090783]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+text = "LEVEL SELECT"
+
+[node name="Control3" type="Control" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1472227321]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.4
+
+[node name="Control2" type="Control" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=634830535]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="Control2" type="Control" parent="CanvasLayer/Control/HBoxContainer" unique_id=1302716341]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.2
+
+[connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/LevelSelectButton" to="." method="_on_level_select_button_pressed"]

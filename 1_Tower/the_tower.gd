@@ -11,10 +11,27 @@ class_name  TheTowerNode
 @onready var NextBlockUI : VBoxContainer   = $CanvasLayer/Control/HBoxContainer/VBoxContainer
 @onready var Enviro      : WorldEnvironment= $WorldEnvironment
 @onready var Tutorial    : ScrollDisplayNode = $CanvasLayer/ScrollDisplay
+@onready var BottomTower : Node3D = $BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff
 @onready var BlockInventoryElement = preload("res://6_UserInterface/BlockInventoryElement.tscn")
 signal force_cancel
 var LastSafeSpace := Vector2.ZERO
 var BlockArray : Array[LevelRingNode.BlockTypes] = []
+var Playing: bool = true:
+	set(play):
+		Playing = play
+		if play:
+			BlocksCenter.rotation.y = 0.0
+			DollyCamera.current = true
+			BottomTower.visible = false
+			TinyWizard.Mouth.volume_db = TinyWizard.TALKING_VOLUME
+			TinyWizard.Mouth2.volume_db = TinyWizard.TALKING_VOLUME
+			TinyWizard.Yeller.volume_db = TinyWizard.TALKING_VOLUME
+		else:
+			DollyCamera.current = false
+			BottomTower.visible = true
+			TinyWizard.Mouth.volume_db = TinyWizard.WHISPER_VOLUME
+			TinyWizard.Mouth2.volume_db = TinyWizard.WHISPER_VOLUME
+			TinyWizard.Yeller.volume_db = TinyWizard.WHISPER_VOLUME
 
 # ========================== #
 # associated text and colors #
@@ -43,7 +60,7 @@ func _ready() -> void:
 					sky_material.set_shader_parameter("stars_density", 750.0 if ortho else 50.0)
 	)
 	
-	LevelBlocks._load_level(LevelBlocks.current_level)
+	#LevelBlocks._load_level(LevelBlocks.current_level)
 	for i in BlockArray:
 		var new_element = BlockInventoryElement.instantiate()
 		NextBlockUI.add_child(new_element)
@@ -56,11 +73,16 @@ func _process(delta: float) -> void:
 	if TheLawsOfTheLand.Paused: return
 	#NextBlockUI.text = str(BlockArray.size())
 	BlocksCenter.rotate(Vector3.UP, TinyWizard.WalkingSpeed*delta)
-	if Enviro.environment and Enviro.environment.sky:
-		var sky_material = Enviro.environment.sky.sky_material
-		if sky_material:
-			sky_material.set_shader_parameter("sky_rotation_degrees", BlocksCenter.rotation_degrees.y/30 if TheLawsOfTheLand.Perspective else BlocksCenter.rotation_degrees.y)
-	DollyCamera.TargetHeight = TinyWizard.position.y
+	if Playing:
+		if Enviro.environment and Enviro.environment.sky:
+			var sky_material = Enviro.environment.sky.sky_material
+			if sky_material:
+				sky_material.set_shader_parameter("sky_rotation_degrees", BlocksCenter.rotation_degrees.y/30 if TheLawsOfTheLand.Perspective else BlocksCenter.rotation_degrees.y)
+		DollyCamera.TargetHeight = TinyWizard.position.y
+	else:
+		if (fmod(Time.get_unix_time_from_system(), 5)) < TinyWizard.JUMP_TIME*randf():
+			TinyWizard.velocity.y = TinyWizard.JUMP_SPEED
+		TinyWizard.WalkingSpeed = -0.25
 
 func _on_tiny_wizard_pickup_block(type):
 	BlockArray.append(type)
@@ -114,7 +136,7 @@ func _on_tiny_wizard_holding_block(dir: TinyWizardNode.PlacementDirections) -> v
 		LevelBlocks._hold_block(block_placement_loc, type)
 
 ## CALLED ON LEVEL RESET
-func _on_level_ring_reset_level(lvl: int, height : float):
+func _on_level_ring_reset_level(_lvl: int, _height : float):
 	BlockArray.clear()
 	for i in NextBlockUI.get_children():
 		i.queue_free()

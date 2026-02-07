@@ -75,10 +75,37 @@ transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.99522
 [node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing" unique_id=1755562795 instance=ExtResource("6_401sn")]
 transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -0.5, 0)
 
-[node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing" unique_id=1241401384 instance=ExtResource("6_401sn")]
+[node name="DecorativeRingCutoff" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing" unique_id=1241401384 instance=ExtResource("6_401sn")]
 transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -0.5, 0)
 
-[node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing" unique_id=439077020 instance=ExtResource("6_401sn")]
+[node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff" unique_id=439077020 instance=ExtResource("6_401sn")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -0.5, 0)
+
+[node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff/DecorativeRing" unique_id=778676414 instance=ExtResource("6_401sn")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -0.5, 0)
+
+[node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff/DecorativeRing/DecorativeRing" unique_id=874111268 instance=ExtResource("6_401sn")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -0.5, 0)
+
+[node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff/DecorativeRing/DecorativeRing/DecorativeRing" unique_id=520577108 instance=ExtResource("6_401sn")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -0.5, 0)
+
+[node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing" unique_id=1926545419 instance=ExtResource("6_401sn")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -0.5, 0)
+
+[node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing" unique_id=1206528773 instance=ExtResource("6_401sn")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -0.5, 0)
+
+[node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing" unique_id=542076123 instance=ExtResource("6_401sn")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -0.5, 0)
+
+[node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing" unique_id=1766771314 instance=ExtResource("6_401sn")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -0.5, 0)
+
+[node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing" unique_id=510824698 instance=ExtResource("6_401sn")]
+transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -0.5, 0)
+
+[node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing" unique_id=113240159 instance=ExtResource("6_401sn")]
 transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -0.5, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1001226891]

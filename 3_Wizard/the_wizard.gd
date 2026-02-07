@@ -3,6 +3,8 @@ class_name TinyWizardNode
 # ========= #
 # constants #
 # ========= #
+const WHISPER_VOLUME: float = -80
+const TALKING_VOLUME: float = -20
 const WALK_TIME  : float = 0.25
 const WALK_ACCEL : float = 10.0
 const WALK_SPEED : float = 0.60
@@ -205,7 +207,7 @@ func _on_the_tower_force_cancel():
 	clear_for_takeoff = false
 
 ## CALLED IF THE LEVEL IS RESET
-func _on_level_ring_reset_level(lvl : int, height : float):
+func _on_level_ring_reset_level(_lvl : int, height : float):
 	position.y = (height / 2) + 0.1
 	await get_tree().create_timer(1.0).timeout
 	win_lockout = false
