@@ -43,13 +43,13 @@ func activate_level_select():
 
 func select_level(lvl: int) -> void:
 	LevelToPlay = lvl
+	TheLawsOfTheLand.Paused = true
+	TheLawsOfTheLand.Paused = false
 	PlayingState = PlayingStates.TRANSTION
 
 func activate_the_tower(level: int = 0):
 	Cam.current = false
 	TheTower.Playing = true
-	TheLawsOfTheLand.Paused = true
-	TheLawsOfTheLand.Paused = false
 	PlayingState = PlayingStates.PLAYING
 	
 	## LOAD THE REQUESTED LEVEL
