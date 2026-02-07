@@ -50,7 +50,8 @@ fov = 45.0
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="BlocksSpinnyBit" unique_id=127232821]
 transform = Transform3D(0.98419565, 0.11311606, -0.13624913, 0, 0.7694, 0.63876736, 0.17708494, -0.628672, 0.75724006, 0, 0, 0)
-light_energy = 0.2
+visible = false
+light_energy = 0.0
 shadow_enabled = true
 
 [node name="InnerWalls" type="MeshInstance3D" parent="BlocksSpinnyBit" unique_id=1526088745]

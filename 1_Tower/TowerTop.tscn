@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dblc8al5qlo5p"]
+
+[ext_resource type="Texture2D" uid="uid://cte25lydw1bdh" path="res://_raws/tippyrtoppy.png" id="1_7c3yg"]
+[ext_resource type="ArrayMesh" uid="uid://d1tfnd6xp0cpl" path="res://1_Tower/cone.tres" id="2_y7b5l"]
+[ext_resource type="ArrayMesh" uid="uid://cf3iljm8gbaqk" path="res://1_Tower/ring.tres" id="3_yy8lw"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8rgu3"]
+albedo_texture = ExtResource("1_7c3yg")
+
+[node name="TowerTop" type="Node3D" unique_id=208600796]
+
+[node name="TowerTop" type="MeshInstance3D" parent="." unique_id=2013928]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 6, 0)
+material_override = SubResource("StandardMaterial3D_8rgu3")
+mesh = ExtResource("2_y7b5l")
+
+[node name="Ring" type="MeshInstance3D" parent="." unique_id=979635229]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
+mesh = ExtResource("3_yy8lw")
