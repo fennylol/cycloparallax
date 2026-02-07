@@ -8,7 +8,7 @@ var has_shown_prompt_movejump = false
 var has_shown_prompt_placeblock = false
 var has_shown_prompt_shift = false
 var has_shown_prompt_reset = false
-
+var has_shown_prompt_goals = false
 
 enum ScrollStates {START, SHOW, END}
 var ScrollState: ScrollStates = ScrollStates.START
@@ -25,6 +25,7 @@ const MOVE_SCROLL   : Texture = preload("res://6_UserInterface/scrolls/freedom_o
 const PLACE_SCROLL  : Texture = preload("res://6_UserInterface/scrolls/support_conjouring_scroll.png")
 const SHIFT_SCROLL  : Texture = preload("res://6_UserInterface/scrolls/planar_manipulation_scroll.png")
 const RESTORE_SCROLL: Texture = preload("res://6_UserInterface/scrolls/restoration_scroll.png")
+const GOAL_SCROLL   : Texture = preload("res://6_UserInterface/scrolls/scroll_goals.png")
 const PAUSE_SCROLL_MOVE : Texture = preload("res://6_UserInterface/scrolls/pause_scroll_move.png")
 const PAUSE_SCROLL_PLACE: Texture = preload("res://6_UserInterface/scrolls/pause_scroll_place.png")
 const PAUSE_SCROLL_RESET: Texture = preload("res://6_UserInterface/scrolls/pause_scroll_reset.png")
@@ -123,3 +124,13 @@ func _on_tiny_wizard_pickup_block(_type):
 	if current_level == 1 and has_shown_prompt_placeblock == false:
 		change_scroll_texture(PLACE_SCROLL)
 		has_shown_prompt_placeblock = true
+
+func _on_tiny_wizard_level_complete(_coin : bool):
+	if has_shown_prompt_goals == false:
+		change_scroll_texture(GOAL_SCROLL)
+		has_shown_prompt_goals = true
+
+func _on_tiny_wizard_coin_pickup():
+	if has_shown_prompt_goals == false:
+		change_scroll_texture(GOAL_SCROLL)
+		has_shown_prompt_goals = true

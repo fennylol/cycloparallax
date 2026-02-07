@@ -44,7 +44,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4.75)
 script = ExtResource("1_o7m0y")
 
 [node name="Mesh" type="MeshInstance3D" parent="." unique_id=186160756]
-transform = Transform3D(0.3, 0, 0, 0, -4.371139e-08, -0.3, 0, 1, -1.3113417e-08, 0, -0.25, 0)
+transform = Transform3D(0.25, 0, 0, 0, -4.371139e-08, -0.25, 0, 1, -1.0927847e-08, 0, -0.25, 0)
 mesh = SubResource("ArrayMesh_jhe4w")
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1631882570]
