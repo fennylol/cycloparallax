@@ -38,6 +38,7 @@ uniform float astro_intensity : hint_range(1.0, 3.0, 0.1) = 1.0;
 group_uniforms stars;
 
 uniform float stars_intensity : hint_range(0.0, 5.0, 0.1) = 0.0;
+uniform float stars_density : hint_range(0.0, 5.0, 0.1) = 0.0;
 
 group_uniforms shooting_stars;
 
