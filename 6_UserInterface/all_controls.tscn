@@ -1,29 +1,68 @@
-[gd_scene format=3 uid="uid://dvraitmlmoq7f"]
-
-[ext_resource type="Texture2D" uid="uid://bd8w3cy5hiujh" path="res://6_UserInterface/UI_prompt_assets/A_Key_Dark.png" id="1_pdgwp"]
-[ext_resource type="Texture2D" uid="uid://toklfu3vadvr" path="res://6_UserInterface/UI_prompt_assets/D_Key_Dark.png" id="2_0vykk"]
-[ext_resource type="Texture2D" uid="uid://cyockpksqb4ks" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_Left_Stick.png" id="3_aqb2h"]
-[ext_resource type="Texture2D" uid="uid://c5pn6t78u8gm4" path="res://6_UserInterface/UI_prompt_assets/Directional_Arrow_Horizontal.png" id="4_bddak"]
-[ext_resource type="Texture2D" uid="uid://bujsbuvhgjfl4" path="res://6_UserInterface/UI_prompt_assets/Space_Key_Dark.png" id="5_8v5ku"]
-[ext_resource type="Texture2D" uid="uid://dh2nj8fykkdf0" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_RT.png" id="6_bhiju"]
-[ext_resource type="Texture2D" uid="uid://dsqe5wgd7ixqe" path="res://6_UserInterface/UI_prompt_assets/Arrow_Up_Key_Dark.png" id="7_buvpa"]
-[ext_resource type="Texture2D" uid="uid://hl5wqmm4xc5q" path="res://6_UserInterface/UI_prompt_assets/Arrow_Down_Key_Dark.png" id="8_itdnr"]
-[ext_resource type="Texture2D" uid="uid://rqsfpo3wk384" path="res://6_UserInterface/UI_prompt_assets/Arrow_Left_Key_Dark.png" id="9_1gohl"]
-[ext_resource type="Texture2D" uid="uid://dmjprudaeoxgx" path="res://6_UserInterface/UI_prompt_assets/Arrow_Right_Key_Dark.png" id="10_nn0nr"]
-[ext_resource type="Texture2D" uid="uid://cdsy1g82oq10t" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_Y.png" id="11_nlmba"]
-[ext_resource type="Texture2D" uid="uid://up3hnkmh6nok" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_X.png" id="12_e1quw"]
-[ext_resource type="Texture2D" uid="uid://pm4dnxdl6kti" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_A.png" id="13_tb1dm"]
-[ext_resource type="Texture2D" uid="uid://w8o8xu8hjmau" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_B.png" id="14_4asuo"]
-[ext_resource type="Texture2D" uid="uid://b3silf0tf3rd1" path="res://6_UserInterface/UI_prompt_assets/Ctrl_Key_Dark.png" id="15_ayck0"]
-[ext_resource type="Texture2D" uid="uid://071re7fmpcyg" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_RB.png" id="16_6a3ed"]
-[ext_resource type="Texture2D" uid="uid://7hpaa0x8ox2y" path="res://6_UserInterface/UI_prompt_assets/Shift_Alt_Key_Dark.png" id="17_ilq52"]
-[ext_resource type="Texture2D" uid="uid://cr1uwnsjw7kty" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_LT.png" id="18_37gr5"]
-[ext_resource type="Texture2D" uid="uid://bciubpcj42spd" path="res://6_UserInterface/UI_prompt_assets/R_Key_Dark.png" id="19_ryw5a"]
-[ext_resource type="Texture2D" uid="uid://5qkabe3vaaft" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_LB.png" id="20_sq7lk"]
+[gd_scene format=3 uid="uid://dkyddbl1a0xjp"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_pau4s"]
 font_size = 20
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mxejm"]
+load_path = "res://.godot/imported/A_Key_Dark.png-72edaf35971c0f0e12f5c64569a3bff0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vswio"]
+load_path = "res://.godot/imported/D_Key_Dark.png-d5eee169d80498624e8ae4b6475d3b9b.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tywwt"]
+load_path = "res://.godot/imported/XboxSeriesX_Left_Stick.png-f5b7639208bbd7720925fc88d0451bba.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vtemm"]
+load_path = "res://.godot/imported/Directional_Arrow_Horizontal.png-523ae5d2727d4d4be71e36418fc6de99.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bjpur"]
+load_path = "res://.godot/imported/Space_Key_Dark.png-60cd910524eee6394adc2ff3de4d1035.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lxjki"]
+load_path = "res://.godot/imported/XboxSeriesX_RT.png-42d7c555bceae5b66eacc36f8e827340.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_n417k"]
+load_path = "res://.godot/imported/Arrow_Up_Key_Dark.png-76e73cce23cefbdfe308609f2abc3417.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jrhlv"]
+load_path = "res://.godot/imported/Arrow_Down_Key_Dark.png-844884b2242fc029007c6e3f7e93d828.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nyu7y"]
+load_path = "res://.godot/imported/Arrow_Left_Key_Dark.png-b058ac2a54e8ec099881e41bd12a09fd.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6aera"]
+load_path = "res://.godot/imported/Arrow_Right_Key_Dark.png-077b2c1c3ff2ed76a080fdbf43f3b911.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_67ip8"]
+load_path = "res://.godot/imported/XboxSeriesX_Y.png-7f677caafa66a89b71938ca2201f5c61.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hpea4"]
+load_path = "res://.godot/imported/XboxSeriesX_X.png-c0bf3bc1e3d3c1c9ed84aec543cc22d2.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_f28su"]
+load_path = "res://.godot/imported/XboxSeriesX_A.png-05182f57d44d5075b42caae7994bad50.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wwuqb"]
+load_path = "res://.godot/imported/XboxSeriesX_B.png-c02502265743d49314267ec42cfc86ba.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ber4q"]
+load_path = "res://.godot/imported/Ctrl_Key_Dark.png-9f95f703b17c481cfd7ea358dc95da47.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_s1fun"]
+load_path = "res://.godot/imported/XboxSeriesX_RB.png-e3b9b122227bb0de8a4288b598dafbe8.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qboph"]
+load_path = "res://.godot/imported/Shift_Alt_Key_Dark.png-41ce9521132c0e185b7d1504bf9963d4.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yj6wt"]
+load_path = "res://.godot/imported/XboxSeriesX_LT.png-3862f7c30a4a996d6ec3c8892188e431.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nxk1b"]
+load_path = "res://.godot/imported/R_Key_Dark.png-0290f2421d424fb9e50624d5e58cb72c.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hxjoj"]
+load_path = "res://.godot/imported/XboxSeriesX_LB.png-325070851961759507e22bc990f6461e.ctex"
 
 [node name="TutorialPrompts" type="Control" unique_id=1093904765]
 layout_mode = 3
@@ -58,7 +97,7 @@ offset_left = 58.0
 offset_top = -4.0
 offset_right = 98.0
 offset_bottom = 36.0
-texture = ExtResource("1_pdgwp")
+texture = SubResource("CompressedTexture2D_mxejm")
 expand_mode = 5
 stretch_mode = 5
 
@@ -68,7 +107,7 @@ offset_left = 96.0
 offset_top = -4.0
 offset_right = 136.0
 offset_bottom = 36.0
-texture = ExtResource("2_0vykk")
+texture = SubResource("CompressedTexture2D_vswio")
 expand_mode = 5
 stretch_mode = 5
 
@@ -78,7 +117,7 @@ offset_left = 194.0
 offset_top = -2.0
 offset_right = 234.0
 offset_bottom = 38.0
-texture = ExtResource("3_aqb2h")
+texture = SubResource("CompressedTexture2D_tywwt")
 expand_mode = 5
 stretch_mode = 5
 
@@ -87,7 +126,7 @@ layout_mode = 0
 offset_left = -25.0
 offset_right = 65.0
 offset_bottom = 40.0
-texture = ExtResource("4_bddak")
+texture = SubResource("CompressedTexture2D_vtemm")
 expand_mode = 5
 stretch_mode = 5
 
@@ -107,7 +146,7 @@ offset_left = 63.0
 offset_top = -14.0
 offset_right = 123.0
 offset_bottom = 46.0
-texture = ExtResource("5_8v5ku")
+texture = SubResource("CompressedTexture2D_bjpur")
 expand_mode = 5
 stretch_mode = 5
 
@@ -117,7 +156,7 @@ offset_left = 178.0
 offset_top = -4.0
 offset_right = 218.0
 offset_bottom = 36.0
-texture = ExtResource("6_bhiju")
+texture = SubResource("CompressedTexture2D_lxjki")
 expand_mode = 5
 stretch_mode = 5
 
@@ -137,7 +176,7 @@ offset_left = 83.0
 offset_top = -27.0
 offset_right = 123.0
 offset_bottom = 13.0
-texture = ExtResource("7_buvpa")
+texture = SubResource("CompressedTexture2D_n417k")
 expand_mode = 5
 stretch_mode = 5
 
@@ -147,7 +186,7 @@ offset_left = 83.0
 offset_top = 3.0
 offset_right = 123.0
 offset_bottom = 43.0
-texture = ExtResource("8_itdnr")
+texture = SubResource("CompressedTexture2D_jrhlv")
 expand_mode = 5
 stretch_mode = 5
 
@@ -157,7 +196,7 @@ offset_left = 52.0
 offset_top = 3.0
 offset_right = 92.0
 offset_bottom = 43.0
-texture = ExtResource("9_1gohl")
+texture = SubResource("CompressedTexture2D_nyu7y")
 expand_mode = 5
 stretch_mode = 5
 
@@ -167,7 +206,7 @@ offset_left = 114.0
 offset_top = 3.0
 offset_right = 154.0
 offset_bottom = 43.0
-texture = ExtResource("10_nn0nr")
+texture = SubResource("CompressedTexture2D_6aera")
 expand_mode = 5
 stretch_mode = 5
 
@@ -177,7 +216,7 @@ offset_left = 212.0
 offset_top = -28.0
 offset_right = 242.0
 offset_bottom = 2.0
-texture = ExtResource("11_nlmba")
+texture = SubResource("CompressedTexture2D_67ip8")
 expand_mode = 5
 stretch_mode = 5
 
@@ -187,7 +226,7 @@ offset_left = 188.0
 offset_top = -4.0
 offset_right = 218.0
 offset_bottom = 26.0
-texture = ExtResource("12_e1quw")
+texture = SubResource("CompressedTexture2D_hpea4")
 expand_mode = 5
 stretch_mode = 5
 
@@ -197,7 +236,7 @@ offset_left = 212.0
 offset_top = 19.0
 offset_right = 242.0
 offset_bottom = 49.0
-texture = ExtResource("13_tb1dm")
+texture = SubResource("CompressedTexture2D_f28su")
 expand_mode = 5
 stretch_mode = 5
 
@@ -207,7 +246,7 @@ offset_left = 236.0
 offset_top = -4.0
 offset_right = 266.0
 offset_bottom = 26.0
-texture = ExtResource("14_4asuo")
+texture = SubResource("CompressedTexture2D_wwuqb")
 expand_mode = 5
 stretch_mode = 5
 
@@ -227,7 +266,7 @@ offset_left = 63.0
 offset_top = -9.0
 offset_right = 113.0
 offset_bottom = 41.0
-texture = ExtResource("15_ayck0")
+texture = SubResource("CompressedTexture2D_ber4q")
 expand_mode = 5
 stretch_mode = 5
 
@@ -237,7 +276,7 @@ offset_left = 162.0
 offset_top = -5.0
 offset_right = 202.0
 offset_bottom = 35.0
-texture = ExtResource("16_6a3ed")
+texture = SubResource("CompressedTexture2D_s1fun")
 expand_mode = 5
 stretch_mode = 5
 
@@ -257,7 +296,7 @@ offset_left = 63.0
 offset_top = -14.0
 offset_right = 123.0
 offset_bottom = 46.0
-texture = ExtResource("17_ilq52")
+texture = SubResource("CompressedTexture2D_qboph")
 expand_mode = 5
 stretch_mode = 5
 
@@ -267,7 +306,7 @@ offset_left = 167.0
 offset_top = -4.0
 offset_right = 207.0
 offset_bottom = 36.0
-texture = ExtResource("18_37gr5")
+texture = SubResource("CompressedTexture2D_yj6wt")
 expand_mode = 5
 stretch_mode = 5
 
@@ -287,7 +326,7 @@ offset_left = 63.0
 offset_top = -4.0
 offset_right = 103.0
 offset_bottom = 36.0
-texture = ExtResource("19_ryw5a")
+texture = SubResource("CompressedTexture2D_nxk1b")
 expand_mode = 5
 stretch_mode = 5
 
@@ -297,6 +336,6 @@ offset_left = 143.0
 offset_top = -5.0
 offset_right = 183.0
 offset_bottom = 35.0
-texture = ExtResource("20_sq7lk")
+texture = SubResource("CompressedTexture2D_hxjoj")
 expand_mode = 5
 stretch_mode = 5

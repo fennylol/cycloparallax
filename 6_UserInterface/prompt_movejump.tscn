@@ -1,15 +1,26 @@
-[gd_scene format=3 uid="uid://b587ihfvm356i"]
-
-[ext_resource type="Texture2D" uid="uid://bd8w3cy5hiujh" path="res://6_UserInterface/UI_prompt_assets/A_Key_Dark.png" id="1_u68u6"]
-[ext_resource type="Texture2D" uid="uid://toklfu3vadvr" path="res://6_UserInterface/UI_prompt_assets/D_Key_Dark.png" id="2_362k2"]
-[ext_resource type="Texture2D" uid="uid://cyockpksqb4ks" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_Left_Stick.png" id="3_gjutm"]
-[ext_resource type="Texture2D" uid="uid://c5pn6t78u8gm4" path="res://6_UserInterface/UI_prompt_assets/Directional_Arrow_Horizontal.png" id="4_an7u7"]
-[ext_resource type="Texture2D" uid="uid://bujsbuvhgjfl4" path="res://6_UserInterface/UI_prompt_assets/Space_Key_Dark.png" id="5_2cqjc"]
-[ext_resource type="Texture2D" uid="uid://dh2nj8fykkdf0" path="res://6_UserInterface/UI_prompt_assets/XboxSeriesX_RT.png" id="6_3e8x0"]
+[gd_scene format=3 uid="uid://d0meax88vc7c6"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_is5p5"]
 font_size = 20
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mxejm"]
+load_path = "res://.godot/imported/A_Key_Dark.png-72edaf35971c0f0e12f5c64569a3bff0.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vswio"]
+load_path = "res://.godot/imported/D_Key_Dark.png-d5eee169d80498624e8ae4b6475d3b9b.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_tywwt"]
+load_path = "res://.godot/imported/XboxSeriesX_Left_Stick.png-f5b7639208bbd7720925fc88d0451bba.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_vtemm"]
+load_path = "res://.godot/imported/Directional_Arrow_Horizontal.png-523ae5d2727d4d4be71e36418fc6de99.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bjpur"]
+load_path = "res://.godot/imported/Space_Key_Dark.png-60cd910524eee6394adc2ff3de4d1035.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_lxjki"]
+load_path = "res://.godot/imported/XboxSeriesX_RT.png-42d7c555bceae5b66eacc36f8e827340.ctex"
 
 [node name="PromptMovejump" type="Control" unique_id=1456241262]
 layout_mode = 3
@@ -39,7 +50,7 @@ offset_left = 58.0
 offset_top = -4.0
 offset_right = 98.0
 offset_bottom = 36.0
-texture = ExtResource("1_u68u6")
+texture = SubResource("CompressedTexture2D_mxejm")
 expand_mode = 5
 stretch_mode = 5
 
@@ -49,7 +60,7 @@ offset_left = 95.0
 offset_top = -4.0
 offset_right = 135.0
 offset_bottom = 36.0
-texture = ExtResource("2_362k2")
+texture = SubResource("CompressedTexture2D_vswio")
 expand_mode = 5
 stretch_mode = 5
 
@@ -59,7 +70,7 @@ offset_left = 195.0
 offset_top = -4.0
 offset_right = 235.0
 offset_bottom = 36.0
-texture = ExtResource("3_gjutm")
+texture = SubResource("CompressedTexture2D_tywwt")
 expand_mode = 5
 stretch_mode = 5
 
@@ -68,7 +79,7 @@ layout_mode = 0
 offset_left = -25.0
 offset_right = 65.0
 offset_bottom = 40.0
-texture = ExtResource("4_an7u7")
+texture = SubResource("CompressedTexture2D_vtemm")
 expand_mode = 5
 stretch_mode = 5
 
@@ -88,7 +99,7 @@ offset_left = 61.0
 offset_top = -14.0
 offset_right = 121.0
 offset_bottom = 46.0
-texture = ExtResource("5_2cqjc")
+texture = SubResource("CompressedTexture2D_bjpur")
 expand_mode = 5
 stretch_mode = 5
 
@@ -98,6 +109,6 @@ offset_left = 161.0
 offset_top = -4.0
 offset_right = 201.0
 offset_bottom = 36.0
-texture = ExtResource("6_3e8x0")
+texture = SubResource("CompressedTexture2D_lxjki")
 expand_mode = 5
 stretch_mode = 5
