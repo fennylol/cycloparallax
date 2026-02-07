@@ -1,8 +1,41 @@
 [gd_scene format=3 uid="uid://dlaimmt37u5ku"]
 
 [ext_resource type="Script" uid="uid://ul3211p6apkf" path="res://6_UserInterface/scroll_display.gd" id="1_an272"]
+[ext_resource type="Texture2D" uid="uid://cqabwhbdtd1h4" path="res://6_UserInterface/level_select_icons/seal_button.png" id="3_u82m8"]
+[ext_resource type="Texture2D" uid="uid://4xa6hfwojvam" path="res://6_UserInterface/level_select_icons/return_text.png" id="4_pmw1b"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_87jy0"]
+atlas = ExtResource("3_u82m8")
+region = Rect2(0, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4tkv1"]
+atlas = ExtResource("3_u82m8")
+region = Rect2(180, 0, 90, 90)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f5ufs"]
+atlas = ExtResource("3_u82m8")
+region = Rect2(90, 0, 90, 90)
 
 [node name="ScrollDisplay" type="Node2D" unique_id=509602840]
 script = ExtResource("1_an272")
 
 [node name="Scroll" type="Sprite2D" parent="." unique_id=766752607]
+
+[node name="menu_button" type="TextureButton" parent="Scroll" unique_id=1962969764]
+visible = false
+offset_left = -49.0
+offset_top = -466.0
+offset_right = 41.0
+offset_bottom = -376.0
+texture_normal = SubResource("AtlasTexture_87jy0")
+texture_pressed = SubResource("AtlasTexture_4tkv1")
+texture_hover = SubResource("AtlasTexture_f5ufs")
+texture_focused = SubResource("AtlasTexture_f5ufs")
+
+[node name="menu_text" type="TextureRect" parent="Scroll" unique_id=358129750]
+visible = false
+offset_left = -119.0
+offset_top = -404.0
+offset_right = 138.0
+offset_bottom = -364.0
+texture = ExtResource("4_pmw1b")

@@ -60,12 +60,19 @@ func _on_screen_size_changed() -> void:
 func _on_pause_toggle(paused: bool):
 	if paused and Input.is_action_just_pressed("pause"):
 		change_scroll_texture(
-			PAUSE_SCROLL_RESET if has_shown_prompt_reset else 
+			PAUSE_SCROLL_RESET if has_shown_prompt_reset else
+			PAUSE_SCROLL_RESET if current_level >= 3 else
 			PAUSE_SCROLL_SHIFT if has_shown_prompt_shift else
+			PAUSE_SCROLL_SHIFT if current_level >= 2 else
 			PAUSE_SCROLL_PLACE if has_shown_prompt_placeblock else 
+			PAUSE_SCROLL_PLACE if current_level >= 1 else
 			PAUSE_SCROLL_MOVE)
+		for i in Scroll.get_children():
+			i.visible = true
 	elif not paused:
 		ScrollState = ScrollStates.END
+		for i in Scroll.get_children():
+			i.visible = false
 
 func _process(delta: float) -> void:
 	if not Scroll.texture: return
