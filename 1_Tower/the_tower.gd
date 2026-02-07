@@ -12,6 +12,7 @@ class_name  TheTowerNode
 @onready var Enviro      : WorldEnvironment= $WorldEnvironment
 @onready var Tutorial    : ScrollDisplayNode = $CanvasLayer/ScrollDisplay
 @onready var CoinUI      : Control         = $CanvasLayer/Coin
+@onready var Particles   : GPUParticles3D  = $WizardsSpinnyBit/DollyCamera/GPUParticles3D
 @onready var BottomTower : Node3D = $BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff
 @onready var BlockInventoryElement = preload("res://6_UserInterface/BlockInventoryElement.tscn")
 signal force_cancel
@@ -141,6 +142,7 @@ func _on_tiny_wizard_coin_pickup():
 
 ## CALLED ON LEVEL RESET
 func _on_level_ring_reset_level(_lvl: int, _height : float):
+	Particles.emitting = true
 	BlockArray.clear()
 	for i in NextBlockUI.get_children():
 		i.queue_free()
