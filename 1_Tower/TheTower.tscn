@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://hbu25veek1no" path="res://4_Blocks/LevelRing.tscn" id="5_401sn"]
 [ext_resource type="PackedScene" uid="uid://c7fwywts260g4" path="res://4_Blocks/DecorativeRing.tscn" id="6_401sn"]
 [ext_resource type="Material" uid="uid://m80rmki4fbox" path="res://sky/examples/night_sky.tres" id="7_gdh3d"]
+[ext_resource type="Texture2D" uid="uid://bnbanbmlddpj4" path="res://6_UserInterface/level_select_icons/level_icons.png" id="8_fkp0n"]
 [ext_resource type="PackedScene" uid="uid://dlaimmt37u5ku" path="res://6_UserInterface/ScrollDisplay.tscn" id="8_gdh3d"]
 
 [sub_resource type="Sky" id="Sky_ieg05"]
@@ -24,6 +25,10 @@ glow_bloom = 0.2
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gdh3d"]
 albedo_color = Color(0.32941177, 0.32941177, 0.32941177, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmdka"]
+atlas = ExtResource("8_fkp0n")
+region = Rect2(0, 0, 16, 16)
 
 [node name="TheTower" type="Node3D" unique_id=2103291013]
 script = ExtResource("1_vwlj8")
@@ -141,12 +146,36 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.85
 
+[node name="Coin" type="Control" parent="CanvasLayer" unique_id=714136450]
+visible = false
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Coin" unique_id=963364707]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+texture = SubResource("AtlasTexture_xmdka")
+expand_mode = 5
+stretch_mode = 5
+
 [node name="ScrollDisplay" parent="CanvasLayer" unique_id=509602840 instance=ExtResource("8_gdh3d")]
 
 [connection signal="force_cancel" from="." to="WizardsSpinnyBit/TinyWizard" method="_on_the_tower_force_cancel"]
 [connection signal="cancel_placement" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_cancel_placement"]
+[connection signal="coin_pickup" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_coin_pickup"]
+[connection signal="coin_pickup" from="WizardsSpinnyBit/TinyWizard" to="CanvasLayer/ScrollDisplay" method="_on_tiny_wizard_coin_pickup"]
 [connection signal="holding_block" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_holding_block"]
 [connection signal="level_complete" from="WizardsSpinnyBit/TinyWizard" to="BlocksSpinnyBit/LevelRing" method="_on_tiny_wizard_level_complete"]
+[connection signal="level_complete" from="WizardsSpinnyBit/TinyWizard" to="CanvasLayer/ScrollDisplay" method="_on_tiny_wizard_level_complete"]
 [connection signal="pickup_block" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_pickup_block"]
 [connection signal="pickup_block" from="WizardsSpinnyBit/TinyWizard" to="CanvasLayer/ScrollDisplay" method="_on_tiny_wizard_pickup_block"]
 [connection signal="placing_block" from="WizardsSpinnyBit/TinyWizard" to="." method="_on_tiny_wizard_placing_block"]

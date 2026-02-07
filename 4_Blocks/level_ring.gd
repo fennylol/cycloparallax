@@ -99,7 +99,7 @@ func _place_block(pos: Vector2i, type: BlockTypes) -> Node3D:
 	new_block.position.y = pos.y * 0.5
 	return new_block
 
-func _load_level(level_idx: int, clear_blocks: bool = true, ignore_goal: bool = false) -> void:
+func _load_level(level_idx: int, clear_blocks: bool = true, ignore_obj: bool = false) -> void:
 	if level_idx >= LEVELS.size(): printerr("level idx ", level_idx , " doesn't exist."); return
 	var level_map: Array[Array] = LEVELS[level_idx]
 	
@@ -115,7 +115,8 @@ func _load_level(level_idx: int, clear_blocks: bool = true, ignore_goal: bool = 
 		for y in range(x_slice.size()):
 			var type = x_slice[y]
 			if type == PLT_AIR: continue
-			if type == OBJ_END and ignore_goal: continue
+			if type == OBJ_END and ignore_obj: continue
+			if type == OBJ_MSC and ignore_obj: continue
 			_place_block(Vector2i(x,y+current_y_height), type)
 
 ## ADD HEIGHTS OF PREVIOUS LEVELS
@@ -134,7 +135,7 @@ func reload_the_whole_daggum_map():
 	current_y_height = 0
 	var clear_blocks = true
 	for i in range(current_level + 1):
-		var ignore_goal = false if i == current_level else true
+		var ignore_obj = false if i == current_level else true
 		var y_offset : int = 0
 		for j in range(i):
 			var max_height_of_level_j = 0
@@ -144,12 +145,15 @@ func reload_the_whole_daggum_map():
 				if x_slice.size() > max_height_of_level_j: max_height_of_level_j = x_slice.size()
 			y_offset += max_height_of_level_j
 		current_y_height = y_offset
-		_load_level(i, clear_blocks, ignore_goal)
+		_load_level(i, clear_blocks, ignore_obj)
 		clear_blocks = false ## clears blocks on the first loop and then never again
 	self.get_parent().rotation_degrees.y = 0
 	reset_level.emit(current_level, current_y_height)
 
-func _on_tiny_wizard_level_complete():
+func _on_tiny_wizard_level_complete(coin_collected : bool):
+	TheLawsOfTheLand.levels_completed[current_level] = true
+	if coin_collected: TheLawsOfTheLand.levels_complete_with_coin[current_level] = true
+	
 	current_level += 1
 	reload_the_whole_daggum_map()
 
@@ -277,7 +281,7 @@ const SHIFTING: Array[Array] = [
 	[PLT_STN], # 15 <-> 31 
 	[PLT_STN], # 16 <->  0
 	[PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 17 <->  1
-	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 18 <->  2
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, OBJ_MSC, PLT_STN], # 18 <->  2
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], # 19 <->  3
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 20 <->  4
 	[PLT_STN, ITM_PLX, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 21 <->  5
@@ -318,7 +322,7 @@ const GATEWAY: Array[Array] = [
 	[PLT_STN, PLT_GTW, PLT_GTW, PLT_PLX, PLT_GTW, PLT_GTW, PLT_GTW, PLT_GTW], # 21 <->  5
 	[PLT_STN, PLT_GTW, PLT_GTW, PLT_PLX, PLT_GTW, PLT_GTW, PLT_GTW], # 22 <->  6
 	[PLT_STN, PLT_AIR, PLT_GTW, PLT_PLX, PLT_GTW, PLT_GTW, PLT_GTW], # 23 <->  7
-	[PLT_STN, PLT_AIR, PLT_GTW, PLT_GTW, PLT_GTW, PLT_GTW, PLT_GTW], # 24 <->  8
+	[PLT_STN, OBJ_MSC, PLT_GTW, PLT_GTW, PLT_GTW, PLT_GTW, PLT_GTW], # 24 <->  8
 	[PLT_STN, PLT_GTW, PLT_GTW, PLT_PLX, PLT_GTW, PLT_GTW, PLT_GTW, PLT_GTW], # 25 <->  9
 	[PLT_STN, PLT_GTW, PLT_GTW, PLT_PLX, PLT_GTW, PLT_GTW, PLT_GTW, PLT_GTW], # 26 <-> 10
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_GTW, PLT_GTW, PLT_AIR, PLT_GTW, PLT_GTW], # 27 <-> 11
@@ -354,7 +358,7 @@ const VOLCANO: Array[Array] = [
 	[PLT_STN, PLT_FIR, PLT_FIR], # 22 <->  6
 	[PLT_STN, PLT_FIR], # 23 <->  7
 	[PLT_STN, PLT_STN, PLT_STN, PLT_PLX, PLT_STN], # 24 <->  8
-	[PLT_STN, PLT_AIR, PLT_STN, PLT_PLX, PLT_AIR, PLT_STN], # 25 <->  9
+	[PLT_STN, PLT_AIR, PLT_STN, PLT_PLX, OBJ_MSC, PLT_STN], # 25 <->  9
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_PLX, PLT_AIR, PLT_STN, PLT_STN], # 26 <-> 10
 	[PLT_STN, ITM_PLX, PLT_STN, PLT_PLX, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 27 <-> 11
 	[PLT_STN, PLT_AIR, PLT_STN, PLT_PLX, PLT_STN, PLT_STN, PLT_GTW, PLT_STN, PLT_STN], # 28 <-> 12
@@ -371,7 +375,7 @@ const LAVA_FALL: Array[Array] = [
 	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, ITM_PLX, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN], #  4 <-> 20 
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], #  5 <-> 21 
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_GTW, PLT_STN, ITM_PLX, PLT_STN], #  6 <-> 22 
-	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_FIR, PLT_GTW, PLT_AIR, PLT_AIR, PLT_STN, ITM_PLX, PLT_STN], #  7 <-> 23 
+	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_FIR, PLT_GTW, OBJ_MSC, PLT_AIR, PLT_STN, ITM_PLX, PLT_STN], #  7 <-> 23 
 	[PLT_STN, PLT_FIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_STN], #  8 <-> 24 
 	[PLT_STN, PLT_FIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, ITM_STN, ITM_FIR, PLT_AIR, PLT_AIR, PLT_STN], #  9 <-> 25 
 	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 10 <-> 26 
@@ -422,7 +426,7 @@ const AIRLOCK: Array[Array] = [
 	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 20 <->  4
 	[PLT_STN, PLT_STN, PLT_PLX, PLT_STN, PLT_AIR, PLT_STN], # 21 <->  5
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_STN, PLT_AIR, PLT_STN], # 22 <->  6
-	[PLT_STN, PLT_AIR, PLT_AIR, PLT_STN, PLT_AIR, PLT_AIR, PLT_FIR, PLT_STN], # 23 <->  7
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_STN, PLT_AIR, OBJ_MSC, PLT_FIR, PLT_STN], # 23 <->  7
 	[PLT_STN, PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 24 <->  8
 	[PLT_STN, PLT_STN, ITM_PLX, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], # 25 <->  9
 	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_GTW], # 26 <-> 10

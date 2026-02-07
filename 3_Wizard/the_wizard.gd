@@ -72,7 +72,8 @@ signal pickup_block(type: LevelRingNode.BlockTypes)
 signal holding_block(dir: PlacementDirections, type: LevelRingNode.BlockTypes)
 signal placing_block
 signal cancel_placement
-signal level_complete
+signal level_complete(coin : bool)
+signal coin_pickup
 signal save_safe_spot
 signal request_safe_spot
 var WalkingTimer     : float     = 0.0
@@ -84,6 +85,7 @@ var clear_for_takeoff: bool      = true
 var yet_to_place     : bool      = false
 var LastSpriteCW     : bool      = true
 var win_lockout      : bool      = false
+var coin_collected   : bool      = false
 @onready var TheBody : Area3D = $Area3D
 @onready var LArmRay : RayCast3D = $LeftArm
 @onready var LLegRay : RayCast3D = $LeftLeg
@@ -155,13 +157,14 @@ func _process(delta: float)  -> void:
 		if type == LevelRingNode.BlockTypes.OBJ_END:
 			if not win_lockout:
 				win_lockout = true
-				level_complete.emit()
+				level_complete.emit(coin_collected)
 			else:
 				return
 		
 		## COLLECT COIN
 		elif type == LevelRingNode.BlockTypes.OBJ_MSC: 
-			print("coin collected!")
+			coin_collected = true
+			coin_pickup.emit()
 			pickup_list[0].get_parent().queue_free()
 		
 		## COLLECT BLOCK
@@ -209,6 +212,7 @@ func _on_the_tower_force_cancel():
 
 ## CALLED IF THE LEVEL IS RESET
 func _on_level_ring_reset_level(_lvl : int, height : float):
+	coin_collected = false
 	position.y = (height / 2) + 0.1
 	await get_tree().create_timer(1.0).timeout
 	win_lockout = false

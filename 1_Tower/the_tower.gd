@@ -11,6 +11,7 @@ class_name  TheTowerNode
 @onready var NextBlockUI : VBoxContainer   = $CanvasLayer/Control/HBoxContainer/VBoxContainer
 @onready var Enviro      : WorldEnvironment= $WorldEnvironment
 @onready var Tutorial    : ScrollDisplayNode = $CanvasLayer/ScrollDisplay
+@onready var CoinUI      : Control         = $CanvasLayer/Coin
 @onready var BottomTower : Node3D = $BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff
 @onready var BlockInventoryElement = preload("res://6_UserInterface/BlockInventoryElement.tscn")
 signal force_cancel
@@ -37,10 +38,10 @@ var Playing: bool = true:
 # associated text and colors #
 # ========================== #
 var item_dict = {
-	LevelRingNode.BlockTypes.PLT_STN:[Color("545454"), "", "Stone"], 
-	LevelRingNode.BlockTypes.PLT_PLX:[Color("5edb81"), "", "Parallax"],
-	LevelRingNode.BlockTypes.PLT_GTW:[Color("6eccec"), "", "Gateway"],
-	LevelRingNode.BlockTypes.PLT_FIR:[Color("ec7380"), "", "Fire"],
+	LevelRingNode.BlockTypes.PLT_STN:[Color("545454"), "Stone Brick"], 
+	LevelRingNode.BlockTypes.PLT_PLX:[Color("5edb81"), "Green Brick"],
+	LevelRingNode.BlockTypes.PLT_GTW:[Color("6eccec"), "Blue Brick"],
+	LevelRingNode.BlockTypes.PLT_FIR:[Color("ec7380"), "Red Brick"],
 }
 
 # ================ # 
@@ -135,8 +136,12 @@ func _on_tiny_wizard_holding_block(dir: TinyWizardNode.PlacementDirections) -> v
 		
 		LevelBlocks._hold_block(block_placement_loc, type)
 
+func _on_tiny_wizard_coin_pickup():
+	CoinUI.visible = true
+
 ## CALLED ON LEVEL RESET
 func _on_level_ring_reset_level(_lvl: int, _height : float):
 	BlockArray.clear()
 	for i in NextBlockUI.get_children():
 		i.queue_free()
+	CoinUI.visible = false

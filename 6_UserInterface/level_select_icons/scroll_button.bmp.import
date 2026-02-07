@@ -1,0 +1,16 @@
+[remap]
+
+importer="bitmap"
+type="BitMap"
+uid="uid://dwur5k3rvejjg"
+path="res://.godot/imported/scroll_button.bmp-4e22d749b2e9317428d2be7ebe8253cd.res"
+
+[deps]
+
+source_file="res://6_UserInterface/level_select_icons/scroll_button.bmp"
+dest_files=["res://.godot/imported/scroll_button.bmp-4e22d749b2e9317428d2be7ebe8253cd.res"]
+
+[params]
+
+create_from=0
+threshold=0.5

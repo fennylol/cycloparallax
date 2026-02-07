@@ -6,13 +6,6 @@ signal level_selected(level_idx: int)
 
 var LEVEL_BUTTONS : Array[Control] = []
 
-var levels_completed : Array[bool] = [
-	false,false,false,false,false,false,false,false,false,false
-]
-var levels_complete_with_coin : Array[bool] = [
-	false,false,false,false,false,false,false,false,false,false
-]
-
 func _ready():
 	LEVEL_BUTTONS = [
 	$buttons/CenterContainer/level_rows/level_columns/level_01,
@@ -27,8 +20,8 @@ func _ready():
 	$buttons/CenterContainer/level_rows/level_columns2/level_10
 	]
 	for i in range(LEVEL_BUTTONS.size()):
-		LEVEL_BUTTONS[i].get_child(3).visible = levels_completed[i]
-		LEVEL_BUTTONS[i].get_child(2).visible = levels_complete_with_coin[i]
+		LEVEL_BUTTONS[i].get_child(3).visible = TheLawsOfTheLand.levels_completed[i]
+		LEVEL_BUTTONS[i].get_child(2).visible = TheLawsOfTheLand.levels_complete_with_coin[i]
 
 func _on_screen_size_changed() -> void:
 	var screensize: Vector2 = get_viewport().size

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctef7dca8ty2n"
-path="res://.godot/imported/scroll_button.png-4e278eebe318b136ed507a0a6c92b64a.ctex"
+path="res://.godot/imported/scroll_button.png-f24031a565eb853afc569bb5411c2671.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://6_UserInterface/scrolls/scroll_button.png"
-dest_files=["res://.godot/imported/scroll_button.png-4e278eebe318b136ed507a0a6c92b64a.ctex"]
+source_file="res://6_UserInterface/level_select_icons/scroll_button.png"
+dest_files=["res://.godot/imported/scroll_button.png-f24031a565eb853afc569bb5411c2671.ctex"]
 
 [params]
 
