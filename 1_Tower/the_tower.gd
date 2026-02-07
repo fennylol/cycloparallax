@@ -148,6 +148,8 @@ func _on_level_ring_reset_level(_lvl: int, _height : float):
 		i.queue_free()
 	CoinUI.visible = false
 
-func _on_scroll_display_to_main_menu_please():
+func _on_scroll_display_to_main_menu_please(): return_to_menu()
+func _on_level_ring_final_level_win(): return_to_menu()
+func return_to_menu():
 	Playing = false
 	self.get_parent().return_to_main_menu()

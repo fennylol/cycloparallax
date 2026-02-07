@@ -1,12 +1,9 @@
 extends Node
 
-var levels_completed : Array[bool] = [
-	false,false,false,false,false,false,false,false,false,false
-]
-var levels_complete_with_coin : Array[bool] = [
-	false,false,false,false,false,false,false,false,false,false
-]
+var levels_completed          : Array[bool] = [false,false,false,false,false,false,false,false,false,false]
+var levels_complete_with_coin : Array[bool] = [false,false,false,false,false,false,false,false,false,false]
 
+signal final_level_complete
 signal paused_changed(paused: bool)
 var Paused: bool = false:
 	set(new_val):

@@ -10,12 +10,14 @@ config_version=5
 
 [application]
 
-config/name="cycloparallax"
+config/name="Great Wizard Perilacks"
+config/description="You are the Great Wizard Perilacks (pronounced PAIR-uh-LAX) and you wish to build yourself a Tower. Use your magic spells to move, place blocks, and interact through strange and esoteric perspectives. In the end, only the grandest of towers will be enough!"
 run/main_scene="uid://g165vedp7rb3"
 config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/stretch_mode=4
+boot_splash/use_filter=false
 boot_splash/image="uid://d1i02movaa25c"
-config/icon="res://icon.svg"
+config/icon="uid://ddjdu2r10gj2t"
 
 [autoload]
 

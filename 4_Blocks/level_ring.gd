@@ -1,10 +1,13 @@
 extends Node3D
 class_name LevelRingNode
 
+@onready var TowerTop = $TowerTop
+
 var HoldingBlock: Node3D
 var invalid_placement_tile : bool = false
 const HOLD_ALPHA: float = 0.5
 signal reset_level(lvl : int, height : float)
+signal final_level_win()
 
 enum BlockTypes {
 	PLT_AIR, 
@@ -38,9 +41,9 @@ const LEVELS: Array[Array] = [
 	BLOCK_PLACEMENT,  # 2
 	SHIFTING,         # 3
 	GATEWAY,          # 4
-	FILLER,          # 5 REPLACE
+	FILLER,           # 5 REPLACE
 	VOLCANO,          # 6
-	FILLER,          # 7 REPLACE
+	FILLER,           # 7 REPLACE
 	LAVA_FALL,        # 8
 	AIRLOCK,          # 9
 	ASCENT            # 10
@@ -102,6 +105,7 @@ func _place_block(pos: Vector2i, type: BlockTypes) -> Node3D:
 	return new_block
 
 func _load_level(level_idx: int, clear_blocks: bool = true, ignore_obj: bool = false) -> void:
+	TowerTop.visible = false
 	if level_idx >= LEVELS.size(): printerr("level idx ", level_idx , " doesn't exist."); return
 	var level_map: Array[Array] = LEVELS[level_idx]
 	
@@ -133,22 +137,6 @@ func get_y_height_for_level(level : int) -> int:
 		y_offset += max_height_of_level_i
 	return y_offset
 
-func _on_scroll_display_to_main_menu_please():
-	var level_map: Array[Array] = LEVEL_BASE
-	
-	for x in range(level_map.size()):
-		var current_x_slice: Node3D = get_child(x)
-		while current_x_slice.get_child_count():
-			var block: Node3D = current_x_slice.get_child(0)
-			block.queue_free()
-			current_x_slice.remove_child(block)
-		
-		var x_slice: Array = level_map[x]
-		for y in range(x_slice.size()):
-			var type = x_slice[y]
-			if type == PLT_AIR: continue
-			_place_block(Vector2i(x,y), type)
-
 func reload_the_whole_daggum_map():
 	current_y_height = 0
 	var clear_blocks = true
@@ -168,12 +156,37 @@ func reload_the_whole_daggum_map():
 	self.get_parent().rotation_degrees.y = 0
 	reset_level.emit(current_level, current_y_height)
 
+func _on_scroll_display_to_main_menu_please():
+	load_menu_level()
+
 func _on_tiny_wizard_level_complete(coin_collected : bool):
 	TheLawsOfTheLand.levels_completed[current_level] = true
 	if coin_collected: TheLawsOfTheLand.levels_complete_with_coin[current_level] = true
 	
-	current_level += 1
-	reload_the_whole_daggum_map()
+	if current_level == (LEVELS.size() - 1):
+		final_level_win.emit()
+		current_level = 0
+		load_menu_level(true)
+		TowerTop.visible = true
+	else:
+		current_level += 1
+		reload_the_whole_daggum_map()
+
+func load_menu_level(with_top : bool = false):
+	var level_map: Array[Array] = WIN_SCREEN if with_top else LEVEL_BASE
+	
+	for x in range(level_map.size()):
+		var current_x_slice: Node3D = get_child(x)
+		while current_x_slice.get_child_count():
+			var block: Node3D = current_x_slice.get_child(0)
+			block.queue_free()
+			current_x_slice.remove_child(block)
+		
+		var x_slice: Array = level_map[x]
+		for y in range(x_slice.size()):
+			var type = x_slice[y]
+			if type == PLT_AIR: continue
+			_place_block(Vector2i(x,y), type)
 
 const LEVEL_BASE: Array[Array] = [
 	[PLT_STN], #  0 <-> 16 
@@ -532,4 +545,39 @@ const FILLER: Array[Array] = [
 	[PLT_STN], # 29 <-> 13
 	[PLT_STN], # 30 <-> 14
 	[PLT_STN]  # 31 <-> 15
+]
+
+const WIN_SCREEN: Array[Array] = [
+	[PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], #  0 <-> 16 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], #  2 <-> 18 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], #  1 <-> 17 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], #  3 <-> 19 
+	[PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], #  4 <-> 20 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], #  5 <-> 21 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], #  6 <-> 22 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], #  7 <-> 23 
+	[PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], #  8 <-> 24 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], #  9 <-> 25 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 10 <-> 26 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 11 <-> 27 
+	[PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], # 12 <-> 28 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 13 <-> 29 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 14 <-> 30 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 15 <-> 31 
+	[PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], # 16 <->  0
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 17 <->  1
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 18 <->  2
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 19 <->  3
+	[PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], # 20 <->  4
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 21 <->  5
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 22 <->  6
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 23 <->  7
+	[PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], # 24 <->  8
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 25 <->  9
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 26 <-> 10
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 27 <-> 11
+	[PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], # 28 <-> 12
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 29 <-> 13
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR], # 30 <-> 14
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR]  # 31 <-> 15
 ]
