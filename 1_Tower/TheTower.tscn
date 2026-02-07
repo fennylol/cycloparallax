@@ -39,7 +39,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 5)
 [node name="SpotLight3D" type="SpotLight3D" parent="WizardsSpinnyBit/TinyWizard" unique_id=1760019126]
 transform = Transform3D(1, 0, 0, 0, 0.90630776, 0.42261827, 0, -0.42261827, 0.90630776, 0, 1.5, 3)
 light_color = Color(0.74509805, 0.7411765, 0.96862745, 1)
-spot_range = 20.0
+light_energy = 2.0
+spot_range = 13.0
 spot_angle = 65.0
 
 [node name="DollyCamera" parent="WizardsSpinnyBit" unique_id=623577091 instance=ExtResource("3_401sn")]

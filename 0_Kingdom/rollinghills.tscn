@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://braorkrpxj0y5"]
+
+[ext_resource type="Texture2D" path="res://0_Kingdom/Grass001_1K-PNG_Color.png" id="1_dnnmf"]
+[ext_resource type="ArrayMesh" path="res://0_Kingdom/ground.tres" id="2_8lbak"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8lbak"]
+albedo_texture = ExtResource("1_dnnmf")
+uv1_scale = Vector3(25, 25, 25)
+
+[node name="_MeshInstance3D_2" type="MeshInstance3D" unique_id=796456360]
+material_override = SubResource("StandardMaterial3D_8lbak")
+mesh = ExtResource("2_8lbak")
