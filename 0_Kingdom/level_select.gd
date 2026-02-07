@@ -1,6 +1,8 @@
 extends Control
+class_name LevelSelectNode
 
 @onready var button_node = $buttons/CenterContainer
+signal level_selected(level_idx: int)
 
 var LEVEL_BUTTONS : Array[Control] = []
 
@@ -33,16 +35,13 @@ func _on_screen_size_changed() -> void:
 	var size_ratio = screensize.x / 700
 	button_node.scale = Vector2(size_ratio, size_ratio)
 
-func select_level(level:int):
-	get_parent().activate_the_tower(level)
-
-func _on_L1_button_pressed(): select_level(0)
-func _on_L2_button_pressed(): select_level(1)
-func _on_L3_button_pressed(): select_level(2)
-func _on_L4_button_pressed(): select_level(3)
-func _on_L5_button_pressed(): select_level(4)
-func _on_L6_button_pressed(): select_level(5)
-func _on_L7_button_pressed(): select_level(6)
-func _on_L8_button_pressed(): select_level(7)
-func _on_L9_button_pressed(): select_level(8)
-func _on_L10_button_pressed(): select_level(9)
+func _on_L1_button_pressed() : level_selected.emit(0)
+func _on_L2_button_pressed() : level_selected.emit(1)
+func _on_L3_button_pressed() : level_selected.emit(2)
+func _on_L4_button_pressed() : level_selected.emit(3)
+func _on_L5_button_pressed() : level_selected.emit(4)
+func _on_L6_button_pressed() : level_selected.emit(5)
+func _on_L7_button_pressed() : level_selected.emit(6)
+func _on_L8_button_pressed() : level_selected.emit(7)
+func _on_L9_button_pressed() : level_selected.emit(8)
+func _on_L10_button_pressed(): level_selected.emit(9)

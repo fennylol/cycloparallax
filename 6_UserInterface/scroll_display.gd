@@ -72,25 +72,19 @@ func _process(delta: float) -> void:
 	match ScrollState:
 		ScrollStates.START:
 			TheLawsOfTheLand.Paused = true
+			if not _is_scroll_pause_scroll(): Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 			Scroll.position.y = lerp(Scroll.position.y, scroll_show_pos.y, delta*SCROLL_LERP_SPEED)
 			Scroll.rotation_degrees = lerp(Scroll.rotation_degrees, scroll_show_rot, delta*SCROLL_LERP_SPEED)
 			if abs(Scroll.position.y-scroll_show_pos.y) < 30:
 				ScrollState = ScrollStates.SHOW
 		ScrollStates.SHOW:
-			if Input.is_action_just_pressed("pause") and \
-				(Scroll.texture == PAUSE_SCROLL_MOVE or  \
-				Scroll.texture == PAUSE_SCROLL_PLACE or  \
-				Scroll.texture == PAUSE_SCROLL_RESET or  \
-				Scroll.texture == PAUSE_SCROLL_SHIFT):
+			if Input.is_action_just_pressed("pause") and _is_scroll_pause_scroll():
 				ScrollState = ScrollStates.END
 				TheLawsOfTheLand.Paused = false
 			elif (Input.is_action_just_pressed("move_left") \
 				or Input.is_action_just_pressed("move_right")\
 				or Input.is_action_just_pressed("jump")) and \
-				not (Scroll.texture == PAUSE_SCROLL_MOVE or  \
-					Scroll.texture == PAUSE_SCROLL_PLACE or  \
-					Scroll.texture == PAUSE_SCROLL_RESET or  \
-					Scroll.texture == PAUSE_SCROLL_SHIFT):
+				not _is_scroll_pause_scroll():
 				ScrollState = ScrollStates.END
 				TheLawsOfTheLand.Paused = false
 		ScrollStates.END:
@@ -100,6 +94,11 @@ func change_scroll_texture(new_tex: Texture) -> void:
 	Scroll.texture = new_tex
 	_on_screen_size_changed()
 
+func _is_scroll_pause_scroll() -> bool:
+	return (Scroll.texture == PAUSE_SCROLL_MOVE or  \
+			Scroll.texture == PAUSE_SCROLL_PLACE or  \
+			Scroll.texture == PAUSE_SCROLL_RESET or  \
+			Scroll.texture == PAUSE_SCROLL_SHIFT)
 
 ## KEEPS TRACK OF WHICH LEVEL WE ARE ON
 func _on_level_ring_reset_level(lvl, _height):

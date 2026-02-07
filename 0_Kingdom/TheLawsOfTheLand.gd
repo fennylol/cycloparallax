@@ -4,6 +4,8 @@ signal paused_changed(paused: bool)
 var Paused: bool = false:
 	set(new_val):
 		Paused = new_val
+		if Paused: Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+		else: Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		paused_changed.emit(new_val)
 signal perspective_changed(orthogonal: bool) 
 var Perspective: bool = false:
