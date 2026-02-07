@@ -80,7 +80,7 @@ func _process(delta: float) -> void:
 			if sky_material:
 				sky_material.set_shader_parameter("sky_rotation_degrees", BlocksCenter.rotation_degrees.y/30 if TheLawsOfTheLand.Perspective else BlocksCenter.rotation_degrees.y)
 		DollyCamera.TargetHeight = TinyWizard.position.y
-	else:
+	elif get_parent().PlayingState == 0:
 		if (fmod(Time.get_unix_time_from_system(), 5)) < TinyWizard.JUMP_TIME*randf():
 			TinyWizard.velocity.y = TinyWizard.JUMP_SPEED
 		TinyWizard.WalkingSpeed = -0.25

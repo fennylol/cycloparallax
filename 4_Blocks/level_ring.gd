@@ -34,12 +34,15 @@ const Blocks: Array[PackedScene] = [
 var current_level = 0
 var current_y_height = 0
 const LEVELS: Array[Array] = [
+	# tutorial
 	JUMP_AND_FIRE,
 	BLOCK_PLACEMENT,
 	SHIFTING,
 	GATEWAY,
+	# easy
 	VOLCANO,
-	test_LEVEL_2,
+	# medium
+	# hard
 	LAVA_FALL,
 	AIRLOCK
 ]

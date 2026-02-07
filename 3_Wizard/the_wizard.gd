@@ -103,16 +103,16 @@ func _process(delta: float)  -> void:
 	## ------------
 	##   MOVEMENT
 	## ------------
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and get_parent().get_parent().Playing:
 		if CoyoteTimeLeft > 0.0:
 			JumpTimeLeft = JUMP_TIME
 			Mouth2.stream = JUMP_SOUNDS[floor(randf()*JUMP_SOUNDS.size())]
 			Mouth2.play(0.0)
-	if Input.is_action_just_released("jump"):
+	if Input.is_action_just_released("jump") and get_parent().get_parent().Playing:
 		CoyoteTimeLeft = 0.0
 		JumpTimeLeft = 0.0
 	
-	if Input.is_action_pressed("jump"):
+	if Input.is_action_pressed("jump") and get_parent().get_parent().Playing:
 		CoyoteTimeLeft  = 0.0
 		if JumpTimeLeft > 0.0:
 			JumpTimeLeft -= delta
@@ -130,7 +130,8 @@ func _process(delta: float)  -> void:
 	velocity.y = max(velocity.y, TERMINAL_VELOCITY)
 	
 	var direction: int = int(Input.is_action_pressed("move_left"))-int(Input.is_action_pressed("move_right"))
-	if direction : WalkingSpeed = lerpf(WalkingSpeed, direction*WALK_SPEED, delta*WALK_ACCEL)
+	if direction and get_parent().get_parent().Playing:
+		WalkingSpeed = lerpf(WalkingSpeed, direction*WALK_SPEED, delta*WALK_ACCEL)
 	else         : WalkingSpeed = move_toward(WalkingSpeed, 0.0, delta*WALK_ACCEL)
 	if is_left_side_blocked() : WalkingSpeed = min(0.0, WalkingSpeed)
 	if is_right_side_blocked(): WalkingSpeed = max(0.0, WalkingSpeed)
