@@ -13,6 +13,8 @@ config_version=5
 config/name="cycloparallax"
 run/main_scene="uid://g165vedp7rb3"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/stretch_mode=4
+boot_splash/image="uid://d1i02movaa25c"
 config/icon="res://icon.svg"
 
 [autoload]

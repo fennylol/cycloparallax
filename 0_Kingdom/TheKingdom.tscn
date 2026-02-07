@@ -4,6 +4,10 @@
 [ext_resource type="PackedScene" uid="uid://dcklekg52ok2p" path="res://1_Tower/TheTower.tscn" id="2_iy18a"]
 [ext_resource type="Texture2D" uid="uid://usc2gecnaecw" path="res://0_Kingdom/splash.png" id="3_k0tmn"]
 [ext_resource type="PackedScene" uid="uid://nom7p35ew57u" path="res://0_Kingdom/level_select.tscn" id="4_3tt24"]
+[ext_resource type="Texture2D" uid="uid://cy8gbhwwpjua0" path="res://6_UserInterface/play_button.png" id="5_e4el5"]
+[ext_resource type="Texture2D" uid="uid://de3kdnk1jvd3o" path="res://6_UserInterface/play_button_hover.png" id="6_vxi76"]
+[ext_resource type="Texture2D" uid="uid://d3xudl6787w4b" path="res://6_UserInterface/levels_button.png" id="7_e4el5"]
+[ext_resource type="Texture2D" uid="uid://wr41p317e4nj" path="res://6_UserInterface/levels_button_hover.png" id="8_vxi76"]
 
 [node name="TheKingdom" type="Node3D" unique_id=1744412151]
 script = ExtResource("1_iy18a")
@@ -43,7 +47,7 @@ size_flags_stretch_ratio = 0.1
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer" unique_id=654527717]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.7
+size_flags_stretch_ratio = 0.8
 
 [node name="Control" type="Control" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer" unique_id=1508068460]
 layout_mode = 2
@@ -74,29 +78,35 @@ size_flags_vertical = 3
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=748427774]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.45
+size_flags_stretch_ratio = 0.35
 
 [node name="Control" type="Control" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1168159263]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=170916433]
+[node name="PlayButton" type="TextureButton" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1348375274]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
-text = "PLAY"
+texture_normal = ExtResource("5_e4el5")
+texture_hover = ExtResource("6_vxi76")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Control2" type="Control" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=182073789]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="LevelSelectButton" type="Button" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=395090783]
+[node name="LevelSelectButton" type="TextureButton" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=408476349]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.2
-text = "LEVEL SELECT"
+texture_normal = ExtResource("7_e4el5")
+texture_hover = ExtResource("8_vxi76")
+ignore_texture_size = true
+stretch_mode = 0
 
 [node name="Control3" type="Control" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer" unique_id=1472227321]
 layout_mode = 2
@@ -106,12 +116,12 @@ size_flags_stretch_ratio = 0.4
 [node name="Control2" type="Control" parent="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer" unique_id=634830535]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.5
+size_flags_stretch_ratio = 0.6
 
 [node name="Control2" type="Control" parent="CanvasLayer/Control/HBoxContainer" unique_id=1302716341]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.2
+size_flags_stretch_ratio = 0.1
 
 [connection signal="level_selected" from="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/LevelSelect" to="." method="select_level"]
 [connection signal="pressed" from="CanvasLayer/Control/HBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
