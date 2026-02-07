@@ -201,7 +201,7 @@ void sky() {
 	
 	vec3 sky_gradient = mix(bottom_color.rgb, top_color.rgb, clamp(rotated_eyedir.y, 0.0, 1.0));
 	vec3 sunset_color = sun_scatter * (1.0 - horizon_mask);
-	vec3 sky_color = clamp(sky_gradient + sunset_color, 0.0, 1.0);
+	vec3 sky_color = clamp(sky_gradient + sunset_color, 0.001, 1.0);
 	
 	// Stars
 	
