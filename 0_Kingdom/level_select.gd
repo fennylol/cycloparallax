@@ -1,5 +1,38 @@
 extends Control
 
+@onready var button_node = $buttons/CenterContainer
+
+var LEVEL_BUTTONS : Array[Control] = []
+
+var levels_completed : Array[bool] = [
+	false,false,false,false,false,false,false,false,false,false
+]
+var levels_complete_with_coin : Array[bool] = [
+	false,false,false,false,false,false,false,false,false,false
+]
+
+func _ready():
+	LEVEL_BUTTONS = [
+	$buttons/CenterContainer/level_rows/level_columns/level_01,
+	$buttons/CenterContainer/level_rows/level_columns/level_02,
+	$buttons/CenterContainer/level_rows/level_columns/level_03,
+	$buttons/CenterContainer/level_rows/level_columns/level_04,
+	$buttons/CenterContainer/level_rows/level_columns/level_05,
+	$buttons/CenterContainer/level_rows/level_columns2/level_06,
+	$buttons/CenterContainer/level_rows/level_columns2/level_07,
+	$buttons/CenterContainer/level_rows/level_columns2/level_08,
+	$buttons/CenterContainer/level_rows/level_columns2/level_09,
+	$buttons/CenterContainer/level_rows/level_columns2/level_10
+	]
+	for i in range(LEVEL_BUTTONS.size()):
+		LEVEL_BUTTONS[i].get_child(3).visible = levels_completed[i]
+		LEVEL_BUTTONS[i].get_child(2).visible = levels_complete_with_coin[i]
+
+func _on_screen_size_changed() -> void:
+	var screensize: Vector2 = get_viewport().size
+	var size_ratio = screensize.x / 700
+	button_node.scale = Vector2(size_ratio, size_ratio)
+
 func select_level(level:int):
 	get_parent().activate_the_tower(level)
 

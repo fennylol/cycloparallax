@@ -102,7 +102,7 @@ func change_scroll_texture(new_tex: Texture) -> void:
 
 
 ## KEEPS TRACK OF WHICH LEVEL WE ARE ON
-func _on_level_ring_reset_level(lvl, height):
+func _on_level_ring_reset_level(lvl, _height):
 	current_level = lvl
 	
 	if current_level == 0 and has_shown_prompt_movejump == false:
@@ -120,7 +120,7 @@ func _on_level_ring_reset_level(lvl, height):
 		has_shown_prompt_reset = true
 
 ## REVEALS PICKUP PROMPT IF CURRENT LEVEL IS 1
-func _on_tiny_wizard_pickup_block(type):
+func _on_tiny_wizard_pickup_block(_type):
 	if current_level == 1 and has_shown_prompt_placeblock == false:
 		change_scroll_texture(PLACE_SCROLL)
 		has_shown_prompt_placeblock = true

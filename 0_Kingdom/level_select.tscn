@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://ctef7dca8ty2n" path="res://6_UserInterface/scrolls/scroll_button.png" id="1_i58rr"]
 [ext_resource type="Script" uid="uid://c0h0sifugdth0" path="res://0_Kingdom/level_select.gd" id="1_s17ig"]
 [ext_resource type="BitMap" uid="uid://dwur5k3rvejjg" path="res://6_UserInterface/scrolls/scroll_button.bmp" id="2_s17ig"]
+[ext_resource type="Texture2D" uid="uid://bnbanbmlddpj4" path="res://6_UserInterface/level_select_icons/level_icons.png" id="4_unx5o"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_unx5o"]
 resource_name = "scroll_button"
@@ -27,6 +28,14 @@ region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="LabelSettings" id="LabelSettings_i58rr"]
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ex7j"]
+atlas = ExtResource("4_unx5o")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4e2d4"]
+atlas = ExtResource("4_unx5o")
+region = Rect2(16, 0, 16, 16)
 
 [node name="LevelSelect" type="Control" unique_id=1385854771]
 layout_mode = 3
@@ -80,12 +89,38 @@ stretch_mode = 5
 [node name="label" type="Label" parent="buttons/CenterContainer/level_rows/level_columns/level_01" unique_id=1589135109]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
+offset_right = 128.0
+offset_bottom = 128.0
 text = "Level 1"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="coin" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns/level_01" unique_id=1325494057]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 20.0
+offset_right = 86.0
+offset_bottom = 36.0
+tooltip_text = "Coin Collected"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_0ex7j")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="crystal" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns/level_01" unique_id=1185037999]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 20.0
+offset_right = 102.0
+offset_bottom = 36.0
+tooltip_text = "Level Complete"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_4e2d4")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="level_02" type="Control" parent="buttons/CenterContainer/level_rows/level_columns" unique_id=1811685820]
 custom_minimum_size = Vector2(128, 150)
@@ -115,6 +150,32 @@ label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="coin" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns/level_02" unique_id=220361810]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 20.0
+offset_right = 86.0
+offset_bottom = 36.0
+tooltip_text = "Coin Collected"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_0ex7j")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="crystal" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns/level_02" unique_id=1584426877]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 20.0
+offset_right = 102.0
+offset_bottom = 36.0
+tooltip_text = "Level Complete"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_4e2d4")
+expand_mode = 5
+stretch_mode = 5
+
 [node name="level_03" type="Control" parent="buttons/CenterContainer/level_rows/level_columns" unique_id=1274087447]
 custom_minimum_size = Vector2(128, 150)
 layout_mode = 2
@@ -142,6 +203,32 @@ text = "Level 3"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="coin" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns/level_03" unique_id=1833839810]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 20.0
+offset_right = 86.0
+offset_bottom = 36.0
+tooltip_text = "Coin Collected"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_0ex7j")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="crystal" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns/level_03" unique_id=515276347]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 20.0
+offset_right = 102.0
+offset_bottom = 36.0
+tooltip_text = "Level Complete"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_4e2d4")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="level_04" type="Control" parent="buttons/CenterContainer/level_rows/level_columns" unique_id=1764977064]
 custom_minimum_size = Vector2(128, 150)
@@ -171,6 +258,32 @@ label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="coin" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns/level_04" unique_id=94640369]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 20.0
+offset_right = 86.0
+offset_bottom = 36.0
+tooltip_text = "Coin Collected"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_0ex7j")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="crystal" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns/level_04" unique_id=1256929056]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 20.0
+offset_right = 102.0
+offset_bottom = 36.0
+tooltip_text = "Level Complete"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_4e2d4")
+expand_mode = 5
+stretch_mode = 5
+
 [node name="level_05" type="Control" parent="buttons/CenterContainer/level_rows/level_columns" unique_id=615598834]
 custom_minimum_size = Vector2(128, 150)
 layout_mode = 2
@@ -198,6 +311,32 @@ text = "Level 5"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="coin" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns/level_05" unique_id=214299850]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 20.0
+offset_right = 86.0
+offset_bottom = 36.0
+tooltip_text = "Coin Collected"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_0ex7j")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="crystal" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns/level_05" unique_id=1709739551]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 20.0
+offset_right = 102.0
+offset_bottom = 36.0
+tooltip_text = "Level Complete"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_4e2d4")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="level_columns2" type="HBoxContainer" parent="buttons/CenterContainer/level_rows" unique_id=475907128]
 layout_mode = 2
@@ -230,6 +369,32 @@ label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="coin" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns2/level_06" unique_id=1373938783]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 20.0
+offset_right = 86.0
+offset_bottom = 36.0
+tooltip_text = "Coin Collected"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_0ex7j")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="crystal" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns2/level_06" unique_id=1632667029]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 20.0
+offset_right = 102.0
+offset_bottom = 36.0
+tooltip_text = "Level Complete"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_4e2d4")
+expand_mode = 5
+stretch_mode = 5
+
 [node name="level_07" type="Control" parent="buttons/CenterContainer/level_rows/level_columns2" unique_id=1385530145]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -257,6 +422,32 @@ text = "Level 7"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="coin" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns2/level_07" unique_id=1310606972]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 20.0
+offset_right = 86.0
+offset_bottom = 36.0
+tooltip_text = "Coin Collected"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_0ex7j")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="crystal" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns2/level_07" unique_id=2037140333]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 20.0
+offset_right = 102.0
+offset_bottom = 36.0
+tooltip_text = "Level Complete"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_4e2d4")
+expand_mode = 5
+stretch_mode = 5
 
 [node name="level_08" type="Control" parent="buttons/CenterContainer/level_rows/level_columns2" unique_id=1053144406]
 custom_minimum_size = Vector2(128, 128)
@@ -286,6 +477,32 @@ label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="coin" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns2/level_08" unique_id=1512212928]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 20.0
+offset_right = 86.0
+offset_bottom = 36.0
+tooltip_text = "Coin Collected"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_0ex7j")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="crystal" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns2/level_08" unique_id=1770660804]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 20.0
+offset_right = 102.0
+offset_bottom = 36.0
+tooltip_text = "Level Complete"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_4e2d4")
+expand_mode = 5
+stretch_mode = 5
+
 [node name="level_09" type="Control" parent="buttons/CenterContainer/level_rows/level_columns2" unique_id=1571664773]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -314,6 +531,32 @@ label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="coin" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns2/level_09" unique_id=500639053]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 20.0
+offset_right = 86.0
+offset_bottom = 36.0
+tooltip_text = "Coin Collected"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_0ex7j")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="crystal" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns2/level_09" unique_id=395152692]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 20.0
+offset_right = 102.0
+offset_bottom = 36.0
+tooltip_text = "Level Complete"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_4e2d4")
+expand_mode = 5
+stretch_mode = 5
+
 [node name="level_10" type="Control" parent="buttons/CenterContainer/level_rows/level_columns2" unique_id=516872319]
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 2
@@ -341,6 +584,32 @@ text = "Level 10"
 label_settings = SubResource("LabelSettings_i58rr")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="coin" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns2/level_10" unique_id=1338714479]
+layout_mode = 0
+offset_left = 70.0
+offset_top = 20.0
+offset_right = 86.0
+offset_bottom = 36.0
+tooltip_text = "Coin Collected"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_0ex7j")
+expand_mode = 5
+stretch_mode = 5
+
+[node name="crystal" type="TextureRect" parent="buttons/CenterContainer/level_rows/level_columns2/level_10" unique_id=1346641964]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 20.0
+offset_right = 102.0
+offset_bottom = 36.0
+tooltip_text = "Level Complete"
+mouse_filter = 0
+mouse_default_cursor_shape = 16
+texture = SubResource("AtlasTexture_4e2d4")
+expand_mode = 5
+stretch_mode = 5
 
 [connection signal="pressed" from="buttons/CenterContainer/level_rows/level_columns/level_01/button" to="." method="_on_L1_button_pressed"]
 [connection signal="pressed" from="buttons/CenterContainer/level_rows/level_columns/level_02/button" to="." method="_on_L2_button_pressed"]

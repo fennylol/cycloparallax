@@ -161,7 +161,8 @@ func _process(delta: float)  -> void:
 		
 		## COLLECT COIN
 		elif type == LevelRingNode.BlockTypes.OBJ_MSC: 
-			pass
+			print("coin collected!")
+			pickup_list[0].get_parent().queue_free()
 		
 		## COLLECT BLOCK
 		else:

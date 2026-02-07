@@ -24,7 +24,7 @@ enum {
 	}
 const Blocks: Array[PackedScene] = [
 	null,
-	null, preload("res://2_Objects/win_crystal/win_crystal.tscn"), null,
+	null, preload("res://2_Objects/win_crystal/win_crystal.tscn"), preload("res://2_Objects/coin/coin.tscn"),
 	preload("res://4_Blocks/stone/StonePlatform.tscn"),       preload("res://2_Objects/pickup_stone/pickup_stone.tscn"),
 	preload("res://4_Blocks/parallax/ParallaxPlatform.tscn"), preload("res://2_Objects/pickup_parallax/pickup_parallax.tscn"),
 	preload("res://4_Blocks/gateway/GatewayPlatform.tscn"),   preload("res://2_Objects/pickup_gateway/pickup_gateway.tscn"),
@@ -44,7 +44,7 @@ const LEVELS: Array[Array] = [
 	AIRLOCK
 ]
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_released("reset"): reload_the_whole_daggum_map()
 
 func _place_held_block() -> void:
@@ -218,7 +218,7 @@ const JUMP_AND_FIRE: Array[Array] = [
 	[PLT_STN, PLT_FIR], # 27 <-> 11
 	[PLT_STN, PLT_FIR], # 28 <-> 12
 	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_GTW, PLT_GTW, PLT_STN], # 29 <-> 13
-	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_STN, PLT_AIR, OBJ_END], # 30 <-> 14
+	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, OBJ_MSC, PLT_AIR, PLT_STN, PLT_AIR, OBJ_END], # 30 <-> 14
 	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_GTW, PLT_GTW, PLT_STN],  # 31 <-> 15
 	[PLT_STN] #  0 <-> 16 
 ]
@@ -259,8 +259,8 @@ const BLOCK_PLACEMENT: Array[Array] = [
 ]
 
 const SHIFTING: Array[Array] = [
-	[PLT_PLX, PLT_AIR, PLT_AIR, PLT_AIR, PLT_PLX, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN], #  0 <-> 16 
-	[PLT_PLX, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN], #  1 <-> 17 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_PLX, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN], #  0 <-> 16 
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN], #  1 <-> 17 
 	[PLT_PLX, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], #  2 <-> 18 
 	[PLT_PLX, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN], #  3 <-> 19 
 	[PLT_FIR, PLT_PLX, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], #  4 <-> 20 
@@ -290,7 +290,7 @@ const SHIFTING: Array[Array] = [
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_PLX], # 28 <-> 12
 	[PLT_STN, PLT_AIR, PLT_AIR, PLT_PLX], # 29 <-> 13
 	[PLT_PLX, PLT_PLX, PLT_PLX, PLT_PLX, PLT_PLX, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 30 <-> 14
-	[PLT_PLX, PLT_AIR, PLT_AIR, PLT_AIR, PLT_PLX, PLT_AIR, PLT_STN, PLT_STN, PLT_STN]  # 31 <-> 15
+	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_PLX, PLT_AIR, PLT_STN, PLT_STN, PLT_STN]  # 31 <-> 15
 ]
 
 const GATEWAY: Array[Array] = [
