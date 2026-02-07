@@ -81,6 +81,7 @@ var placement_timer  : float     = 0.0
 var clear_for_takeoff: bool      = true
 var yet_to_place     : bool      = false
 var LastSpriteCW     : bool      = true
+var win_lockout      : bool      = false
 @onready var TheBody : Area3D = $Area3D
 @onready var LArmRay : RayCast3D = $LeftArm
 @onready var LLegRay : RayCast3D = $LeftLeg
@@ -150,7 +151,11 @@ func _process(delta: float)  -> void:
 		
 		## LEVEL COMPLETE
 		if type == LevelRingNode.BlockTypes.OBJ_END:
-			level_complete.emit()
+			if not win_lockout:
+				win_lockout = true
+				level_complete.emit()
+			else:
+				return
 		
 		## COLLECT COIN
 		elif type == LevelRingNode.BlockTypes.OBJ_MSC: 
@@ -201,7 +206,9 @@ func _on_the_tower_force_cancel():
 
 ## CALLED IF THE LEVEL IS RESET
 func _on_level_ring_reset_level(lvl : int, height : float):
-	position.y = height + 0.1
+	position.y = (height / 2) + 0.1
+	await get_tree().create_timer(1.0).timeout
+	win_lockout = false
 
 func _get_hurt() -> void:
 	Yeller.stream = HURT_SOUNDS[floor(randf()*HURT_SOUNDS.size())]
