@@ -152,4 +152,5 @@ func _on_scroll_display_to_main_menu_please(): return_to_menu()
 func _on_level_ring_final_level_win(): return_to_menu()
 func return_to_menu():
 	Playing = false
+	TinyWizard.position.y = 1.0
 	self.get_parent().return_to_main_menu()
