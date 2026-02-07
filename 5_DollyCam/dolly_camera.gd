@@ -14,7 +14,7 @@ const STARTING_HEIGHT: float = 1.5
 
 func _process(delta: float) -> void:
 	var vert_diff: float = TargetHeight-(position.y-STARTING_HEIGHT)
-	position.y = lerpf(position.y, TargetHeight+STARTING_HEIGHT, abs(vert_diff)*LERP_SPEED*delta)
+	position.y = lerpf(position.y, TargetHeight+STARTING_HEIGHT, min(abs(vert_diff)*LERP_SPEED*delta,1))
 	if TheLawsOfTheLand.Paused: return
 	var target_fov = EndFov if TheLawsOfTheLand.Perspective else StartFov
 	fov = lerpf(fov, target_fov, delta * Speed)

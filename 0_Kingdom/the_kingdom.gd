@@ -8,7 +8,7 @@ var level_select_node
 func _ready() -> void:
 	activate_level_select()
 
-func _process(delta) -> void:
+func _process(_delta) -> void:
 	pass
 
 func activate_level_select():

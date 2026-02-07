@@ -114,7 +114,7 @@ func _on_tiny_wizard_holding_block(dir: TinyWizardNode.PlacementDirections) -> v
 		LevelBlocks._hold_block(block_placement_loc, type)
 
 ## CALLED ON LEVEL RESET
-func _on_level_ring_reset_level(lvl: int, height : float):
+func _on_level_ring_reset_level(_lvl: int, _height : float):
 	BlockArray.clear()
 	for i in NextBlockUI.get_children():
 		i.queue_free()

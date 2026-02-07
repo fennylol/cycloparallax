@@ -159,7 +159,8 @@ func _process(delta: float)  -> void:
 		
 		## COLLECT COIN
 		elif type == LevelRingNode.BlockTypes.OBJ_MSC: 
-			pass
+			print("coin collected!")
+			pickup_list[0].get_parent().queue_free()
 		
 		## COLLECT BLOCK
 		else:
@@ -205,7 +206,7 @@ func _on_the_tower_force_cancel():
 	clear_for_takeoff = false
 
 ## CALLED IF THE LEVEL IS RESET
-func _on_level_ring_reset_level(lvl : int, height : float):
+func _on_level_ring_reset_level(_lvl : int, height : float):
 	position.y = (height / 2) + 0.1
 	await get_tree().create_timer(1.0).timeout
 	win_lockout = false
