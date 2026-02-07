@@ -59,7 +59,7 @@ func _process(delta: float) -> void:
 	if Enviro.environment and Enviro.environment.sky:
 		var sky_material = Enviro.environment.sky.sky_material
 		if sky_material:
-			sky_material.set_shader_parameter("sky_rotation_degrees", BlocksCenter.rotation_degrees.y)
+			sky_material.set_shader_parameter("sky_rotation_degrees", BlocksCenter.rotation_degrees.y/30 if TheLawsOfTheLand.Perspective else BlocksCenter.rotation_degrees.y)
 	DollyCamera.TargetHeight = TinyWizard.position.y
 	
 
