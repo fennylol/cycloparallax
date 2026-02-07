@@ -23,6 +23,11 @@ config/icon="uid://ddjdu2r10gj2t"
 
 TheLawsOfTheLand="*uid://bjngs02xnontg"
 
+[display]
+
+window/size/viewport_width=960
+window/size/viewport_height=540
+
 [global_group]
 
 Ground="Floor that can be walked on"
