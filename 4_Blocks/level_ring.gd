@@ -46,7 +46,12 @@ const LEVELS: Array[Array] = [
 
 func _process(delta):
 	if Input.is_action_just_released("reset"): 
-		_load_level(current_level)
+		current_y_height = 0
+		var clear_blocks = true
+		for i in range(current_level + 1):
+			current_y_height = get_y_height_for_level(i)
+			_load_level(i, clear_blocks)
+			clear_blocks = false ## clears blocks on the first loop and then never again
 		_reset_level()
 
 func _place_held_block() -> void:
@@ -123,21 +128,21 @@ func _reset_level():
 	self.get_parent().rotation_degrees.y = 0
 	reset_level.emit(current_level, current_y_height)
 
-func _on_tiny_wizard_level_complete():
-	current_level += 1
-	
-	## ADD HEIGHTS OF PREVIOUS LEVELS
+## ADD HEIGHTS OF PREVIOUS LEVELS
+func get_y_height_for_level(level : int) -> int:
 	var y_offset : int = 0
-	for i in range(current_level):
+	for i in range(level):
 		var max_height_of_level_i = 0
 		var level_map: Array[Array] = LEVELS[i]
 		for x in range(level_map.size()):
 			var x_slice: Array = level_map[x]
 			if x_slice.size() > max_height_of_level_i: max_height_of_level_i = x_slice.size()
 		y_offset += max_height_of_level_i
-		print("level ",i,". height = ",max_height_of_level_i)
-	current_y_height = y_offset
-	
+	return y_offset
+
+func _on_tiny_wizard_level_complete():
+	current_level += 1
+	current_y_height = get_y_height_for_level(current_level)
 	_load_level(current_level, false)
 	_reset_level()
 
