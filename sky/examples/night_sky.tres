@@ -66,6 +66,7 @@ shader_parameter/astro_sampler = SubResource("GradientTexture2D_vg6u4")
 shader_parameter/astro_scale = 10.0
 shader_parameter/astro_intensity = 3.0
 shader_parameter/stars_intensity = 5.0
+shader_parameter/stars_density = 50.0
 shader_parameter/shooting_stars_intensity = 0.10000000149012
 shader_parameter/shooting_star_sampler = ExtResource("2_gp87k")
 shader_parameter/shooting_star_tint = Color(1, 0.662745, 0.419608, 1)
