@@ -126,11 +126,11 @@ func _on_tiny_wizard_pickup_block(_type):
 		has_shown_prompt_placeblock = true
 
 func _on_tiny_wizard_level_complete(_coin : bool):
-	if has_shown_prompt_goals == false:
+	if current_level <= 1 and has_shown_prompt_goals == false:
 		change_scroll_texture(GOAL_SCROLL)
 		has_shown_prompt_goals = true
 
 func _on_tiny_wizard_coin_pickup():
-	if has_shown_prompt_goals == false:
+	if current_level == 0 and has_shown_prompt_goals == false:
 		change_scroll_texture(GOAL_SCROLL)
 		has_shown_prompt_goals = true

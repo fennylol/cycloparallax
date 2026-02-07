@@ -178,10 +178,11 @@ func _process(delta: float)  -> void:
 	##   SET BLOCK
 	## -------------
 	
-	if Input.is_action_pressed("place_up")   : holding_block.emit(PlacementDirections.UP)
-	if Input.is_action_pressed("place_right"): holding_block.emit(PlacementDirections.RIGHT)
-	if Input.is_action_pressed("place_left") : holding_block.emit(PlacementDirections.LEFT)
-	if Input.is_action_pressed("place_down") : holding_block.emit(PlacementDirections.DOWN)
+	if clear_for_takeoff:
+		if Input.is_action_pressed("place_up")   : holding_block.emit(PlacementDirections.UP)
+		if Input.is_action_pressed("place_right"): holding_block.emit(PlacementDirections.RIGHT)
+		if Input.is_action_pressed("place_left") : holding_block.emit(PlacementDirections.LEFT)
+		if Input.is_action_pressed("place_down") : holding_block.emit(PlacementDirections.DOWN)
 	
 	## ALLOW A SLIGHT DELAY TO SWITCH PLACEMENT DIRECTIONS
 	if (Input.is_action_pressed("place_up") or Input.is_action_pressed("place_left") or Input.is_action_pressed("place_down") or Input.is_action_pressed("place_right")) and clear_for_takeoff:
@@ -202,7 +203,7 @@ func _process(delta: float)  -> void:
 		Mouth2.play(0.0)
 	
 	## RESET CANCELLATIONS (AND BECOME "CLEAR FOR TAKEOFF") IF NO PLACEBLOCK BUTTONS ARE PRESSED
-	if not (Input.is_action_pressed("place_up") or Input.is_action_pressed("place_left") or Input.is_action_pressed("place_down") or Input.is_action_pressed("place_right")):
+	if not Input.is_action_pressed("place_up") and not Input.is_action_pressed("place_left") and not Input.is_action_pressed("place_down") and not Input.is_action_pressed("place_right"):
 		clear_for_takeoff = true
 
 ## CALLED IF A BLOCK IS ATTEMPTING TO BE HELD/PLACED WHILE NO BLOCKS IN INVENTORY

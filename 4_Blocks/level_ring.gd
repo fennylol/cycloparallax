@@ -78,7 +78,7 @@ func _hold_block(pos: Vector2i, type: BlockTypes) -> void:
 		var x_slice: Array = level_map[x]
 		for y in range(x_slice.size()):
 			if x_slice[y] == PLT_AIR or x_slice[y] == OBJ_BGN or x_slice[y] == ITM_STN or x_slice[y] == ITM_PLX or x_slice[y] == ITM_GTW or x_slice[y] == ITM_FIR: continue
-			if pos == Vector2i(x,y): 
+			if pos == Vector2i(x,y+current_y_height): 
 				the_tile_is_empty = false
 				invalid_placement_tile = true
 	
