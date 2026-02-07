@@ -39,3 +39,5 @@ offset_top = -404.0
 offset_right = 138.0
 offset_bottom = -364.0
 texture = ExtResource("4_pmw1b")
+
+[connection signal="pressed" from="Scroll/menu_button" to="." method="_on_menu_button_pressed"]

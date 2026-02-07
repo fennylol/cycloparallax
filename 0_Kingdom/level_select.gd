@@ -19,6 +19,9 @@ func _ready():
 	$buttons/CenterContainer/level_rows/level_columns2/level_09,
 	$buttons/CenterContainer/level_rows/level_columns2/level_10
 	]
+	check_levels_complete()
+
+func check_levels_complete():
 	for i in range(LEVEL_BUTTONS.size()):
 		LEVEL_BUTTONS[i].get_child(3).visible = TheLawsOfTheLand.levels_completed[i]
 		LEVEL_BUTTONS[i].get_child(2).visible = TheLawsOfTheLand.levels_complete_with_coin[i]

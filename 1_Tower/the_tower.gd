@@ -147,3 +147,7 @@ func _on_level_ring_reset_level(_lvl: int, _height : float):
 	for i in NextBlockUI.get_children():
 		i.queue_free()
 	CoinUI.visible = false
+
+func _on_scroll_display_to_main_menu_please():
+	Playing = false
+	self.get_parent().return_to_main_menu()

@@ -3,6 +3,8 @@ class_name ScrollDisplayNode
 
 @onready var Scroll: Sprite2D = $Scroll
 
+signal to_main_menu_please
+
 var current_level = 0
 var has_shown_prompt_movejump = false
 var has_shown_prompt_placeblock = false
@@ -141,3 +143,6 @@ func _on_tiny_wizard_coin_pickup():
 	if current_level == 0 and has_shown_prompt_goals == false:
 		change_scroll_texture(GOAL_SCROLL)
 		has_shown_prompt_goals = true
+
+
+func _on_menu_button_pressed(): to_main_menu_please.emit()

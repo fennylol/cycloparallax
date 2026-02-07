@@ -243,3 +243,5 @@ stretch_mode = 5
 [connection signal="reset_level" from="BlocksSpinnyBit/LevelRing" to="." method="_on_level_ring_reset_level"]
 [connection signal="reset_level" from="BlocksSpinnyBit/LevelRing" to="WizardsSpinnyBit/TinyWizard" method="_on_level_ring_reset_level"]
 [connection signal="reset_level" from="BlocksSpinnyBit/LevelRing" to="CanvasLayer/ScrollDisplay" method="_on_level_ring_reset_level"]
+[connection signal="to_main_menu_please" from="CanvasLayer/ScrollDisplay" to="." method="_on_scroll_display_to_main_menu_please"]
+[connection signal="to_main_menu_please" from="CanvasLayer/ScrollDisplay" to="BlocksSpinnyBit/LevelRing" method="_on_scroll_display_to_main_menu_please"]

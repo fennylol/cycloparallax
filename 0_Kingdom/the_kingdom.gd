@@ -8,7 +8,6 @@ extends Node3D
 
 const CAM_START_POS := Vector3(-0.5, 2.5, 15.0)
 const CAM_START_ROT := Vector3(0.0, 15.0, 0.0)
-var level_select_node
 
 enum PlayingStates {MENU, TRANSTION, PLAYING}
 var PlayingState := PlayingStates.MENU
@@ -61,3 +60,12 @@ func activate_the_tower(level: int = 0):
 
 func _on_play_button_pressed()         -> void: select_level(0)
 func _on_level_select_button_pressed() -> void: activate_level_select()
+
+func return_to_main_menu():
+	PlayingState = PlayingStates.MENU
+	LevelSelect.visible = false
+	Buttons.visible = true
+	TheLawsOfTheLand.Paused = true
+	TheLawsOfTheLand.Paused = false
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	LevelSelect.check_levels_complete()

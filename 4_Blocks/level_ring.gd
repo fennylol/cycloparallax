@@ -38,9 +38,9 @@ const LEVELS: Array[Array] = [
 	BLOCK_PLACEMENT,  # 2
 	SHIFTING,         # 3
 	GATEWAY,          # 4
-	LEVEL_BASE,       # 5 REPLACE
+	FILLER,          # 5 REPLACE
 	VOLCANO,          # 6
-	LEVEL_BASE,       # 7 REPLACE
+	FILLER,          # 7 REPLACE
 	LAVA_FALL,        # 8
 	AIRLOCK,          # 9
 	ASCENT            # 10
@@ -133,6 +133,22 @@ func get_y_height_for_level(level : int) -> int:
 		y_offset += max_height_of_level_i
 	return y_offset
 
+func _on_scroll_display_to_main_menu_please():
+	var level_map: Array[Array] = LEVEL_BASE
+	
+	for x in range(level_map.size()):
+		var current_x_slice: Node3D = get_child(x)
+		while current_x_slice.get_child_count():
+			var block: Node3D = current_x_slice.get_child(0)
+			block.queue_free()
+			current_x_slice.remove_child(block)
+		
+		var x_slice: Array = level_map[x]
+		for y in range(x_slice.size()):
+			var type = x_slice[y]
+			if type == PLT_AIR: continue
+			_place_block(Vector2i(x,y), type)
+
 func reload_the_whole_daggum_map():
 	current_y_height = 0
 	var clear_blocks = true
@@ -176,7 +192,7 @@ const LEVEL_BASE: Array[Array] = [
 	[PLT_STN], # 13 <-> 29 
 	[PLT_STN], # 14 <-> 30 
 	[PLT_STN], # 15 <-> 31 
-	[PLT_STN, OBJ_END], # 16 <->  0
+	[PLT_STN], # 16 <->  0
 	[PLT_STN], # 17 <->  1
 	[PLT_STN], # 18 <->  2
 	[PLT_STN], # 19 <->  3
@@ -483,37 +499,37 @@ const ASCENT: Array[Array] = [
 
 
 
-const test_LEVEL_2: Array[Array] = [
-	[PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], #  0 <-> 16 
+const FILLER: Array[Array] = [
+	[PLT_STN], #  0 <-> 16 
 	[PLT_STN], #  1 <-> 17 
-	[PLT_STN, ITM_PLX], #  2 <-> 18 
+	[PLT_STN], #  2 <-> 18 
 	[PLT_STN], #  3 <-> 19 
-	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, OBJ_END], #  4 <-> 20 
-	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN], #  5 <-> 21 
-	[PLT_STN, PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN], #  6 <-> 22 
-	[PLT_STN, PLT_FIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], #  7 <-> 23 
-	[PLT_STN, PLT_FIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], #  8 <-> 24 
-	[PLT_STN, PLT_FIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], #  9 <-> 25 
-	[PLT_STN, PLT_FIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 10 <-> 26 
-	[PLT_STN, PLT_FIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 11 <-> 27 
-	[PLT_STN, PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN], # 12 <-> 28 
-	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], # 13 <-> 29 
-	[PLT_AIR, PLT_STN, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 14 <-> 30 
-	[PLT_AIR, PLT_STN, ITM_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN], # 15 <-> 31 
-	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 16 <->  0
-	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 17 <->  1
-	[PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 18 <->  2
-	[PLT_AIR, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 19 <->  3
-	[PLT_AIR, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 20 <->  4
-	[PLT_AIR, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_AIR, PLT_STN, PLT_STN], # 21 <->  5
-	[PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_STN, PLT_AIR, PLT_STN, PLT_STN], # 22 <->  6
-	[PLT_AIR, PLT_STN, PLT_PLX, PLT_STN, PLT_STN, PLT_AIR, PLT_STN, PLT_STN, PLT_STN], # 23 <->  7
-	[PLT_STN, PLT_STN, PLT_PLX, PLT_STN, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN], # 24 <->  8
-	[PLT_STN, PLT_FIR, PLT_AIR, PLT_GTW, PLT_GTW, PLT_AIR, PLT_STN, PLT_AIR, PLT_STN], # 25 <->  9
-	[PLT_STN, PLT_FIR, PLT_AIR, PLT_GTW, PLT_GTW, PLT_AIR, PLT_STN, PLT_AIR, PLT_STN], # 26 <-> 10
-	[PLT_STN, PLT_STN, PLT_PLX, PLT_STN, PLT_STN, PLT_AIR, PLT_STN, PLT_AIR, PLT_STN], # 27 <-> 11
-	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_AIR, PLT_STN, PLT_AIR, PLT_STN], # 28 <-> 12
-	[PLT_AIR, PLT_AIR, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_AIR, PLT_STN], # 29 <-> 13
-	[PLT_AIR, PLT_AIR, PLT_STN, PLT_AIR, PLT_AIR, PLT_AIR, PLT_STN, PLT_AIR, PLT_STN], # 30 <-> 14
-	[PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_STN, PLT_AIR, PLT_STN]  # 31 <-> 15
+	[PLT_STN], #  4 <-> 20 
+	[PLT_STN], #  5 <-> 21 
+	[PLT_STN], #  6 <-> 22 
+	[PLT_STN], #  7 <-> 23 
+	[PLT_STN], #  8 <-> 24 
+	[PLT_STN], #  9 <-> 25 
+	[PLT_STN], # 10 <-> 26 
+	[PLT_STN], # 11 <-> 27 
+	[PLT_STN], # 12 <-> 28 
+	[PLT_STN], # 13 <-> 29 
+	[PLT_STN], # 14 <-> 30 
+	[PLT_STN], # 15 <-> 31 
+	[PLT_STN, OBJ_END], # 16 <->  0
+	[PLT_STN], # 17 <->  1
+	[PLT_STN], # 18 <->  2
+	[PLT_STN], # 19 <->  3
+	[PLT_STN], # 20 <->  4
+	[PLT_STN], # 21 <->  5
+	[PLT_STN], # 22 <->  6
+	[PLT_STN], # 23 <->  7
+	[PLT_STN], # 24 <->  8
+	[PLT_STN], # 25 <->  9
+	[PLT_STN], # 26 <-> 10
+	[PLT_STN], # 27 <-> 11
+	[PLT_STN], # 28 <-> 12
+	[PLT_STN], # 29 <-> 13
+	[PLT_STN], # 30 <-> 14
+	[PLT_STN]  # 31 <-> 15
 ]
