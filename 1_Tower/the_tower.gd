@@ -61,7 +61,6 @@ func _process(delta: float) -> void:
 		if sky_material:
 			sky_material.set_shader_parameter("sky_rotation_degrees", BlocksCenter.rotation_degrees.y/30 if TheLawsOfTheLand.Perspective else BlocksCenter.rotation_degrees.y)
 	DollyCamera.TargetHeight = TinyWizard.position.y
-	
 
 func _on_tiny_wizard_pickup_block(type):
 	BlockArray.append(type)
