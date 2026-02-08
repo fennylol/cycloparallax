@@ -241,12 +241,13 @@ void sky() {
 		//COLOR.rgb = mix(sky_color, HALF_RES_COLOR.rgb, HALF_RES_COLOR.a);
 	//}
 
-	vec3 clouds_direction = vec3(rotated_eyedir.xz / max(abs(rotated_eyedir.y), 0.01), 1.0);
-	vec2 clouds = EYEDIR.y > 0.001 ? cloud_ray_march(clouds_direction, LIGHT0_DIRECTION) : vec2(0.0);
+	//vec3 clouds_direction = vec3(rotated_eyedir.xz / max(abs(rotated_eyedir.y), 0.01), 1.0);
+	//vec2 clouds = EYEDIR.y > 0.001 ? cloud_ray_march(clouds_direction, LIGHT0_DIRECTION) : vec2(0.0);
 	
-	vec3 cloud_color = mix(bottom_color, clouds_light_color, clamp(exp(-clamp(clouds.y * clouds_shadow_intensity, -10.0, 10.0)), 0.0, 1.0));
-	float cloud_alpha = clamp(1.0 - exp(-clamp(clouds.x * horizon_mask * bottom_mask * 10.0, -10.0, 10.0)), 0.0, 1.0);
+	//vec3 cloud_color = mix(bottom_color, clouds_light_color, clamp(exp(-clamp(clouds.y * clouds_shadow_intensity, -10.0, 10.0)), 0.0, 1.0));
+	//float cloud_alpha = clamp(1.0 - exp(-clamp(clouds.x * horizon_mask * bottom_mask * 10.0, -10.0, 10.0)), 0.0, 1.0);
 	
-	COLOR.rgb = mix(sky_color, cloud_color, cloud_alpha);
+	//COLOR.rgb = mix(sky_color, cloud_color, cloud_alpha);
+	COLOR.rgb = sky_color;
 }
 
