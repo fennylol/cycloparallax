@@ -183,50 +183,50 @@ float get_shooting_star(vec3 eyedir){
 }
 
 void sky() {
-	
-	vec3 rotated_eyedir = rotation_matrix_y(sky_rotation_degrees) * EYEDIR;
-	
-	float horizon_mask = abs(rotated_eyedir.y);
-	float bottom_mask = smoothstep(0.5, 0.45, SKY_COORDS.y);
-	
-	vec3 dir = direction_to_matrix(LIGHT0_DIRECTION) * rotated_eyedir;
-	vec2 astro_uv = (-(dir.xy / max(abs(dir.z), 0.01)) * astro_scale) + vec2(0.5);
-	float astro_mask = ceil(
-		clamp(astro_uv.x * (1.0 - astro_uv.x), 0.001, 1.0) *
-		clamp(astro_uv.y * (1.0 - astro_uv.y), 0.001, 1.0)
-		) * ceil(dir.z);
-	vec4 astro_color = texture(astro_sampler, astro_uv);
-	
-	// Sky color
-	
-	vec3 sky_gradient = mix(bottom_color.rgb, top_color.rgb, clamp(rotated_eyedir.y, 0.0, 1.0));
-	vec3 sunset_color = sun_scatter * (1.0 - horizon_mask);
-	vec3 sky_color = clamp(sky_gradient + sunset_color, 0.001, 1.0);
-	
-	// Stars
-	
-	if(stars_intensity > 0.0){
-		vec2 stars = voronoi(rotated_eyedir * stars_density).xz;
-		sky_color += smoothstep(0.025 + ((1.0 + sin(TIME + stars.y)) / 2.0) * 0.05, 0.0, stars.x) * stars_intensity;
-	}
-	
-	// Add shooting stars
-	
-	if(shooting_stars_intensity > 0.0){
-		sky_color += get_shooting_star(rotated_eyedir) * shooting_stars_intensity * shooting_star_tint;
-	}
-	
-	// Add astro
-	
-	sky_color = mix(sky_color, astro_color.rgb * astro_intensity * astro_tint, astro_color.a * astro_mask * bottom_mask);
-	
-	// Add high clouds
-	
-	if(high_clouds_density > 0.0){
-		vec2 high_clouds_uv = (rotated_eyedir.xz / max(abs(rotated_eyedir.y), 0.01)) * 0.25 + TIME * 0.001;
-		float high_clouds_mask = texture(high_clouds_sampler, high_clouds_uv).x;
-		sky_color = mix(sky_color, clouds_light_color, smoothstep(0.0, 1.0, high_clouds_mask) * horizon_mask * bottom_mask * high_clouds_density);
-	}
+	//
+	//vec3 rotated_eyedir = rotation_matrix_y(sky_rotation_degrees) * EYEDIR;
+	//
+	//float horizon_mask = abs(rotated_eyedir.y);
+	//float bottom_mask = smoothstep(0.5, 0.45, SKY_COORDS.y);
+	//
+	////vec3 dir = direction_to_matrix(LIGHT0_DIRECTION) * rotated_eyedir;
+	////vec2 astro_uv = (-(dir.xy / max(abs(dir.z), 0.01)) * astro_scale) + vec2(0.5);
+	////float astro_mask = ceil(
+		////clamp(astro_uv.x * (1.0 - astro_uv.x), 0.001, 1.0) *
+		////clamp(astro_uv.y * (1.0 - astro_uv.y), 0.001, 1.0)
+		////) * ceil(dir.z);
+	////vec4 astro_color = texture(astro_sampler, astro_uv);
+	//
+	//// Sky color
+	//
+	//vec3 sky_gradient = mix(bottom_color.rgb, top_color.rgb, clamp(rotated_eyedir.y, 0.0, 1.0));
+	//vec3 sunset_color = sun_scatter * (1.0 - horizon_mask);
+	//vec3 sky_color = clamp(sky_gradient + sunset_color, 0.001, 1.0);
+	//
+	//// Stars
+	//
+	//if(stars_intensity > 0.0){
+		//vec2 stars = voronoi(rotated_eyedir * stars_density).xz;
+		//sky_color += smoothstep(0.025 + ((1.0 + sin(TIME + stars.y)) / 2.0) * 0.05, 0.0, stars.x) * stars_intensity;
+	//}
+	//
+	//// Add shooting stars
+	//
+	////if(shooting_stars_intensity > 0.0){
+		////sky_color += get_shooting_star(rotated_eyedir) * shooting_stars_intensity * shooting_star_tint;
+	////}
+	//
+	//// Add astro
+	//
+	////sky_color = mix(sky_color, astro_color.rgb * astro_intensity * astro_tint, astro_color.a * astro_mask * bottom_mask);
+	//
+	//// Add high clouds
+	//
+	//if(high_clouds_density > 0.0){
+		//vec2 high_clouds_uv = (rotated_eyedir.xz / max(abs(rotated_eyedir.y), 0.01)) * 0.25 + TIME * 0.001;
+		//float high_clouds_mask = texture(high_clouds_sampler, high_clouds_uv).x;
+		//sky_color = mix(sky_color, clouds_light_color, smoothstep(0.0, 1.0, high_clouds_mask) * horizon_mask * bottom_mask * high_clouds_density);
+	//}
 	
 	//// clouds
 	//if (AT_HALF_RES_PASS) {
@@ -248,6 +248,7 @@ void sky() {
 	//float cloud_alpha = clamp(1.0 - exp(-clamp(clouds.x * horizon_mask * bottom_mask * 10.0, -10.0, 10.0)), 0.0, 1.0);
 	
 	//COLOR.rgb = mix(sky_color, cloud_color, cloud_alpha);
-	COLOR.rgb = sky_color;
+	//COLOR.rgb = sky_color;
+	COLOR.rgb = bottom_color.rgb;
 }
 
