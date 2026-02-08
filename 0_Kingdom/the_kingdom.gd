@@ -41,6 +41,8 @@ func _process(delta) -> void:
 				TheTower.TowerTop.visible = false
 		PlayingStates.TRANSTION: 
 			UI.visible = false
+			TheTower.Thanks.visible = false
+			TheTower.TowerTop.visible = false
 			Cam.position         = lerp(Cam.position,         TheTower.DollyCamera.position,         2.5*delta)
 			Cam.rotation_degrees = lerp(Cam.rotation_degrees, TheTower.DollyCamera.rotation_degrees, 2.5*delta)
 			
