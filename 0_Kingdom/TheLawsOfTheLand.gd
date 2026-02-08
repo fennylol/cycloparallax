@@ -2,6 +2,8 @@ extends Node
 
 var levels_completed          : Array[bool] = [false,false,false,false,false,false,false,false,false,false]
 var levels_complete_with_coin : Array[bool] = [false,false,false,false,false,false,false,false,false,false]
+var perspective_sound: AudioStreamPlayer = AudioStreamPlayer.new()
+var victory_sound: AudioStreamPlayer = AudioStreamPlayer.new()
 
 signal paused_changed(paused: bool)
 var Paused: bool = false:
@@ -13,8 +15,17 @@ var Paused: bool = false:
 signal perspective_changed(orthogonal: bool) 
 var Perspective: bool = false:
 	set(new_val):
+		perspective_sound.play(0.0)
 		Perspective = new_val
 		perspective_changed.emit(new_val)
+
+func _ready() -> void:
+	perspective_sound.stream = load("res://1_Tower/cam_toggle.wav")
+	perspective_sound.volume_db = -10
+	victory_sound.stream = load("res://1_Tower/victory.wav")
+	victory_sound.volume_db = -10
+	add_child(perspective_sound)
+	add_child(victory_sound)
 
 func _process(_delta: float) -> void:
 	# ======= #

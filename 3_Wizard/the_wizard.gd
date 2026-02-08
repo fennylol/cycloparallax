@@ -158,6 +158,7 @@ func _process(delta: float)  -> void:
 		if type == LevelRingNode.BlockTypes.OBJ_END:
 			if not win_lockout:
 				win_lockout = true
+				TheLawsOfTheLand.victory_sound.play(0.0)
 				level_complete.emit(coin_collected)
 			else:
 				return
