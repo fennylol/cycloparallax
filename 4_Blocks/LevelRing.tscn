@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://5hsb5vtp5phs" path="res://4_Blocks/level_ring.gd" id="1_fqln6"]
 [ext_resource type="PackedScene" uid="uid://vq2lhfv1o7nj" path="res://4_Blocks/stone/StonePlatform.tscn" id="2_3m0jy"]
-[ext_resource type="PackedScene" uid="uid://dblc8al5qlo5p" path="res://1_Tower/TowerTop.tscn" id="3_3m0jy"]
 
 [node name="LevelRing" type="Node3D" unique_id=318428192]
 script = ExtResource("1_fqln6")
@@ -165,7 +164,3 @@ transform = Transform3D(0.92387956, 0, -0.38268343, 0, 1, 0, 0.38268343, 0, 0.92
 transform = Transform3D(0.9807853, 0, -0.19509023, 0, 1, 0, 0.19509023, 0, 0.9807853, 0, 0, 0)
 
 [node name="StonePlatform0" parent="31" unique_id=2125199913 instance=ExtResource("2_3m0jy")]
-
-[node name="TowerTop" parent="." unique_id=208600796 instance=ExtResource("3_3m0jy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1169493, 0)
-visible = false

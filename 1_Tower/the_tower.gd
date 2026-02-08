@@ -12,8 +12,10 @@ class_name  TheTowerNode
 @onready var Enviro      : WorldEnvironment= $WorldEnvironment
 @onready var Tutorial    : ScrollDisplayNode = $CanvasLayer/ScrollDisplay
 @onready var CoinUI      : Control         = $CanvasLayer/Coin
+@onready var Thanks      : Sprite3D        = $WizardsSpinnyBit/TinyWizard/Thanks
 @onready var Particles   : GPUParticles3D  = $WizardsSpinnyBit/DollyCamera/GPUParticles3D
 @onready var BottomTower : Node3D = $BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff
+@onready var TowerTop    : Node3D = $BlocksSpinnyBit/DecorativeRing/TowerTop
 @onready var BlockInventoryElement = preload("res://6_UserInterface/BlockInventoryElement.tscn")
 signal force_cancel
 var LastSafeSpace := Vector2.ZERO
@@ -148,9 +150,14 @@ func _on_level_ring_reset_level(_lvl: int, _height : float):
 		i.queue_free()
 	CoinUI.visible = false
 
-func _on_scroll_display_to_main_menu_please(): return_to_menu()
-func _on_level_ring_final_level_win(): return_to_menu()
+func _on_scroll_display_to_main_menu_please():
+	return_to_menu()
+func _on_level_ring_final_level_win():
+	return_to_menu()
 func return_to_menu():
 	Playing = false
+	BlockArray.clear()
+	for i in NextBlockUI.get_children():
+		i.queue_free()
 	TinyWizard.position.y = 1.0
 	self.get_parent().return_to_main_menu()

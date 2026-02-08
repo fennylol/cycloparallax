@@ -4,12 +4,14 @@
 [ext_resource type="PackedScene" uid="uid://bisxls5xjn50e" path="res://3_Wizard/TheWizard.tscn" id="2_7a4fr"]
 [ext_resource type="PackedScene" uid="uid://byo0358e47ha4" path="res://5_DollyCam/DollyCamera.tscn" id="3_401sn"]
 [ext_resource type="ArrayMesh" uid="uid://cuqpibllnb0ym" path="res://1_Tower/inner_walls.tres" id="4_gdh3d"]
+[ext_resource type="Texture2D" uid="uid://bjmaof4cbwve6" path="res://3_Wizard/sprites/ThanksBubble.png" id="4_gu8v5"]
 [ext_resource type="PackedScene" uid="uid://hbu25veek1no" path="res://4_Blocks/LevelRing.tscn" id="5_401sn"]
 [ext_resource type="Texture2D" uid="uid://cr5r662hunse0" path="res://5_DollyCam/T_smoke_flipbook.png" id="5_xmdka"]
 [ext_resource type="PackedScene" uid="uid://c7fwywts260g4" path="res://4_Blocks/DecorativeRing.tscn" id="6_401sn"]
 [ext_resource type="Material" uid="uid://m80rmki4fbox" path="res://sky/examples/night_sky.tres" id="7_gdh3d"]
 [ext_resource type="Texture2D" uid="uid://bnbanbmlddpj4" path="res://6_UserInterface/level_select_icons/level_icons.png" id="8_fkp0n"]
 [ext_resource type="PackedScene" uid="uid://dlaimmt37u5ku" path="res://6_UserInterface/ScrollDisplay.tscn" id="8_gdh3d"]
+[ext_resource type="PackedScene" uid="uid://dblc8al5qlo5p" path="res://1_Tower/TowerTop.tscn" id="10_seeuj"]
 
 [sub_resource type="Sky" id="Sky_ieg05"]
 sky_material = ExtResource("7_gdh3d")
@@ -96,6 +98,11 @@ light_energy = 2.0
 spot_range = 13.0
 spot_angle = 65.0
 
+[node name="Thanks" type="Sprite3D" parent="WizardsSpinnyBit/TinyWizard" unique_id=1976977443]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 2, 1.5)
+visible = false
+texture = ExtResource("4_gu8v5")
+
 [node name="DollyCamera" parent="WizardsSpinnyBit" unique_id=623577091 instance=ExtResource("3_401sn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 12)
 fov = 45.0
@@ -170,6 +177,9 @@ transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.99522
 
 [node name="DecorativeRing" parent="BlocksSpinnyBit/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRingCutoff/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing/DecorativeRing" unique_id=113240159 instance=ExtResource("6_401sn")]
 transform = Transform3D(0.9952274, 0, 0.0975829, 0, 1, 0, -0.0975829, 0, 0.9952274, 0, -0.5, 0)
+
+[node name="TowerTop" parent="BlocksSpinnyBit/DecorativeRing" unique_id=208600796 instance=ExtResource("10_seeuj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1169493, 0)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1001226891]
 

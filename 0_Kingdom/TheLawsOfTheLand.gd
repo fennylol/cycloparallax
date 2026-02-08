@@ -23,3 +23,12 @@ func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("pause")            : Paused      = not Paused
 	if Paused: return
 	if Input.is_action_just_pressed("perspective_spell"): Perspective = not Perspective
+
+func all_levels_completed() -> bool:
+	for val in levels_completed:
+		if not val: return false
+	return true
+func all_levels_complete_with_coin() -> bool:
+	for val in levels_complete_with_coin:
+		if not val: return false
+	return true

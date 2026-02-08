@@ -25,6 +25,20 @@ func _process(delta) -> void:
 			UI.visible = true
 			Cam.position         = CAM_START_POS
 			Cam.rotation_degrees = CAM_START_ROT
+			
+			if TheLawsOfTheLand.levels_completed[9]:
+				TheTower.Thanks.visible = true
+				TheTower.TowerTop.visible = true
+				if TheLawsOfTheLand.all_levels_completed():
+					if TheLawsOfTheLand.all_levels_complete_with_coin():
+						TheTower.Thanks.texture = load("res://3_Wizard/sprites/ThanksBubbleFULL.png")
+					else:
+						TheTower.Thanks.texture = load("res://3_Wizard/sprites/ThanksBubbleLevel.png")
+				else:
+					TheTower.Thanks.texture = load("res://3_Wizard/sprites/ThanksBubble.png")
+			else:
+				TheTower.Thanks.visible = false
+				TheTower.TowerTop.visible = false
 		PlayingStates.TRANSTION: 
 			UI.visible = false
 			Cam.position         = lerp(Cam.position,         TheTower.DollyCamera.position,         2.5*delta)
@@ -32,9 +46,7 @@ func _process(delta) -> void:
 			
 			if abs((Cam.position-TheTower.DollyCamera.position).length()) < 0.05:
 				activate_the_tower(LevelToPlay)
-	#else:
-		#Cam.position         = lerp(Cam.position,         CAM_START_POS, delta)
-		#Cam.rotation_degrees = lerp(Cam.rotation_degrees, CAM_START_ROT, delta)
+	
 
 func activate_level_select():
 	LevelSelect.visible = true

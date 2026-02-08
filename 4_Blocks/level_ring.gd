@@ -1,8 +1,6 @@
 extends Node3D
 class_name LevelRingNode
 
-@onready var TowerTop = $TowerTop
-
 var HoldingBlock: Node3D
 var invalid_placement_tile : bool = false
 const HOLD_ALPHA: float = 0.5
@@ -105,7 +103,7 @@ func _place_block(pos: Vector2i, type: BlockTypes) -> Node3D:
 	return new_block
 
 func _load_level(level_idx: int, clear_blocks: bool = true, ignore_obj: bool = false) -> void:
-	TowerTop.visible = false
+
 	if level_idx >= LEVELS.size(): printerr("level idx ", level_idx , " doesn't exist."); return
 	var level_map: Array[Array] = LEVELS[level_idx]
 	
@@ -167,7 +165,6 @@ func _on_tiny_wizard_level_complete(coin_collected : bool):
 		final_level_win.emit()
 		current_level = 0
 		load_menu_level(true)
-		TowerTop.visible = true
 	else:
 		current_level += 1
 		reload_the_whole_daggum_map()
