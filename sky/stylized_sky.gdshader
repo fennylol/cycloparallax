@@ -184,9 +184,9 @@ float get_shooting_star(vec3 eyedir){
 
 void sky() {
 	//
-	//vec3 rotated_eyedir = rotation_matrix_y(sky_rotation_degrees) * EYEDIR;
+	vec3 rotated_eyedir = rotation_matrix_y(sky_rotation_degrees) * EYEDIR;
 	//
-	//float horizon_mask = abs(rotated_eyedir.y);
+	float horizon_mask = abs(rotated_eyedir.y);
 	//float bottom_mask = smoothstep(0.5, 0.45, SKY_COORDS.y);
 	//
 	////vec3 dir = direction_to_matrix(LIGHT0_DIRECTION) * rotated_eyedir;
@@ -199,9 +199,9 @@ void sky() {
 	//
 	//// Sky color
 	//
-	//vec3 sky_gradient = mix(bottom_color.rgb, top_color.rgb, clamp(rotated_eyedir.y, 0.0, 1.0));
-	//vec3 sunset_color = sun_scatter * (1.0 - horizon_mask);
-	//vec3 sky_color = clamp(sky_gradient + sunset_color, 0.001, 1.0);
+	vec3 sky_gradient = mix(bottom_color.rgb, top_color.rgb, clamp(rotated_eyedir.y, 0.0, 1.0));
+	vec3 sunset_color = sun_scatter * (1.0 - horizon_mask);
+	vec3 sky_color = clamp(sky_gradient + sunset_color, 0.001, 1.0);
 	//
 	//// Stars
 	//
@@ -248,7 +248,6 @@ void sky() {
 	//float cloud_alpha = clamp(1.0 - exp(-clamp(clouds.x * horizon_mask * bottom_mask * 10.0, -10.0, 10.0)), 0.0, 1.0);
 	
 	//COLOR.rgb = mix(sky_color, cloud_color, cloud_alpha);
-	//COLOR.rgb = sky_color;
-	COLOR.rgb = bottom_color.rgb;
+	COLOR.rgb = sky_color;
 }
 
