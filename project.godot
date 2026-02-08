@@ -17,7 +17,8 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/stretch_mode=4
 boot_splash/use_filter=false
 boot_splash/image="uid://d1i02movaa25c"
-config/icon="uid://ddjdu2r10gj2t"
+config/icon="uid://bn68nsowqpba"
+config/windows_native_icon="res://6_UserInterface/icon.ico"
 
 [autoload]
 
