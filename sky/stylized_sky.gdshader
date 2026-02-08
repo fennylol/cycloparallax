@@ -187,15 +187,15 @@ void sky() {
 	vec3 rotated_eyedir = rotation_matrix_y(sky_rotation_degrees) * EYEDIR;
 	//
 	float horizon_mask = abs(rotated_eyedir.y);
-	float bottom_mask = smoothstep(0.45, 0.5, max(1.0-SKY_COORDS.y,0.0));
+	float bottom_mask = smoothstep(1.15, 0.25, 1.0-EYEDIR.y);
 	//
-	////vec3 dir = direction_to_matrix(LIGHT0_DIRECTION) * rotated_eyedir;
-	////vec2 astro_uv = (-(dir.xy / max(abs(dir.z), 0.01)) * astro_scale) + vec2(0.5);
-	////float astro_mask = ceil(
-		////clamp(astro_uv.x * (1.0 - astro_uv.x), 0.001, 1.0) *
-		////clamp(astro_uv.y * (1.0 - astro_uv.y), 0.001, 1.0)
-		////) * ceil(dir.z);
-	////vec4 astro_color = texture(astro_sampler, astro_uv);
+	//vec3 dir = direction_to_matrix(LIGHT0_DIRECTION) * rotated_eyedir;
+	//vec2 astro_uv = (-(dir.xy / max(abs(dir.z), 0.01)) * astro_scale) + vec2(0.5);
+	//float astro_mask = ceil(
+		//clamp(astro_uv.x * (1.0 - astro_uv.x), 0.001, 1.0) *
+		//clamp(astro_uv.y * (1.0 - astro_uv.y), 0.001, 1.0)
+		//) * ceil(dir.z);
+	//vec4 astro_color = texture(astro_sampler, astro_uv);
 	//
 	//// Sky color
 	//
@@ -218,7 +218,7 @@ void sky() {
 	//
 	//// Add astro
 	//
-	////sky_color = mix(sky_color, astro_color.rgb * astro_intensity * astro_tint, astro_color.a * astro_mask * bottom_mask);
+	//sky_color = mix(sky_color, astro_color.rgb * astro_intensity * astro_tint, astro_color.a * astro_mask * bottom_mask);
 	//
 	//// Add high clouds
 	//
@@ -241,13 +241,13 @@ void sky() {
 		//COLOR.rgb = mix(sky_color, HALF_RES_COLOR.rgb, HALF_RES_COLOR.a);
 	//}
 
-	//vec3 clouds_direction = vec3(rotated_eyedir.xz / max(abs(rotated_eyedir.y), 0.01), 1.0);
-	//vec2 clouds = EYEDIR.y > 0.001 ? cloud_ray_march(clouds_direction, LIGHT0_DIRECTION) : vec2(0.0);
+	vec3 clouds_direction = vec3(rotated_eyedir.xz / max(abs(rotated_eyedir.y), 0.01), 1.0);
+	vec2 clouds = EYEDIR.y > 0.001 ? cloud_ray_march(clouds_direction, LIGHT0_DIRECTION) : vec2(0.0);
 	
-	//vec3 cloud_color = mix(bottom_color, clouds_light_color, clamp(exp(-clamp(clouds.y * clouds_shadow_intensity, -10.0, 10.0)), 0.0, 1.0));
-	//float cloud_alpha = clamp(1.0 - exp(-clamp(clouds.x * horizon_mask * bottom_mask * 10.0, -10.0, 10.0)), 0.0, 1.0);
+	vec3 cloud_color = mix(bottom_color, clouds_light_color, clamp(exp(-clamp(clouds.y * clouds_shadow_intensity, -10.0, 10.0)), 0.0, 1.0));
+	float cloud_alpha = clamp(1.0 - exp(-clamp(clouds.x * horizon_mask * bottom_mask  *  10.0, -10.0, 10.0)), 0.0, 1.0);
 	
-	//COLOR.rgb = mix(sky_color, cloud_color, cloud_alpha);
-	COLOR.rgb = sky_color;
+	COLOR.rgb = mix(sky_color, cloud_color, cloud_alpha);
+	//COLOR.rb = EYEDIR.yy;
 }
 
